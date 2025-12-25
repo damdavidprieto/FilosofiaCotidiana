@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofía Cotidiana - Reflexiones para el día a día</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📖 Filosofía Cotidiana</h1>
+            <p class="subtitle">Conceptos filosóficos aplicados a la vida diaria</p>
+        </header>
+
+        <main>
+            <!-- Concepto del día -->
+            <section class="daily-concept">
+                <h2>Concepto del día</h2>
+                <div class="concept-card" id="daily-card">
+                    <h3 class="concept-title">Estoicismo</h3>
+                    <p class="concept-definition">
+                        "No podemos controlar lo que nos sucede, pero sí cómo respondemos a ello."
+                    </p>
+                    <div class="concept-details">
+                        <p><strong>Filósofo:</strong> Marco Aurelio, Epicteto, Séneca</p>
+                        <p><strong>Aplicación práctica:</strong> Cuando algo sale mal, pregúntate: ¿Está bajo mi
+                            control? Si no, acéptalo. Si sí, actúa.</p>
+                    </div>
+                    <button class="btn-simple" onclick="nextConcept()">Siguiente concepto →</button>
+                </div>
+            </section>
+
+            <!-- Experimento mental -->
+            <section class="thought-experiment">
+                <h2>Experimento mental</h2>
+                <div class="experiment-card">
+                    <h3>El Barco de Teseo</h3>
+                    <p class="question">
+                        Si reemplazas cada pieza de un barco, una por una, hasta que no quede ninguna pieza original...
+                        ¿sigue siendo el mismo barco?
+                    </p>
+                    <div class="options">
+                        <button class="option-btn" onclick="showAnswer('yes')">Sí, es el mismo</button>
+                        <button class="option-btn" onclick="showAnswer('no')">No, es diferente</button>
+                        <button class="option-btn" onclick="showAnswer('both')">Ambas respuestas son válidas</button>
+                    </div>
+                    <div class="answer" id="answer" style="display: none;">
+                        <p><strong>Reflexión:</strong> Este dilema cuestiona la identidad y el cambio. ¿Qué nos hace ser
+                            quiénes somos? ¿Nuestra esencia o nuestra continuidad?</p>
+                        <p>Aplicado a ti: Las células de tu cuerpo se renuevan constantemente. ¿Eres la misma persona
+                            que hace 10 años?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Paradojas filosóficas -->
+            <section class="paradoxes">
+                <h2>Paradojas para reflexionar</h2>
+                <div class="paradox-grid">
+                    <div class="paradox-item" onclick="toggleParadox(this)">
+                        <h4>🤔 Paradoja del mentiroso</h4>
+                        <p class="paradox-preview">"Esta frase es falsa"</p>
+                        <div class="paradox-explanation" style="display: none;">
+                            <p>Si es verdadera, entonces es falsa. Si es falsa, entonces es verdadera. Un bucle lógico
+                                sin solución.</p>
+                            <p><em>Nos enseña los límites del lenguaje y la lógica.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="paradox-item" onclick="toggleParadox(this)">
+                        <h4>⏳ Paradoja de Zenón</h4>
+                        <p class="paradox-preview">Para llegar a un punto, primero debes llegar a la mitad...</p>
+                        <div class="paradox-explanation" style="display: none;">
+                            <p>...y antes a la mitad de la mitad, y así infinitamente. ¿Cómo es posible el movimiento?
+                            </p>
+                            <p><em>Cuestiona nuestra percepción del espacio y el tiempo.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="paradox-item" onclick="toggleParadox(this)">
+                        <h4>🌳 Si un árbol cae...</h4>
+                        <p class="paradox-preview">¿Hace ruido si nadie lo escucha?</p>
+                        <div class="paradox-explanation" style="display: none;">
+                            <p>Depende de cómo definas "ruido". ¿Es una vibración física o una experiencia perceptiva?
+                            </p>
+                            <p><em>Explora la relación entre realidad y percepción.</em></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Diario filosófico -->
+            <section class="journal">
+                <h2>Tu diario filosófico</h2>
+                <div class="journal-card">
+                    <p class="prompt">Pregunta de hoy: <strong>¿Qué significa vivir una buena vida?</strong></p>
+                    <textarea id="journal-entry" placeholder="Escribe tus reflexiones aquí..." rows="6"></textarea>
+                    <button class="btn-simple" onclick="saveEntry()">Guardar reflexión</button>
+                    <p class="note">Tus reflexiones se guardan localmente en tu navegador</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>La filosofía no es solo para académicos. Es para todos los que se hacen preguntas.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
