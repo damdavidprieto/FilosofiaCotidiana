@@ -6,76 +6,67 @@ let currentConceptIndex = 0;
 let currentExperimentIndex = 0;
 let currentParadoxIndex = 0;
 
+function logStatus(msg) {
+    console.log(`[PHILOSOPHY-APP] ${msg}`);
+}
+
 function renderConcept(index) {
     const concept = concepts[index];
     const card = document.getElementById('daily-card');
     if (!card) return;
+    const titleEl = card.querySelector('.concept-title');
+    const defEl = card.querySelector('.concept-definition');
+    const detailsEl = card.querySelector('.concept-details');
+    const promptEl = document.getElementById('journal-prompt');
 
-    card.style.opacity = '0.5';
-
-    setTimeout(() => {
-        const titleEl = card.querySelector('.concept-title');
-        const defEl = card.querySelector('.concept-definition');
-        const detailsEl = card.querySelector('.concept-details');
-        const promptEl = document.getElementById('journal-prompt');
-
-        if (titleEl) titleEl.textContent = concept.title;
-        if (defEl) defEl.textContent = `"${concept.quote}"`;
-        if (detailsEl) {
-            detailsEl.innerHTML = `
-                <p><strong>Filósofo:</strong> ${concept.philosopher}</p>
-                <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
-            `;
-        }
-        if (promptEl) promptEl.innerHTML = `Pregunta de hoy: <strong>${concept.prompt}</strong>`;
-
-        card.style.opacity = '1';
-    }, 100);
+    if (titleEl) titleEl.textContent = concept.title;
+    if (defEl) defEl.textContent = `"${concept.quote}"`;
+    if (detailsEl) {
+        detailsEl.innerHTML = `
+            <p><strong>Filósofo:</strong> ${concept.philosopher}</p>
+            <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
+        `;
+    }
+    if (promptEl) promptEl.innerHTML = `Pregunta de hoy: <strong>${concept.prompt}</strong>`;
 }
 
 function renderExperiment(index) {
     const exp = experiments[index];
     const card = document.querySelector('.thought-experiment .glass-card');
     if (!card) return;
+    const titleEl = card.querySelector('.concept-title');
+    const questionEl = card.querySelector('.question');
+    const optionsEl = card.querySelector('.options');
+    const answerEl = document.getElementById('answer');
 
-    card.style.opacity = '0.5';
+    if (titleEl) titleEl.textContent = exp.title;
+    if (questionEl) questionEl.textContent = exp.question;
+    if (answerEl) answerEl.style.display = 'none';
 
-    setTimeout(() => {
-        const titleEl = card.querySelector('.concept-title');
-        const questionEl = card.querySelector('.question');
-        const optionsEl = card.querySelector('.options');
-        const answerEl = document.getElementById('answer');
+    if (optionsEl) {
+        optionsEl.innerHTML = exp.options.map(opt => `
+            <button class="option-btn" data-type="${opt.type}">${opt.text}</button>
+        `).join('');
+    }
 
-        if (titleEl) titleEl.textContent = exp.title;
-        if (questionEl) questionEl.textContent = exp.question;
-        if (answerEl) answerEl.style.display = 'none';
-
-        if (optionsEl) {
-            optionsEl.innerHTML = exp.options.map(opt => `
-                <button class="option-btn" data-type="${opt.type}">${opt.text}</button>
-            `).join('');
-        }
-
-        if (answerEl) {
-            answerEl.innerHTML = `
-                <p><strong>Reflexión:</strong> ${exp.reflection}</p>
-                <p><strong>Aplicado a ti:</strong> ${exp.application}</p>
-            `;
-        }
-        card.style.opacity = '1';
-    }, 100);
+    if (answerEl) {
+        answerEl.innerHTML = `
+            <p><strong>Reflexión:</strong> ${exp.reflection}</p>
+            <p><strong>Aplicado a ti:</strong> ${exp.application}</p>
+        `;
+    }
 }
 
 function renderParadox(index) {
+    logStatus(`Rendering Paradox at index ${index}`);
     if (typeof index === 'undefined' || !paradoxes[index]) {
-        console.warn('Invalid paradox index, picking random');
         index = Math.floor(Math.random() * paradoxes.length);
     }
 
     const par = paradoxes[index];
     const section = document.getElementById('paradox-section');
     if (!section) {
-        console.error('Paradox section not found in DOM');
+        console.error('Section #paradox-section not found');
         return;
     }
 
@@ -89,28 +80,18 @@ function renderParadox(index) {
     if (titleEl) titleEl.textContent = par.title;
     if (previewEl) previewEl.textContent = par.preview;
     if (contentEl) contentEl.style.display = 'none';
+
     if (expEl) expEl.textContent = par.explanation;
     if (refEl) refEl.textContent = par.reflection;
     if (appEl) appEl.textContent = par.application;
 
     const card = section.querySelector('.paradox-card');
-    if (card) {
-        card.classList.remove('active');
-        card.style.opacity = '0.5';
-        setTimeout(() => {
-            card.style.opacity = '1';
-        }, 50);
-    }
+    if (card) card.classList.remove('active');
+
+    logStatus(`Paradox "${par.title}" rendered successfully.`);
 }
 
-function renderHistoryList() {
-    const list = document.getElementById('entries-list');
-    if (list) {
-        renderHistoryUI(getEntries(), list);
-    }
-}
-
-// Global exposure for event listeners
+// Global exposure
 window.nextConcept = () => {
     currentConceptIndex = Math.floor(Math.random() * concepts.length);
     renderConcept(currentConceptIndex);
@@ -129,6 +110,7 @@ window.nextParadox = (e) => {
 
 window.toggleParadoxCard = (element) => {
     const content = element.querySelector('#paradox-content');
+    if (!content) return;
     const isVisible = content.style.display === 'block';
     content.style.display = isVisible ? 'none' : 'block';
     element.classList.toggle('active', !isVisible);
@@ -136,32 +118,18 @@ window.toggleParadoxCard = (element) => {
 
 window.showAnswer = () => {
     const answer = document.getElementById('answer');
-    if (answer) {
-        answer.style.display = 'block';
-        answer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-};
-
-window.toggleParadox = (element) => {
-    toggleParadoxUI(element);
+    if (answer) answer.style.display = 'block';
 };
 
 window.saveEntry = () => {
     const text = document.getElementById('journal-entry').value;
     const prompt = document.getElementById('journal-prompt').innerText;
-
     const result = saveEntryData(text, prompt);
-    if (!result.success) {
+    if (result.success) {
+        notify('Reflexión guardada.', 'success');
+        document.getElementById('journal-entry').value = '';
+    } else {
         notify('Escribe algo profundo...', 'error');
-        return;
-    }
-
-    notify('Reflexión guardada.', 'success');
-    document.getElementById('journal-entry').value = '';
-
-    const container = document.getElementById('history-container');
-    if (container && container.style.display === 'block') {
-        renderHistoryList();
     }
 };
 
@@ -169,41 +137,44 @@ window.toggleHistory = () => {
     const container = document.getElementById('history-container');
     if (!container) return;
     const isVisible = container.style.display === 'block';
-
     container.style.display = isVisible ? 'none' : 'block';
     if (!isVisible) {
-        renderHistoryList();
-        container.scrollIntoView({ behavior: 'smooth' });
+        renderHistoryUI(getEntries(), document.getElementById('entries-list'));
     }
 };
 
 window.confirmDelete = (id) => {
-    if (confirm('¿Eliminar esta reflexión?')) {
+    if (confirm('¿Eliminar?')) {
         deleteEntryData(id);
-        renderHistoryList();
+        renderHistoryUI(getEntries(), document.getElementById('entries-list'));
     }
 };
 
 // Orchestration
 function init() {
-    // Random initial content
-    currentConceptIndex = Math.floor(Math.random() * concepts.length);
-    renderConcept(currentConceptIndex);
+    logStatus('Initializing Application...');
 
-    currentExperimentIndex = Math.floor(Math.random() * experiments.length);
-    renderExperiment(currentExperimentIndex);
+    try {
+        currentConceptIndex = Math.floor(Math.random() * concepts.length);
+        renderConcept(currentConceptIndex);
+        logStatus('Concept initialized.');
+    } catch (e) { console.error('Concept init failed', e); }
 
-    const initialParadoxIndex = Math.floor(Math.random() * paradoxes.length);
-    renderParadox(initialParadoxIndex);
+    try {
+        currentExperimentIndex = Math.floor(Math.random() * experiments.length);
+        renderExperiment(currentExperimentIndex);
+        logStatus('Experiment initialized.');
+    } catch (e) { console.error('Experiment init failed', e); }
 
-    // Event delegation for dynamic elements
+    try {
+        currentParadoxIndex = Math.floor(Math.random() * paradoxes.length);
+        renderParadox(currentParadoxIndex);
+        logStatus('Paradox initialized.');
+    } catch (e) { console.error('Paradox init failed', e); }
+
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('option-btn')) {
-            window.showAnswer();
-        }
-        if (e.target.classList.contains('delete')) {
-            window.confirmDelete(parseInt(e.target.dataset.id));
-        }
+        if (e.target.classList.contains('option-btn')) window.showAnswer();
+        if (e.target.classList.contains('delete')) window.confirmDelete(parseInt(e.target.dataset.id));
     });
 }
 
