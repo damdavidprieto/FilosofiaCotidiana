@@ -153,6 +153,31 @@ h2::after {
     transform: scale(1.05);
 }
 
+/* Thought Experiment Options */
+.options {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.option-btn {
+    background: white;
+    border: 1px solid var(--border-glass);
+    padding: 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: left;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.option-btn:hover {
+    border-color: var(--accent);
+    background: #fbf9f7;
+    transform: translateX(5px);
+}
+
 /* Paradox Section */
 .paradox-card {
     cursor: pointer;
@@ -208,6 +233,48 @@ textarea {
     font-family: inherit;
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* History */
+.journal-entry-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-glass);
+    animation: slideIn 0.5s ease-out;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.action-link.delete {
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @media (max-width: 768px) {
