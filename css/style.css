@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --bg-primary: #f8f9fa;
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --accent: #8b7355;
+    --accent-light: #b0997a;
+    --accent-dark: #5d4d39;
+    --border-glass: rgba(255, 255, 255, 0.3);
+    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top right, #fdfcfb, #e2d1c322), var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 5rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--accent-dark);
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 4rem;
+    transition: var(--transition);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.12);
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-light), transparent);
+}
+
+/* Daily Concept */
+.concept-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-dark);
+}
+
+.concept-definition {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--accent);
+}
+
+.concept-details {
+    background: rgba(139, 115, 85, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn-premium {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-premium:hover {
+    background: var(--accent-dark);
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+}
+
+.btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* Thought Experiment */
+.options {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.option-btn {
+    background: white;
+    border: 1px solid var(--border-glass);
+    padding: 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: left;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.option-btn:hover {
+    border-color: var(--accent);
+    background: var(--bg-primary);
+}
+
+/* Journal History Section */
+.history-section {
+    margin-top: 5rem;
+}
+
+.journal-entry-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-glass);
+    animation: slideIn 0.5s ease-out;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.entry-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-link {
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.action-link.delete {
+    color: #e74c3c;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile First & Responsive Design Cleanup */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+        line-height: 1.1;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    header {
+        margin-bottom: 3rem;
+    }
+
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .glass-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-radius: 16px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .concept-title {
+        font-size: 1.6rem;
+    }
+
+    .concept-definition {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+    }
+
+    .concept-details {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .option-btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .btn-premium {
+        width: 100%;
+        justify-content: center;
+        padding: 1.2rem;
+        /* Better touch target */
+    }
+
+    textarea {
+        font-size: 16px;
+        /* Prevents auto-zoom on iOS */
+    }
+}
+
+/* Base adjustment for extremely small screens */
+@media (max-width: 380px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+}
