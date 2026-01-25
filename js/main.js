@@ -4,18 +4,18 @@ import * as ui from './ui.js';
 
 let currentConceptIndex = 0;
 
-// Concept Management
-window.nextConcept = function () {
-    currentConceptIndex = (currentConceptIndex + 1) % concepts.length;
-    const concept = concepts[currentConceptIndex];
-
+// Función para renderizar un concepto específico
+function renderConcept(index) {
+    const concept = concepts[index];
     const card = document.getElementById('daily-card');
+
+    // Animación suave
     card.style.opacity = '0';
     card.style.transform = 'translateY(10px)';
 
     setTimeout(() => {
         card.querySelector('.concept-title').textContent = concept.title;
-        card.querySelector('.concept-definition').textContent = concept.quote;
+        card.querySelector('.concept-definition').textContent = `"${concept.quote}"`;
         card.querySelector('.concept-details').innerHTML = `
             <p><strong>Filósofo:</strong> ${concept.philosopher}</p>
             <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
@@ -24,6 +24,12 @@ window.nextConcept = function () {
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
     }, 300);
+}
+
+// Concept Management
+window.nextConcept = function () {
+    currentConceptIndex = (currentConceptIndex + 1) % concepts.length;
+    renderConcept(currentConceptIndex);
 };
 
 // Thought Experiments
@@ -81,5 +87,13 @@ function renderHistoryList() {
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('journal-prompt').innerHTML = `Pregunta de hoy: <strong>${concepts[0].prompt}</strong>`;
+    // Cálculo del concepto del día basado en la fecha (Día del año)
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - (now.getTimezoneOffset() * 60 * 1000) - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+
+    currentConceptIndex = dayOfYear % concepts.length;
+    renderConcept(currentConceptIndex);
 });
