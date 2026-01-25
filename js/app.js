@@ -1,6 +1,8 @@
 // Consolidated Script for FilosofiaCotidiana
 // Works with local file:// access by avoiding ES Modules
 
+console.log("Filosofía Cotidiana: Script inicializado");
+
 // 1. DATA
 const concepts = [
     {
@@ -43,9 +45,12 @@ const concepts = [
 // 2. JOURNAL LOGIC
 const STORAGE_KEY = 'philosophyJournal';
 
-function saveEntry(text, prompt) {
-    if (!text.trim()) return { success: false, error: 'Empty content' };
+function getEntries() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+}
 
+function saveEntryData(text, prompt) {
+    if (!text.trim()) return { success: false, error: 'Empty content' };
     const entries = getEntries();
     const newEntry = {
         id: Date.now(),
@@ -53,17 +58,12 @@ function saveEntry(text, prompt) {
         prompt: prompt,
         text: text
     };
-
     entries.unshift(newEntry);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
     return { success: true, entry: newEntry };
 }
 
-function getEntries() {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-}
-
-function deleteEntry(id) {
+function deleteEntryData(id) {
     let entries = getEntries();
     entries = entries.filter(e => e.id !== id);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
@@ -71,7 +71,7 @@ function deleteEntry(id) {
 }
 
 // 3. UI LOGIC
-function renderHistoryUI(entries, listContainer, onDeleteClick) {
+function renderHistoryUI(entries, listContainer) {
     if (entries.length === 0) {
         listContainer.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Aún no has escrito ninguna reflexión. Tu viaje comienza con la primera palabra.</p>';
         return;
@@ -82,34 +82,32 @@ function renderHistoryUI(entries, listContainer, onDeleteClick) {
             <div class="entry-header">
                 <span>${entry.date}</span>
                 <div class="entry-actions">
-                    <span class="action-link delete" data-id="${entry.id}">Borrar</span>
+                    <span class="action-link delete" onclick="window.confirmDelete(${entry.id})">Borrar</span>
                 </div>
             </div>
             <p style="font-size: 0.85rem; color: var(--accent); margin-bottom: 0.5rem; font-style: italic;">${entry.prompt}</p>
             <p style="white-space: pre-wrap;">${entry.text}</p>
         </div>
     `).join('');
-
-    listContainer.querySelectorAll('.action-link.delete').forEach(btn => {
-        btn.onclick = () => onDeleteClick(Number(btn.dataset.id));
-    });
 }
 
 function notify(msg, type) {
     const toast = document.createElement('div');
     const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#8b7355';
     toast.textContent = msg;
+    toast.className = 'toast-notification'; // We could add this to CSS if needed
     toast.style.cssText = `
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         background: ${type === 'error' ? '#e74c3c' : accentColor};
         color: white;
         padding: 1rem 2rem;
         border-radius: 50px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         z-index: 1000;
-        animation: slideIn 0.3s ease-out;
+        transition: all 0.3s ease;
     `;
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 3000);
@@ -121,7 +119,7 @@ function toggleParadoxUI(element) {
 
     document.querySelectorAll('.paradox-explanation').forEach(exp => {
         exp.style.display = 'none';
-        exp.parentElement.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+        exp.parentElement.style.borderColor = 'rgba(0, 0, 0, 0.1)';
     });
 
     if (!isVisible) {
@@ -136,22 +134,31 @@ let currentConceptIndex = 0;
 function renderConcept(index) {
     const concept = concepts[index];
     const card = document.getElementById('daily-card');
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(10px)';
+    if (!card) return;
+
+    card.style.opacity = '0.5';
 
     setTimeout(() => {
-        card.querySelector('.concept-title').textContent = concept.title;
-        card.querySelector('.concept-definition').textContent = `"${concept.quote}"`;
-        card.querySelector('.concept-details').innerHTML = `
-            <p><strong>Filósofo:</strong> ${concept.philosopher}</p>
-            <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
-        `;
-        document.getElementById('journal-prompt').innerHTML = `Pregunta de hoy: <strong>${concept.prompt}</strong>`;
+        const titleEl = card.querySelector('.concept-title');
+        const defEl = card.querySelector('.concept-definition');
+        const detailsEl = card.querySelector('.concept-details');
+        const promptEl = document.getElementById('journal-prompt');
+
+        if (titleEl) titleEl.textContent = concept.title;
+        if (defEl) defEl.textContent = `"${concept.quote}"`;
+        if (detailsEl) {
+            detailsEl.innerHTML = `
+                <p><strong>Filósofo:</strong> ${concept.philosopher}</p>
+                <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
+            `;
+        }
+        if (promptEl) promptEl.innerHTML = `Pregunta de hoy: <strong>${concept.prompt}</strong>`;
+
         card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-    }, 300);
+    }, 100);
 }
 
+// Global functions for HTML
 window.nextConcept = function () {
     currentConceptIndex = (currentConceptIndex + 1) % concepts.length;
     renderConcept(currentConceptIndex);
@@ -159,8 +166,10 @@ window.nextConcept = function () {
 
 window.showAnswer = function (choice) {
     const answer = document.getElementById('answer');
-    answer.style.display = 'block';
-    answer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (answer) {
+        answer.style.display = 'block';
+        answer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 };
 
 window.toggleParadox = function (element) {
@@ -171,22 +180,24 @@ window.saveEntry = function () {
     const text = document.getElementById('journal-entry').value;
     const prompt = document.getElementById('journal-prompt').innerText;
 
-    const result = saveEntry(text, prompt);
+    const result = saveEntryData(text, prompt);
     if (!result.success) {
-        notify('Escribe algo profundo antes de guardar...', 'error');
+        notify('Escribe algo profundo...', 'error');
         return;
     }
 
-    notify('Reflexión guardada en tu bitácora.', 'success');
+    notify('Reflexión guardada.', 'success');
     document.getElementById('journal-entry').value = '';
 
-    if (document.getElementById('history-container').style.display === 'block') {
+    const container = document.getElementById('history-container');
+    if (container && container.style.display === 'block') {
         renderHistoryList();
     }
 };
 
 window.toggleHistory = function () {
     const container = document.getElementById('history-container');
+    if (!container) return;
     const isVisible = container.style.display === 'block';
 
     container.style.display = isVisible ? 'none' : 'block';
@@ -196,22 +207,33 @@ window.toggleHistory = function () {
     }
 };
 
+window.confirmDelete = function (id) {
+    if (confirm('¿Eliminar esta reflexión?')) {
+        deleteEntryData(id);
+        renderHistoryList();
+    }
+};
+
 function renderHistoryList() {
     const list = document.getElementById('entries-list');
-    renderHistoryUI(getEntries(), list, (id) => {
-        if (confirm('¿Estás seguro de que quieres eliminar esta reflexión?')) {
-            deleteEntry(id);
-            renderHistoryList();
-        }
-    });
+    if (list) {
+        renderHistoryUI(getEntries(), list);
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// Bootstrap
+function init() {
+    console.log("Ejecutando inicialización...");
     const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const diff = now - (now.getTimezoneOffset() * 60 * 1000) - start;
-    const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-
+    const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
     currentConceptIndex = dayOfYear % concepts.length;
     renderConcept(currentConceptIndex);
-});
+}
+
+// Multilayer initialization to ensure it runs
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+window.onload = init;
