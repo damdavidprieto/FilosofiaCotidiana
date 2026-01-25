@@ -6,39 +6,214 @@ console.log("Filosofía Cotidiana: Script inicializado");
 // 1. DATA
 const concepts = [
     {
-        title: "Estoicismo",
-        quote: "No podemos controlar lo que nos sucede, pero sí cómo respondemos a ello.",
-        philosopher: "Marco Aurelio, Epicteto, Séneca",
-        application: "Cuando algo sale mal, pregúntate: ¿Está bajo mi control? Si no, acéptalo. Si sí, actúa.",
-        prompt: "¿Qué situación fuera de tu control te ha robado la paz hoy? Escribe cómo podrías aceptarla."
+        title: "Dicotomía del Control",
+        quote: "No podemos elegir nuestras circunstancias externas, pero siempre podemos elegir cómo responder a ellas.",
+        philosopher: "Epicteto",
+        application: "Ante un imprevisto, separa lo que depende de ti (tu juicio) de lo que no (el evento). Actúa solo en lo primero.",
+        prompt: "¿Qué situación te preocupa hoy que está totalmente fuera de tu control? Escribe cómo podrías aceptarla."
     },
     {
-        title: "Existencialismo",
-        quote: "La existencia precede a la esencia. Tú creas tu propio significado.",
+        title: "Ataraxia",
+        quote: "El límite de la magnitud de los placeres es la eliminación de todo dolor.",
+        philosopher: "Epicuro",
+        application: "Busca la tranquilidad mental evitando deseos innecesarios y miedos infundados. Valora lo simple.",
+        prompt: "¿Qué deseo innecesario estás persiguiendo hoy que te impide alcanzar la paz?"
+    },
+    {
+        title: "Amor Fati",
+        quote: "Mi fórmula para la grandeza humana es el Amor Fati: no querer que nada sea distinto ni en el pasado ni en el futuro.",
+        philosopher: "Friedrich Nietzsche",
+        application: "No solo aceptes lo que sucede; ámalo como una parte necesaria de tu historia única.",
+        prompt: "Piensa en algo 'malo' que te haya pasado hoy. ¿Cómo podrías verlo como una oportunidad para crecer?"
+    },
+    {
+        title: "Existencialismo (Esencia)",
+        quote: "La existencia precede a la esencia.",
         philosopher: "Jean-Paul Sartre",
-        application: "No esperes que la vida tenga un propósito predefinido. Tú decides qué es importante para ti.",
-        prompt: "Si mañana pudieras cambiar tu propósito de vida, ¿cuál elegirías y por qué?"
+        application: "No has nacido con un destino. Eres lo que haces. Tienes la libertad total de definirte hoy.",
+        prompt: "Si hoy borraras todas tus etiquetas (puesto, edad, rol), ¿quién decidirías empezar a ser mañana?"
     },
     {
-        title: "Minimalismo (Diógenes)",
-        quote: "Quien tiene menos necesidades, es más libre.",
-        philosopher: "Diógenes de Sinope",
-        application: "Antes de comprar algo, pregúntate: ¿Realmente lo necesito o solo lo deseo?",
-        prompt: "¿De qué carga física o mental podrías prescindir hoy para sentirte más ligero?"
-    },
-    {
-        title: "Memento Mori",
-        quote: "Recuerda que morirás. No para temer, sino para vivir plenamente.",
-        philosopher: "Tradición estoica",
-        application: "¿Qué harías hoy si supieras que te queda poco tiempo? Hazlo.",
-        prompt: "Si hoy fuera tu último día, ¿te sentirías orgulloso de cómo has pasado tus últimas 24 horas?"
-    },
-    {
-        title: "Navaja de Ockham",
-        quote: "La explicación más simple suele ser la correcta.",
+        title: "La Navaja de Ockham",
+        quote: "En igualdad de condiciones, la explicación más sencilla suele ser la correcta.",
         philosopher: "Guillermo de Ockham",
-        application: "Cuando algo va mal, busca primero las causas obvias antes de complicarte.",
-        prompt: "¿En qué área de tu vida estás complicando algo que en realidad es muy simple?"
+        application: "No sobreanalices los problemas. Busca la raíz más evidente antes de crear conspiraciones mentales.",
+        prompt: "¿Qué problema estás complicando demasiado en tu cabeza? ¿Cuál es la explicación más simple?"
+    },
+    {
+        title: "Mala Fe",
+        quote: "El hombre está condenado a ser libre; porque una vez arrojado al mundo, es responsable de todo lo que hace.",
+        philosopher: "Jean-Paul Sartre",
+        application: "No te mientas diciendo 'no tengo opción'. Siempre hay una opción, aunque sea difícil.",
+        prompt: "¿En qué área de tu vida dices 'no tengo otra opción' para evitar tu responsabilidad real?"
+    },
+    {
+        title: "El Imperativo Categórico",
+        quote: "Obra solo según aquella máxima por la cual puedas querer que al mismo tiempo se convierta en ley universal.",
+        philosopher: "Immanuel Kant",
+        application: "Antes de actuar, pregúntate: ¿Me gustaría que todo el mundo hiciera lo mismo en esta situación?",
+        prompt: "Si tu acción más importante de hoy se convirtiera en ley para toda la humanidad, ¿sería el mundo un lugar mejor?"
+    },
+    {
+        title: "Eudaimonía",
+        quote: "La felicidad es una actividad del alma de acuerdo con la virtud.",
+        philosopher: "Aristóteles",
+        application: "La felicidad no es un placer fugaz, sino el florecimiento resultante de vivir con excelencia y propósito.",
+        prompt: "¿Qué acción virtuosa (con coraje, justicia o sabiduría) podrías realizar hoy por alguien más?"
+    },
+    {
+        title: "La Caverna",
+        quote: "El conocimiento es la opinión verdadera acompañada de una razón.",
+        philosopher: "Platón",
+        application: "No te quedes con las sombras (lo que dicen otros, redes sociales). Busca la luz de la verdad cuestionando.",
+        prompt: "¿Qué 'sombra' o creencia popular has aceptado hoy sin cuestionar si es realmente real?"
+    },
+    {
+        title: "El Eterno Retorno",
+        quote: "¿Qué pasaría si un demonio te dijera que esta vida la tendrás que vivir infinitas veces más?",
+        philosopher: "Friedrich Nietzsche",
+        application: "Vive de tal manera que desees repetir cada segundo de tu vida por toda la eternidad.",
+        prompt: "Si hoy fuera el día que se va a repetir por siempre, ¿estarías feliz de revivir estas últimas horas?"
+    },
+    {
+        title: "Meditación sobre la Muerte",
+        quote: "Podrías dejar la vida ahora mismo. Deja que eso determine lo que haces, dices y piensas.",
+        philosopher: "Marco Aurelio",
+        application: "El Memento Mori no es para deprimirse, sino para priorizar lo que realmente importa y descartar lo trivial.",
+        prompt: "Si supieras que te queda 24 horas, ¿qué conflicto o queja de hoy dejaría de tener importancia?"
+    },
+    {
+        title: "Minimalismo Cínico",
+        quote: "Busco a un hombre honesto.",
+        philosopher: "Diógenes de Sinope",
+        application: "Despójate de las pretensiones sociales y las posesiones que te encadenan. La virtud basta para la felicidad.",
+        prompt: "¿Qué posesión o estatus social te está robando más libertad de la que te da?"
+    },
+    {
+        title: "Saber que no sabes",
+        quote: "Solo sé que no sé nada.",
+        philosopher: "Sócrates",
+        application: "Mantén una mente de principiante. La verdadera sabiduría empieza cuando admites tu propia ignorancia.",
+        prompt: "¿Sobre qué tema has sido demasiado arrogante hoy? ¿Qué podrías aprender si admitieras que no lo sabes todo?"
+    },
+    {
+        title: "El Absurdo",
+        quote: "Debemos imaginar a Sísifo feliz.",
+        philosopher: "Albert Camus",
+        application: "Aunque el mundo parezca no tener sentido, nuestra rebelión consiste en crear nuestro propio significado con alegría.",
+        prompt: "¿Qué tarea rutinaria y 'maldita' te toca hoy? ¿Cómo podrías hacerla con una sonrisa desafiante?"
+    },
+    {
+        title: "Ética de la Ambigüedad",
+        quote: "El hombre es una pasión inútil, pero es él quien decide su valor.",
+        philosopher: "Simone de Beauvoir",
+        application: "Tu libertad solo es real si también buscas la libertad de los demás.",
+        prompt: "¿Cómo puedes ayudar a que alguien a tu alrededor se sienta hoy un poco más libre?"
+    },
+    {
+        title: "Perspectivismo",
+        quote: "Yo soy yo y mi circunstancia, y si no la salvo a ella no me salvo yo.",
+        philosopher: "José Ortega y Gasset",
+        application: "Tu verdad es solo un punto de vista. Entender tu entorno es vital para entenderte a ti mismo.",
+        prompt: "Intenta ver el mayor conflicto de hoy desde la perspectiva de la otra persona. ¿Qué descubres?"
+    },
+    {
+        title: "La Duda Metódica",
+        quote: "Pienso, luego existo.",
+        philosopher: "René Descartes",
+        application: "No aceptes nada como verdadero sin antes haberlo verificado por ti mismo. Confía en tu propia razón.",
+        prompt: "¿De qué pensamiento o prejuicio estás tan seguro que podrías estar equivocado?"
+    },
+    {
+        title: "Sustancia y Emoción",
+        quote: "No reír, no llorar, no indignarse, sino comprender.",
+        philosopher: "Baruch Spinoza",
+        application: "Cuando alguien te ataque, no reacciones emocionalmente. Trata de entender las causas físicas y lógicas detrás de su acto.",
+        prompt: "Visualiza a alguien que te cae mal. Trata de pensar qué causas biográficas lo llevaron a ser así."
+    },
+    {
+        title: "El Velo de la Ignorancia",
+        quote: "La justicia es la primera virtud de las instituciones sociales.",
+        philosopher: "John Rawls",
+        application: "Si no supieras quién vas a ser en la sociedad, ¿qué leyes querrías? Busca la equidad.",
+        prompt: "Si hoy se reseteara el mundo y pudieras ser cualquiera, ¿qué cambio pedirías para los más desfavorecidos?"
+    },
+    {
+        title: "Fluidez (Panta Rhei)",
+        quote: "Nadie se baña dos veces en el mismo río.",
+        philosopher: "Heráclito",
+        application: "Todo cambia constantemente. No te aferres a situaciones o personas; fluye con el cambio.",
+        prompt: "¿A qué situación del pasado te estás aferrando que ya no existe en el presente?"
+    },
+    {
+        title: "Apatheia",
+        quote: "Libérate de las pasiones que nublan el juicio.",
+        philosopher: "Zenón de Citio",
+        application: "La paz mental llega cuando tus emociones no son las que conducen el carro, sino tu razón.",
+        prompt: "¿Qué emoción intensa te ha dominado hoy? ¿Cómo se vería esa situación desde la calma absoluta?"
+    },
+    {
+        title: "La Voluntad de Poder",
+        quote: "Lo que no me mata, me hace más fuerte.",
+        philosopher: "Friedrich Nietzsche",
+        application: "Usa tus dificultades como combustible para tu desarrollo personal y superación.",
+        prompt: "¿Cuál es el obstáculo más grande que enfrentas esta semana? ¿Qué habilidad estás desarrollando gracias a él?"
+    },
+    {
+        title: "Tranquilidad de Ánimo",
+        quote: "La mayor parte de nuestras preocupaciones son vanas, de modo que es mejor no prestarles atención.",
+        philosopher: "Séneca",
+        application: "Aprende a distinguir entre problemas reales y dramas imaginarios generados por el cansancio o el miedo.",
+        prompt: "De todo lo que te ha estresado hoy, ¿cuánto seguirá importando dentro de un año?"
+    },
+    {
+        title: "Poder y Conocimiento",
+        quote: "Donde hay poder, hay resistencia.",
+        philosopher: "Michel Foucault",
+        application: "Sé consciente de cómo las estructuras y las normas sociales moldean tu pensamiento y comportamiento.",
+        prompt: "¿Qué comportamiento tuyo hoy ha sido dictado por la 'presión social' y no por tu propia voluntad?"
+    },
+    {
+        title: "El Otro",
+        quote: "El infierno son los otros.",
+        philosopher: "Jean-Paul Sartre",
+        application: "A menudo nos vemos a nosotros mismos solo a través del juicio de los demás. Reclama tu propia mirada.",
+        prompt: "¿Cuánto de tu felicidad de hoy ha dependido de la aprobación de otra persona?"
+    },
+    {
+        title: "Vitalismo",
+        quote: "Vivir es encontrarse en el mundo.",
+        philosopher: "José Ortega y Gasset",
+        application: "No pienses la vida, ¡vívela! La acción es lo que nos mantiene conectados con la realidad.",
+        prompt: "Si hoy dejaras de 'planear' por un momento, ¿qué acción pura y vital te gustaría realizar?"
+    },
+    {
+        title: "Soberanía sobre uno mismo",
+        quote: "Sobre su propio cuerpo y mente, el individuo es soberano.",
+        philosopher: "John Stuart Mill",
+        application: "Defiende tu derecho a pensar diferente, siempre que no dañes a los demás. Tu mente es tu castillo.",
+        prompt: "¿En qué idea eres hoy 'rebelde' frente a lo que opina la mayoría de tu entorno?"
+    },
+    {
+        title: "Impermanencia",
+        quote: "El cambio es la única constante.",
+        philosopher: "Buda (Filosofía Oriental)",
+        application: "Acepta que el dolor pasará, pero también que la alegría es efímera. Disfruta el ahora sin apego.",
+        prompt: "Mira un objeto a tu alrededor. Visualiza cómo el tiempo lo transformará. ¿Cómo cambia eso tu aprecio por él?"
+    },
+    {
+        title: "Pragmatismo",
+        quote: "La verdad es lo que funciona.",
+        philosopher: "William James",
+        application: "No busques verdades abstractas. Busca qué creencias te hacen ser una mejor persona y vivir mejor.",
+        prompt: "¿Qué creencia tienes que, aunque no pueda probarse, te ayuda a ser más feliz o productivo?"
+    },
+    {
+        title: "Sociedad Líquida",
+        quote: "Vivimos en un tiempo de incertidumbre constante.",
+        philosopher: "Zygmunt Bauman",
+        application: "En un mundo que cambia rápido, la adaptabilidad y los vínculos humanos sólidos son tu mejor refugio.",
+        prompt: "¿A quién has dedicado tiempo de calidad hoy sin mirar ninguna pantalla?"
     }
 ];
 
