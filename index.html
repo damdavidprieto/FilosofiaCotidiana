@@ -7,6 +7,23 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <meta name="description"
+        content="Filosofía Cotidiana: Una bitácora de sabiduría práctica con más de 60 conceptos filosóficos aplicados a tu día a día.">
+    <meta name="keywords" content="filosofia, estoicismo, reflexion, diario, sabiduria, educacion, gratis">
+    <meta name="author" content="David Prieto">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Filosofía Cotidiana - Sabiduría para el siglo XXI">
+    <meta property="og:description"
+        content="Explora más de 60 perlas de sabiduría filosófica aplicadas a la vida real.">
+    <meta property="og:image" content="favicon.png"> <!-- In a real server this should be an absolute URL -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Filosofía Cotidiana">
+    <meta property="twitter:description" content="Reflexiones diarias para una vida con propósito.">
+
     <title>Filosofía Cotidiana - Reflexiones para el día a día</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/style.css">
@@ -38,7 +55,7 @@
             </section>
 
             <!-- Experimento mental -->
-            <section class="thought-experiment">
+            <section class="thought-experiment" id="experiment-section">
                 <h2>Experimento mental</h2>
                 <div class="glass-card">
                     <h3 class="concept-title">El Barco de Teseo</h3>
@@ -47,6 +64,7 @@
                         ¿sigue siendo el mismo barco?
                     </p>
                     <div class="options">
+                        <!-- Dynamic options here -->
                         <button class="option-btn" onclick="showAnswer('yes')">Sí, sigue siendo la misma
                             esencia</button>
                         <button class="option-btn" onclick="showAnswer('no')">No, es un objeto físicamente
@@ -55,12 +73,10 @@
                             Materia)</button>
                     </div>
                     <div class="answer" id="answer" style="display: none;">
-                        <p><strong>Reflexión:</strong> Este dilema cuestiona la identidad y el cambio. ¿Qué nos hace ser
-                            quiénes somos? ¿Nuestra esencia o nuestra continuidad?</p>
-                        <p><strong>Aplicado a ti:</strong> Las células de tu cuerpo se renuevan constantemente. ¿Eres la
-                            misma persona
-                            que hace 10 años?</p>
+                        <!-- Dynamic answer here -->
                     </div>
+                    <button class="btn-premium" onclick="nextExperiment()" style="margin-top: 2rem;">Siguiente
+                        experimento <span>→</span></button>
                 </div>
             </section>
 
@@ -123,7 +139,10 @@
         </main>
 
         <footer>
-            <p>La filosofía no es solo para académicos. Es para todos los que se hacen preguntas.</p>
+            <p>"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."</p>
+            <p class="copyright">&copy; 2026 David Prieto &middot; <a
+                    href="https://github.com/damdavidprieto/FilosofiaCotidiana" target="_blank"
+                    style="color: inherit; text-decoration: underline;">Open Source</a></p>
         </footer>
     </div>
 
