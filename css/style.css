@@ -34,6 +34,39 @@ body {
     min-height: 100vh;
 }
 
+/* Decorative Corners */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    background-image: url('../assets/corner-ornament.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    /* Increased visibility */
+    z-index: -1;
+    pointer-events: none;
+    transition: var(--transition);
+    mix-blend-mode: multiply;
+    /* Perfect transparency for white backgrounds */
+}
+
+body::before {
+    top: 0;
+    left: 0;
+    transform: scaleY(-1);
+    /* Flip bottom-left ornament to top-left */
+}
+
+body::after {
+    top: 0;
+    right: 0;
+    transform: scale(-1);
+    /* Flip bottom-left ornament to top-right (both X and Y) */
+}
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -182,6 +215,78 @@ h2::after {
 .option-btn:hover {
     border-color: var(--accent);
     background: var(--bg-primary);
+}
+
+/* Paradox Card Enhancement */
+.paradox-card {
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    min-height: 280px;
+    /* Ensure space for content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.paradox-card.active {
+    background: #fff;
+    transform: scale(1.01);
+    justify-content: flex-start;
+    padding-top: 3rem;
+}
+
+.paradox-card .tap-hint {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    opacity: 0.6;
+    animation: breathe 2s infinite ease-in-out;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.paradox-full-content {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-glass);
+    text-align: left;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.paradox-full-content p {
+    margin-bottom: 1.5rem;
+}
+
+.paradox-full-content strong {
+    color: var(--accent);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Journal History Section */

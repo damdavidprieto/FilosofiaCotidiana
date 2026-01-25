@@ -1,9 +1,10 @@
-import { concepts, experiments } from './data.js';
+import { concepts, experiments, paradoxes } from './data.js';
 import { saveEntryData, deleteEntryData, getEntries } from './journal.js';
 import { renderHistoryUI, notify, toggleParadoxUI } from './ui.js';
 
 let currentConceptIndex = 0;
 let currentExperimentIndex = 0;
+let currentParadoxIndex = 0;
 
 function renderConcept(index) {
     const concept = concepts[index];
@@ -65,6 +66,43 @@ function renderExperiment(index) {
     }, 100);
 }
 
+function renderParadox(index) {
+    if (typeof index === 'undefined' || !paradoxes[index]) {
+        console.warn('Invalid paradox index, picking random');
+        index = Math.floor(Math.random() * paradoxes.length);
+    }
+
+    const par = paradoxes[index];
+    const section = document.getElementById('paradox-section');
+    if (!section) {
+        console.error('Paradox section not found in DOM');
+        return;
+    }
+
+    const titleEl = section.querySelector('#paradox-title');
+    const previewEl = section.querySelector('#paradox-preview');
+    const contentEl = section.querySelector('#paradox-content');
+    const expEl = section.querySelector('#paradox-explanation');
+    const refEl = section.querySelector('#paradox-reflection');
+    const appEl = section.querySelector('#paradox-application');
+
+    if (titleEl) titleEl.textContent = par.title;
+    if (previewEl) previewEl.textContent = par.preview;
+    if (contentEl) contentEl.style.display = 'none';
+    if (expEl) expEl.textContent = par.explanation;
+    if (refEl) refEl.textContent = par.reflection;
+    if (appEl) appEl.textContent = par.application;
+
+    const card = section.querySelector('.paradox-card');
+    if (card) {
+        card.classList.remove('active');
+        card.style.opacity = '0.5';
+        setTimeout(() => {
+            card.style.opacity = '1';
+        }, 50);
+    }
+}
+
 function renderHistoryList() {
     const list = document.getElementById('entries-list');
     if (list) {
@@ -72,15 +110,28 @@ function renderHistoryList() {
     }
 }
 
-// Global exposure for event listeners or direct bindings
+// Global exposure for event listeners
 window.nextConcept = () => {
-    currentConceptIndex = (currentConceptIndex + 1) % concepts.length;
+    currentConceptIndex = Math.floor(Math.random() * concepts.length);
     renderConcept(currentConceptIndex);
 };
 
 window.nextExperiment = () => {
-    currentExperimentIndex = (currentExperimentIndex + 1) % experiments.length;
+    currentExperimentIndex = Math.floor(Math.random() * experiments.length);
     renderExperiment(currentExperimentIndex);
+};
+
+window.nextParadox = (e) => {
+    if (e) e.stopPropagation();
+    currentParadoxIndex = Math.floor(Math.random() * paradoxes.length);
+    renderParadox(currentParadoxIndex);
+};
+
+window.toggleParadoxCard = (element) => {
+    const content = element.querySelector('#paradox-content');
+    const isVisible = content.style.display === 'block';
+    content.style.display = isVisible ? 'none' : 'block';
+    element.classList.toggle('active', !isVisible);
 };
 
 window.showAnswer = () => {
@@ -135,14 +186,15 @@ window.confirmDelete = (id) => {
 
 // Orchestration
 function init() {
-    const now = new Date();
-    const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-
-    currentConceptIndex = dayOfYear % concepts.length;
+    // Random initial content
+    currentConceptIndex = Math.floor(Math.random() * concepts.length);
     renderConcept(currentConceptIndex);
 
-    currentExperimentIndex = dayOfYear % experiments.length;
+    currentExperimentIndex = Math.floor(Math.random() * experiments.length);
     renderExperiment(currentExperimentIndex);
+
+    const initialParadoxIndex = Math.floor(Math.random() * paradoxes.length);
+    renderParadox(initialParadoxIndex);
 
     // Event delegation for dynamic elements
     document.addEventListener('click', (e) => {

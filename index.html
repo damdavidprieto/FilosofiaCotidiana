@@ -81,35 +81,21 @@
             </section>
 
             <!-- Paradojas filosóficas -->
-            <section class="paradoxes">
+            <section class="paradoxes" id="paradox-section">
                 <h2>Paradojas</h2>
-                <div class="paradox-grid">
-                    <div class="paradox-item" onclick="toggleParadox(this)">
-                        <h4>🤔 El Mentiroso</h4>
-                        <p class="paradox-preview">"Esta frase es falsa"</p>
-                        <div class="paradox-explanation" style="display: none;">
-                            <p>Si es verdadera, es falsa. Si es falsa, es verdadera. Un bucle lógico sin fin.</p>
-                            <p><em>Enseña los límites absolutos del lenguaje.</em></p>
-                        </div>
+                <div class="glass-card paradox-card" onclick="toggleParadoxCard(this)">
+                    <h3 class="concept-title" id="paradox-title">Cargando...</h3>
+                    <p class="paradox-preview" id="paradox-preview">...</p>
+                    <div class="paradox-full-content" id="paradox-content" style="display: none;">
+                        <p class="explanation"><strong>Explicación:</strong> <span id="paradox-explanation">...</span>
+                        </p>
+                        <p class="reflection"><strong>Reflexión:</strong> <span id="paradox-reflection">...</span></p>
+                        <p class="application"><strong>Aplicación:</strong> <span id="paradox-application">...</span>
+                        </p>
                     </div>
-
-                    <div class="paradox-item" onclick="toggleParadox(this)">
-                        <h4>⏳ Zenón</h4>
-                        <p class="paradox-preview">Para llegar, debes recorrer primero la mitad...</p>
-                        <div class="paradox-explanation" style="display: none;">
-                            <p>Y antes la mitad de esa mitad. ¿Cómo es posible el movimiento?</p>
-                            <p><em>Cuestiona nuestra percepción del infinito.</em></p>
-                        </div>
-                    </div>
-
-                    <div class="paradox-item" onclick="toggleParadox(this)">
-                        <h4>🌳 El Árbol</h4>
-                        <p class="paradox-preview">¿Hace ruido si nadie escucha?</p>
-                        <div class="paradox-explanation" style="display: none;">
-                            <p>¿Es el ruido una vibración o una percepción mental?</p>
-                            <p><em>Explora realidad vs. percepción subjetiva.</em></p>
-                        </div>
-                    </div>
+                    <p class="tap-hint">Haz clic para descubrir la paradoja</p>
+                    <button class="btn-premium" onclick="nextParadox(event)" style="margin-top: 2rem;">Siguiente
+                        paradoja <span>→</span></button>
                 </div>
             </section>
 

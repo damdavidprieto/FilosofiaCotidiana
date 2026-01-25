@@ -554,3 +554,76 @@ export const experiments = [
         application: "¿Qué cosas haces 'por si acaso' aunque no creas en ellas de corazón?"
     }
 ];
+
+export const paradoxes = [
+    {
+        title: "El Barbero de Russell",
+        preview: "¿Quién afeita al hombre que solo afeita a los que no se afeitan a sí mismos?",
+        explanation: "Si el barbero se afeita a sí mismo, rompe su regla de solo afeitar a los que no lo hacen. Si no se afeita, la regla le obliga a afeitarse. Es una contradicción lógica pura.",
+        reflection: "Esta paradoja destruyó la teoría de conjuntos clásica y nos obliga a cuestionar cómo definimos las categorías y las reglas en un sistema.",
+        application: "Cuidado con las reglas absolutas. A veces, el sistema que creamos para organizar la realidad es el que genera el caos."
+    },
+    {
+        title: "Aquiles y la Tortuga",
+        preview: "El corredor más rápido del mundo nunca alcanzará a una tortuga lenta.",
+        explanation: "Para alcanzarla, Aquiles debe llegar a donde estaba la tortuga, pero para entonces ella se habrá movido un poco más. Este ciclo de distancias infinitesimales sugiere que el movimiento es imposible.",
+        reflection: "Nos enfrenta al concepto del infinito y a la división del espacio-tiempo. ¿Es la realidad continua o discreta?",
+        application: "A veces, obsesionarse con los pasos intermedios te impide ver que ya has llegado a tu meta. No dejes que el análisis infinito te detenga."
+    },
+    {
+        title: "La Paradoja de Sorites",
+        preview: "¿Cuántos granos de arena hacen falta para formar un 'montón'?",
+        explanation: "Un grano no es un montón. Añadir uno más tampoco lo convierte en montón. Si sigues así, un millón de granos no serían un montón, lo cual es absurdo.",
+        reflection: "Muestra la vaguedad del lenguaje. No existen fronteras nítidas en conceptos como 'rico', 'calvo' o 'justo'.",
+        application: "¿Cuándo un pequeño hábito se convierte en 'quién eres'? Los cambios son invisibles grano a grano, pero definitivos en conjunto."
+    },
+    {
+        title: "La Paradoja de Epicuro",
+        preview: "Si Dios es todo bondad y todo poder, ¿por qué existe el mal?",
+        explanation: "Si quiere evitar el mal pero no puede, es impotente. Si puede pero no quiere, es malévolo. Si sabe, quiere y puede, ¿de dónde sale el mal?",
+        reflection: "Es el dilema central de la fe y la ética. Cuestiona la naturaleza del sufrimiento y la libertad humana.",
+        application: "No busques culpables externos para el 'mal' de tu vida; entiende que el caos y la libertad son dos caras de la misma moneda."
+    },
+    {
+        title: "El Barco de Teseo",
+        preview: "Si cambias todas las piezas de un barco... ¿sigue siendo el mismo?",
+        explanation: "Cada tabla se pudre y se cambia. Al final, no queda nada original. ¿Es la identidad la materia o la forma?",
+        reflection: "Nuestras células cambian cada 7 años. No eres la misma materia que ayer, pero quizás sí el mismo 'proceso'.",
+        application: "Puedes reinventarte completamente. No eres tus piezas del pasado, eres la dirección en la que navegas hoy."
+    },
+    {
+        title: "El Examen Sorpresa",
+        preview: "Un examen que ocurrirá la próxima semana pero no sabrás qué día hasta que llegue.",
+        explanation: "Si no ha ocurrido el jueves, sabes que será el viernes (ya no es sorpresa). Si descartas el viernes, haces lo mismo con el jueves... la lógica dice que es imposible, pero el miércoles llega y te sorprende.",
+        reflection: "Muestra los límites de la predicción lógica frente a la incertidumbre de la realidad vivida.",
+        application: "Aceptar que no puedes predecir todo por pura lógica te permite estar más preparado para lo inesperado."
+    },
+    {
+        title: "El Asno de Buridán",
+        preview: "Un asno muere de hambre entre dos montones de heno idénticos.",
+        explanation: "Al no tener una razón racional para elegir uno sobre el otro, el asno se queda paralizado hasta morir.",
+        reflection: "La racionalidad perfecta puede llevar a la parálisis. A veces elegir 'al azar' es más racional que no elegir.",
+        application: "Si tienes dos opciones igual de buenas, deja de analizar. ¡Lanza una moneda y muévete!"
+    },
+    {
+        title: "El Hotel de Hilbert",
+        preview: "Un hotel infinito lleno que siempre puede alojar a un huésped más.",
+        explanation: "Si llega alguien nuevo, todos se mueven una habitación (n+1) y la primera queda libre. El infinito no se comporta como los números normales.",
+        reflection: "Desafía nuestra intuición sobre el espacio y la abundancia. Siempre hay sitio para uno más en un corazón infinito.",
+        application: "Tu capacidad de aprender y amar no tiene límites físicos. Nunca estás 'lleno' de conocimiento o afecto."
+    },
+    {
+        title: "La Paradoja de Fermi",
+        preview: "¿Dónde está todo el mundo? Si el universo es tan grande, ¿por qué hay silencio?",
+        explanation: "Hay miles de millones de estrellas parecidas al Sol. Estadísticamente debería haber vida por todas partes, pero no vemos nada.",
+        reflection: "Nos obliga a valorar nuestra propia existencia como algo increíblemente raro o peligrosamente ignorante.",
+        application: "Valora tu voz. En el silencio del universo, lo que digas y hagas hoy es lo único que resuena."
+    },
+    {
+        title: "La Paradoja de Diderot",
+        preview: "Comprar un batín nuevo me obligó a cambiar todos mis muebles viejos.",
+        explanation: "Un objeto nuevo de lujo hace que todo lo demás parezca pobre por comparación, iniciando una espiral de consumo infinito.",
+        reflection: "La armonía estética puede ser una trampa para tu economía y tu paz mental.",
+        application: "Aprende a amar lo que ya tienes. No dejes que la llegada de algo 'mejor' ensucie el valor de lo que ya te servía bien."
+    }
+];
