@@ -10,7 +10,7 @@ const concepts = [
         quote: "No podemos elegir nuestras circunstancias externas, pero siempre podemos elegir cómo responder a ellas.",
         philosopher: "Epicteto",
         application: "Ante un imprevisto, separa lo que depende de ti (tu juicio) de lo que no (el evento). Actúa solo en lo primero.",
-        prompt: "¿Qué situación te preocupa hoy que está totalmente fuera de tu control? Escribe cómo podrías aceptarla."
+        prompt: "¿Qué situación te preocupa hoy que está totalmente fuera de tu control? Escribe cómo podrías soltarla."
     },
     {
         title: "Ataraxia",
@@ -214,6 +214,216 @@ const concepts = [
         philosopher: "Zygmunt Bauman",
         application: "En un mundo que cambia rápido, la adaptabilidad y los vínculos humanos sólidos son tu mejor refugio.",
         prompt: "¿A quién has dedicado tiempo de calidad hoy sin mirar ninguna pantalla?"
+    },
+    {
+        title: "Ley Natural",
+        quote: "Se debe hacer el bien y evitar el mal.",
+        philosopher: "Tomás de Aquino",
+        application: "Identifica los principios morales universales (justicia, verdad, vida) antes de tomar una decisión difícil.",
+        prompt: "Ante un dilema ético hoy, ¿qué te dicta tu razón fundamental sobre lo que es 'inherentemente bueno'?"
+    },
+    {
+        title: "Libre Albedrío",
+        quote: "Si el hombre es un bien, y no puede obrar rectamente sino cuando quiere, debe tener libre albedrío.",
+        philosopher: "Agustín de Hipona",
+        application: "No culpes al destino ni a las circunstancias. Eres el dueño de tus elecciones y su carga moral.",
+        prompt: "¿De qué decisión reciente te has sentido 'víctima'? ¿Cómo cambiaría si asumieras tu parte de libertad?"
+    },
+    {
+        title: "Univocidad del Ser",
+        quote: "El ser no es nada más que la ausencia de la no-existencia.",
+        philosopher: "Duns Escoto",
+        application: "Reconoce que compartes la misma chispa de existencia con todo lo que te rodea. Fomenta la conexión.",
+        prompt: "Mira a un extraño hoy. Intenta sentir que ambos comparten la misma cualidad fundamental de existir."
+    },
+    {
+        title: "Proporción de Creencia",
+        quote: "El hombre sabio proporciona su creencia a la evidencia.",
+        philosopher: "David Hume",
+        application: "No te dejes llevar por rumores o dogmas. Analiza los hechos y ajusta tu opinión a la realidad demostrable.",
+        prompt: "¿En qué afirmación has creído hoy con demasiada fuerza sin tener pruebas reales?"
+    },
+    {
+        title: "El Contrato Social",
+        quote: "El hombre nace libre, pero por todas partes está encadenado.",
+        philosopher: "Jean-Jacques Rousseau",
+        application: "Reconoce que vivir en sociedad implica responsabilidades mutuas. Actúa buscando el bien común.",
+        prompt: "¿Qué pequeña norma social has roto hoy (o querido romper) y cómo afectaría si todos hicieran lo mismo?"
+    },
+    {
+        title: "Ser-en-el-mundo",
+        quote: "Ser hombre es estar en el mundo y estar preocupado por las cosas.",
+        philosopher: "Martin Heidegger",
+        application: "No eres un observador aislado; estás inmerso en tu realidad. Trata tu entorno con cuidado y presencia.",
+        prompt: "¿Qué objeto o tarea de tu casa has ignorado hoy? Atiéndelo con total atención y cuidado."
+    },
+    {
+        title: "Autenticidad Moderna",
+        quote: "Ser uno mismo en un mundo que intenta constantemente que seas otra cosa es el mayor logro.",
+        philosopher: "Ralph Waldo Emerson",
+        application: "Escucha tu voz interior por encima del ruido de las expectativas ajenas. Tu verdad es tu brújula.",
+        prompt: "¿En qué momento de hoy has actuado 'para la galería' en lugar de ser fiel a ti mismo?"
+    },
+    {
+        title: "Interseccionalidad",
+        quote: "Nadie es una sola cosa. Somos muchas cosas entrelazadas.",
+        philosopher: "Kimberlé Crenshaw",
+        application: "Evita los juicios simples sobre las personas. Cada uno carga con múltiples capas de identidad y lucha.",
+        prompt: "¿A quién has encasillado hoy en una sola etiqueta? Intenta imaginar tres capas más de su identidad."
+    },
+    {
+        title: "Wu Wei (No-Acción)",
+        quote: "No luches. Fluye con el curso de las cosas.",
+        philosopher: "Chuang Tse (Taoísmo)",
+        application: "No fuerces los resultados. A veces, la mejor forma de resolver un problema es dejar que se asiente solo.",
+        prompt: "¿Qué situación estás intentando forzar hoy sin éxito? Prueba a no hacer nada por unas horas y observa."
+    },
+    {
+        title: "Karma (Causalidad)",
+        quote: "Lo que siembres, eso cosecharás.",
+        philosopher: "Tradición Hindú",
+        application: "Tus pensamientos y acciones de hoy son las semillas de tu futuro. Elige con intención.",
+        prompt: "¿Qué 'semilla' de amabilidad o esfuerzo has plantado hoy que florecerá más adelante?"
+    },
+    {
+        title: "Dharma (Propósito)",
+        quote: "Es mejor cumplir mal el propio deber que cumplir bien el ajeno.",
+        philosopher: "Bhagavad Gita",
+        application: "Encuentra tu camino único. No intentes ser la mejor versión de otra persona; mejora tu propio rol.",
+        prompt: "¿A quién estás intentando imitar hoy en lugar de perfeccionar tu propia naturaleza?"
+    },
+    {
+        title: "El Camino Medio",
+        quote: "Evita los extremos del placer vulgar y el sufrimiento inútil.",
+        philosopher: "Buda",
+        application: "Busca el equilibrio. Ni la austeridad total ni el exceso de indulgencia te darán claridad mental.",
+        prompt: "¿En qué área de tu vida te has ido a un extremo hoy (trabajo, ocio, comida)? ¿Dónde estaría el centro?"
+    },
+    {
+        title: "Anatman (No-Yo)",
+        quote: "Si te das cuenta de que todo cambia, no hay nada a lo que intentar aferrarse.",
+        philosopher: "Lao Tsé / Filosofía Budista",
+        application: "No te apegues a una imagen rígida de quién eres. Permítete evolucionar y dejar ir versiones pasadas.",
+        prompt: "¿A qué idea de ti mismo ('soy tímido', 'soy malo en esto') te estás aferrando hoy que ya no es verdad?"
+    },
+    {
+        title: "Principio de Razón Suficiente",
+        quote: "Nada sucede sin que haya una razón por la cual deba ser así y no de otra manera.",
+        philosopher: "Gottfried Leibniz",
+        application: "Sé curioso. Todo lo que te pasa tiene una causa. En lugar de quejarte, investiga el porqué.",
+        prompt: "¿Qué evento 'inexplicable' te ha ocurrido hoy? Busca tres posibles causas lógicas que lo expliquen."
+    },
+    {
+        title: "Idealismo Trascendental",
+        quote: "La ciencia es conocimiento organizado; la sabiduría es vida organizada.",
+        philosopher: "Immanuel Kant",
+        application: "Reconoce que tu mente filtra la realidad. No ves el mundo como es, sino como tú eres.",
+        prompt: "¿Qué 'filtro' (de miedo, alegría o prejuicio) ha coloreado tu visión del mundo esta mañana?"
+    },
+    {
+        title: "Grandeza del Alma",
+        quote: "El hombre superior es el que es fiel a la esperanza de su juventud.",
+        philosopher: "Friedrich Schiller",
+        application: "Reconecta con tus ideales más nobles. No dejes que el cinismo de la edad adulta apague tu fuego interno.",
+        prompt: "¿Qué ideal de cuando tenías 15 años has abandonado hoy? ¿Cómo podrías rescatar un poco de él?"
+    },
+    {
+        title: "La Voluntad General",
+        quote: "La obediencia a la ley que uno se ha prescrito es la libertad.",
+        philosopher: "Jean-Jacques Rousseau",
+        application: "La verdadera libertad no es hacer lo que quieras, sino seguir las reglas que tú mismo sabes que son justas.",
+        prompt: "¿Qué regla personal te has puesto hoy and has cumplido con orgullo?"
+    },
+    {
+        title: "Superhombre (Übermensch)",
+        quote: "El hombre es algo que debe ser superado.",
+        philosopher: "Friedrich Nietzsche",
+        application: "No te conformes con lo que eres ahora. Busca constantemente romper tus propios límites y valores heredados.",
+        prompt: "¿En qué aspecto has sido 'demasiado humano' hoy (perezoso, miedoso) y cómo podrías superarlo mañana?"
+    },
+    {
+        title: "Microfísica del Poder",
+        quote: "El saber es el único espacio de libertad del ser.",
+        philosopher: "Michel Foucault",
+        application: "Cuestiona las pequeñas verdades que te imponen. Infórmate para no ser manipulado por el discurso dominante.",
+        prompt: "¿Qué noticia o dato has aceptado hoy como verdad absoluta sin investigar su origen?"
+    },
+    {
+        title: "Diferencia Humana",
+        quote: "Lo que hace al hombre es su capacidad de decir NO.",
+        philosopher: "Max Scheler",
+        application: "Tu dignidad reside en tu capacidad de negarte a seguir impulsos ciegos o mandatos injustos. Usa tu NO.",
+        prompt: "¿A qué le has dicho SÍ hoy que realmente querías decir NO?"
+    },
+    {
+        title: "La Realidad Radical",
+        quote: "Vivir es la realidad radical; todas las demás realidades se dan dentro de ella.",
+        philosopher: "José Ortega y Gasset",
+        application: "No pierdas el tiempo en abstracciones si descuidas el hecho puro de estar vivo ahora mismo.",
+        prompt: "Para un momento. Siente tu respiración y el peso de tu cuerpo. Esa es la única realidad que importa ahora."
+    },
+    {
+        title: "Justicia como Imparcialidad",
+        quote: "Nadie conoce su lugar en la sociedad; por eso la justicia debe ser ciega.",
+        philosopher: "John Rawls",
+        application: "Si vas a juzgar a alguien hoy, imagina que mañana podrías despertarte siendo esa persona. ¿Serías tan severo?",
+        prompt: "¿A quién has criticado hoy? ¿Cómo cambiaría tu juicio si estuvieras en su situación exacta?"
+    },
+    {
+        title: "Eros y Civilización",
+        quote: "La cultura es el esfuerzo de los hombres por humanizar la naturaleza.",
+        philosopher: "Herbert Marcuse",
+        application: "Busca crear belleza y sentido en tu entorno, en lugar de solo consumir o destruir.",
+        prompt: "¿Qué pequeño acto de 'humanización' o belleza has aportado hoy a tu lugar de trabajo o casa?"
+    },
+    {
+        title: "El Compromiso",
+        quote: "No se es hombre sino por el compromiso que se asume.",
+        philosopher: "Jean-Paul Sartre",
+        application: "Tus palabras no valen nada si no están respaldadas por una acción que te vincule a una causa.",
+        prompt: "¿Con qué causa o persona te has comprometido hoy de verdad, más allá de las palabras?"
+    },
+    {
+        title: "Fenomenología del Cuerpo",
+        quote: "Yo no tengo un cuerpo, yo SOY mi cuerpo.",
+        philosopher: "Maurice Merleau-Ponty",
+        application: "Cuida tu salud física no como una herramienta, sino como la base misma de tu existencia y percepción.",
+        prompt: "¿Qué mensaje te ha enviado tu cuerpo hoy (cansancio, hambre, tensión) que has decidido ignorar?"
+    },
+    {
+        title: "La Sociedad del Espectáculo",
+        quote: "Todo lo que antes se vivía directamente, ahora se representa.",
+        philosopher: "Guy Debord",
+        application: "Deja de mirar tu vida a través de una pantalla. Vive experiencias que no necesites publicar para que sean reales.",
+        prompt: "¿Qué momento de hoy ha sido solo para ti, sin fotos ni testigos digitales?"
+    },
+    {
+        title: "Ética del Cuidado",
+        quote: "La responsabilidad hacia el otro es el núcleo de la moralidad.",
+        philosopher: "Carol Gilligan",
+        application: "No te limites a seguir reglas frías. Busca el bienestar real de las personas que dependen de ti.",
+        prompt: "¿A quién has cuidado hoy con empatía real, más allá de tu 'obligación'?"
+    },
+    {
+        title: "Deconstrucción",
+        quote: "No hay nada fuera del texto.",
+        philosopher: "Jacques Derrida",
+        application: "Cuestiona los binarios (bueno/malo, éxito/fracaso). La verdad suele estar en los matices olvidados.",
+        prompt: "¿Qué situación de hoy has visto como un 'blanco o negro' cuando en realidad es un gris complejo?"
+    },
+    {
+        title: "Racionalismo Crítico",
+        quote: "Nuestra meta debe ser el error, para detectarlo y eliminarlo.",
+        philosopher: "Karl Popper",
+        application: "No busques tener razón; busca estar equivocado lo antes posible para aprender la verdad.",
+        prompt: "¿Qué idea tuya ha sido desafiada hoy? ¿Has defendido tu ego o has buscado la verdad?"
+    },
+    {
+        title: "La Vida Activa",
+        quote: "La pluralidad es la condición de la acción humana.",
+        philosopher: "Hannah Arendt",
+        application: "Participa. Habla. Actúa en el espacio público. Tu voz es necesaria para que el mundo sea humano.",
+        prompt: "¿En qué conversación importante has guardado silencio hoy pudiendo haber aportado valor?"
     }
 ];
 
