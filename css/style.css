@@ -1,22 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-    --bg-primary: #f8f9fa;
-    --bg-glass: rgba(255, 255, 255, 0.85);
-    /* Slightly less transparent for better contrast */
-    --text-primary: #121212;
-    /* Darker near-black */
-    --text-secondary: #333333;
-    /* Darker gray */
+    --bg-primary: #fdfcfb;
+    --bg-glass: rgba(255, 255, 255, 0.9);
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
     --accent: #6d5942;
-    /* Much darker brown for titles */
     --accent-light: #8b7355;
     --accent-dark: #3e3325;
-    /* Very dark brown for high contrast */
-    --border-glass: rgba(0, 0, 0, 0.1);
-    /* Darker border */
-    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --border-glass: rgba(0, 0, 0, 0.08);
+    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 * {
@@ -27,102 +21,94 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at top right, #fdfcfb, #e2d1c322), var(--bg-primary);
+    background-color: var(--bg-primary);
+    background-image: radial-gradient(circle at top right, #e2d1c333, transparent 50%);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
     min-height: 100vh;
 }
 
-/* Decorative Corners */
+/* Fixed Corner Ornaments */
 body::before,
 body::after {
     content: '';
     position: fixed;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     background-image: url('../assets/corner-ornament.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.25;
-    /* Increased visibility */
+    opacity: 0.5;
+    /* Good visibility */
     z-index: -1;
     pointer-events: none;
-    transition: var(--transition);
     mix-blend-mode: multiply;
-    /* Perfect transparency for white backgrounds */
 }
 
+/* Correct rotation for bottom-left ornament to fit top corners */
 body::before {
     top: 0;
     left: 0;
-    transform: scaleY(-1);
-    /* Flip bottom-left ornament to top-left */
+    transform: rotate(90deg);
+    /* Top-left */
 }
 
 body::after {
     top: 0;
     right: 0;
-    transform: scale(-1);
-    /* Flip bottom-left ornament to top-right (both X and Y) */
+    transform: rotate(180deg);
+    /* Top-right */
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
 }
 
-/* Header */
 header {
     text-align: center;
-    margin-bottom: 5rem;
-    animation: fadeInDown 1s ease-out;
+    margin-bottom: 6rem;
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     color: var(--accent-dark);
-    margin-bottom: 1rem;
-    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    font-style: italic;
     font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
 }
 
-/* Glassmorphism Cards */
 .glass-card {
     background: var(--bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-glass);
-    border-radius: 20px;
-    padding: 3rem;
+    border-radius: 24px;
+    padding: 3.5rem;
     box-shadow: var(--shadow-soft);
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     transition: var(--transition);
 }
 
 .glass-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.15);
 }
 
 h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
     color: var(--accent);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 1.5rem;
-    text-align: center;
 }
 
 h2::before,
@@ -133,123 +119,59 @@ h2::after {
     background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
 }
 
-/* Daily Concept */
 .concept-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
-    margin-bottom: 1.5rem;
     color: var(--accent-dark);
+    margin-bottom: 2rem;
 }
 
 .concept-definition {
     font-size: 1.4rem;
     font-style: italic;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
-    line-height: 1.8;
-    padding-left: 1.5rem;
-    border-left: 4px solid var(--accent);
+    margin-bottom: 2.5rem;
+    padding-left: 2rem;
+    border-left: 5px solid var(--accent);
 }
 
-.concept-details {
-    background: rgba(139, 115, 85, 0.05);
-    padding: 2rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-}
-
-/* Buttons */
 .btn-premium {
     background: var(--accent);
     color: white;
+    padding: 1.2rem 2.5rem;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    border-radius: 100px;
     font-weight: 600;
-    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     cursor: pointer;
     transition: var(--transition);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .btn-premium:hover {
     background: var(--accent-dark);
-    transform: scale(1.02);
-    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+    transform: scale(1.05);
 }
 
-.btn-secondary {
-    background: transparent;
-    color: var(--accent);
-    border: 2px solid var(--accent);
-}
-
-.btn-secondary:hover {
-    background: var(--accent);
-    color: white;
-}
-
-/* Thought Experiment */
-.options {
-    display: grid;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.option-btn {
-    background: white;
-    border: 1px solid var(--border-glass);
-    padding: 1.5rem;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: var(--transition);
-    text-align: left;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-}
-
-.option-btn:hover {
-    border-color: var(--accent);
-    background: var(--bg-primary);
-}
-
-/* Paradox Card Enhancement */
+/* Paradox Section */
 .paradox-card {
     cursor: pointer;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition);
-    min-height: 280px;
-    /* Ensure space for content */
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
-.paradox-card.active {
-    background: #fff;
-    transform: scale(1.01);
-    justify-content: flex-start;
-    padding-top: 3rem;
-}
-
-.paradox-card .tap-hint {
-    margin-top: 1.5rem;
+.tap-hint {
+    margin-top: 2rem;
     font-size: 0.8rem;
-    text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--accent);
-    opacity: 0.6;
-    animation: breathe 2s infinite ease-in-out;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
 }
 
-@keyframes breathe {
+@keyframes pulse {
 
     0%,
     100% {
@@ -257,220 +179,49 @@ h2::after {
     }
 
     50% {
-        opacity: 0.8;
+        opacity: 0.9;
     }
 }
 
 .paradox-full-content {
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-glass);
     text-align: left;
-    animation: fadeIn 0.5s ease-out;
 }
 
 .paradox-full-content p {
     margin-bottom: 1.5rem;
+    line-height: 1.8;
 }
 
 .paradox-full-content strong {
-    color: var(--accent);
+    color: var(--accent-dark);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Journal History Section */
-.history-section {
-    margin-top: 5rem;
-}
-
-.journal-entry-item {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    border: 1px solid var(--border-glass);
-    animation: slideIn 0.5s ease-out;
-}
-
-.entry-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--accent);
-    font-weight: 600;
-}
-
-.entry-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.action-link {
-    cursor: pointer;
-    text-decoration: underline;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.action-link.delete {
-    color: #e74c3c;
-}
-
-/* Journal Styling */
-.journal .glass-card {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-#journal-entry {
+textarea {
     width: 100%;
-    min-height: 150px;
-    padding: 1.5rem;
-    border-radius: 15px;
+    padding: 2rem;
+    border-radius: 20px;
     border: 1px solid var(--border-glass);
-    background: rgba(255, 255, 255, 0.5);
+    background: #fff;
     font-family: inherit;
     font-size: 1.1rem;
-    color: var(--text-primary);
-    resize: vertical;
-    transition: var(--transition);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    margin-bottom: 2rem;
 }
 
-#journal-entry:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: white;
-    box-shadow: 0 0 0 4px rgba(109, 89, 66, 0.1);
-}
-
-.prompt {
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    line-height: 1.4;
-}
-
-.note {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    font-style: italic;
-}
-
-/* Animations */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-footer {
-    text-align: center;
-    padding-top: 4rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-.copyright {
-    margin-top: 1rem;
-    opacity: 0.7;
-    font-size: 0.8rem;
-}
-
-/* Mobile First & Responsive Design Cleanup */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.2rem;
-        line-height: 1.1;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-
-    header {
-        margin-bottom: 3rem;
-    }
-
-    .container {
-        padding: 1.5rem 1rem;
+        font-size: 2.5rem;
     }
 
     .glass-card {
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        border-radius: 16px;
+        padding: 2rem;
     }
 
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    .concept-title {
-        font-size: 1.6rem;
-    }
-
-    .concept-definition {
-        font-size: 1.1rem;
-        padding-left: 1rem;
-    }
-
-    .concept-details {
-        padding: 1rem;
-        font-size: 0.95rem;
-    }
-
-    .option-btn {
-        padding: 1rem;
-        font-size: 1rem;
-    }
-
-    .btn-premium {
-        width: 100%;
-        justify-content: center;
-        padding: 1.2rem;
-        /* Better touch target */
-    }
-
-    textarea {
-        font-size: 16px;
-        /* Prevents auto-zoom on iOS */
-    }
-}
-
-/* Base adjustment for extremely small screens */
-@media (max-width: 380px) {
-    h1 {
-        font-size: 1.8rem;
+    body::before,
+    body::after {
+        width: 140px;
+        height: 140px;
     }
 }
