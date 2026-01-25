@@ -1,4 +1,5 @@
-export const concepts = [
+// 1. DATA
+const concepts = [
     {
         title: "Dicotomía del Control",
         quote: "No podemos elegir nuestras circunstancias externas, pero siempre podemos elegir cómo responder a ellas.",
@@ -200,7 +201,7 @@ export const concepts = [
         quote: "La verdad es lo que funciona.",
         philosopher: "William James",
         application: "No busques verdades abstractas. Busca qué creencias te hacen ser una mejor persona y vivir mejor.",
-        prompt: "¿Qué creencia tienes que, aunque no pueda probarse, te ayuda a ser más feliz o productivo?"
+        prompt: "¿Qué con creencia tienes que, aunque no pueda probarse, te ayuda a ser más feliz o productivo?"
     },
     {
         title: "Sociedad Líquida",
@@ -442,7 +443,7 @@ export const concepts = [
     }
 ];
 
-export const experiments = [
+const experiments = [
     {
         title: "El Barco de Teseo",
         question: "Si reemplazas cada pieza de un barco, una por una, hasta que no quede ninguna pieza original... ¿sigue siendo el mismo barco?",
@@ -555,7 +556,7 @@ export const experiments = [
     }
 ];
 
-export const paradoxes = [
+const paradoxes = [
     {
         title: "El Barbero de Russell",
         preview: "¿Quién afeita al hombre que solo afeita a los que no se afeitan a sí mismos?",

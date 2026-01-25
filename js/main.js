@@ -1,7 +1,3 @@
-import { concepts, experiments, paradoxes } from './data.js';
-import { saveEntryData, deleteEntryData, getEntries } from './journal.js';
-import { renderHistoryUI, notify, toggleParadoxUI } from './ui.js';
-
 let currentConceptIndex = 0;
 let currentExperimentIndex = 0;
 let currentParadoxIndex = 0;
@@ -123,7 +119,8 @@ window.showAnswer = () => {
 
 window.saveEntry = () => {
     const text = document.getElementById('journal-entry').value;
-    const prompt = document.getElementById('journal-prompt').innerText;
+    const promptEl = document.getElementById('journal-prompt');
+    const prompt = promptEl ? promptEl.innerText : 'Reflexión libre';
     const result = saveEntryData(text, prompt);
     if (result.success) {
         notify('Reflexión guardada.', 'success');

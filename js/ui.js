@@ -1,6 +1,4 @@
-import { deleteEntryData, getEntries } from './journal.js';
-
-export function renderHistoryUI(entries, listContainer) {
+function renderHistoryUI(entries, listContainer) {
     if (entries.length === 0) {
         listContainer.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Aún no has escrito ninguna reflexión. Tu viaje comienza con la primera palabra.</p>';
         return;
@@ -20,7 +18,7 @@ export function renderHistoryUI(entries, listContainer) {
     `).join('');
 }
 
-export function notify(msg, type) {
+function notify(msg, type) {
     const toast = document.createElement('div');
     const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#8b7355';
     toast.textContent = msg;
@@ -41,7 +39,7 @@ export function notify(msg, type) {
     setTimeout(() => toast.remove(), 3000);
 }
 
-export function toggleParadoxUI(element) {
+function toggleParadoxUI(element) {
     const explanation = element.querySelector('.paradox-explanation');
     const isVisible = explanation.style.display === 'block';
 

@@ -41,14 +41,12 @@
             <section class="daily-concept">
                 <h2>Concepto</h2>
                 <div class="glass-card" id="daily-card">
-                    <h3 class="concept-title">Estoicismo</h3>
+                    <h3 class="concept-title">Cargando...</h3>
                     <p class="concept-definition">
-                        "No podemos controlar lo que nos sucede, pero sí cómo respondemos a ello."
+                        ...
                     </p>
                     <div class="concept-details">
-                        <p><strong>Filósofo:</strong> Marco Aurelio, Epicteto, Séneca</p>
-                        <p><strong>Aplicación práctica:</strong> Cuando algo sale mal, pregúntate: ¿Está bajo mi
-                            control? Si no, acéptalo. Si sí, actúa.</p>
+                        <!-- Detalles dinámicos -->
                     </div>
                     <button class="btn-premium" onclick="nextConcept()">Siguiente concepto <span>→</span></button>
                 </div>
@@ -58,22 +56,14 @@
             <section class="thought-experiment" id="experiment-section">
                 <h2>Experimento mental</h2>
                 <div class="glass-card">
-                    <h3 class="concept-title">El Barco de Teseo</h3>
-                    <p class="question">
-                        Si reemplazas cada pieza de un barco, una por una, hasta que no quede ninguna pieza original...
-                        ¿sigue siendo el mismo barco?
-                    </p>
+                    <h3 class="concept-title">Cargando...</h3>
+                    <p class="question">...</p>
                     <div class="options">
-                        <!-- Dynamic options here -->
-                        <button class="option-btn" onclick="showAnswer('yes')">Sí, sigue siendo la misma
-                            esencia</button>
-                        <button class="option-btn" onclick="showAnswer('no')">No, es un objeto físicamente
-                            distinto</button>
-                        <button class="option-btn" onclick="showAnswer('both')">Depende de la perspectiva (Esencia vs.
-                            Materia)</button>
+                        <!-- Opciones dinámicas -->
                     </div>
-                    <div class="answer" id="answer" style="display: none;">
-                        <!-- Dynamic answer here -->
+                    <div class="answer" id="answer"
+                        style="display: none; margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.03); border-radius: 12px;">
+                        <!-- Respuesta dinámica -->
                     </div>
                     <button class="btn-premium" onclick="nextExperiment()" style="margin-top: 2rem;">Siguiente
                         experimento <span>→</span></button>
@@ -103,8 +93,7 @@
             <section class="journal">
                 <h2>Bitácora de Reflexión</h2>
                 <div class="glass-card">
-                    <p class="prompt" id="journal-prompt">Pregunta de hoy: <strong>¿Qué significa vivir una buena
-                            vida?</strong></p>
+                    <p class="prompt" id="journal-prompt">Pregunta de hoy: ...</p>
                     <textarea id="journal-entry" placeholder="Escribe tu reflexión del alma aquí..."
                         rows="6"></textarea>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
@@ -132,7 +121,11 @@
         </footer>
     </div>
 
-    <script type="module" src="js/main.js"></script>
+    <!-- Scripts en orden de dependencia (Sin módulos para evitar CORS local) -->
+    <script src="js/data.js"></script>
+    <script src="js/journal.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

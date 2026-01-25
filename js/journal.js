@@ -1,10 +1,10 @@
 const STORAGE_KEY = 'philosophyJournal';
 
-export function getEntries() {
+function getEntries() {
     return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 }
 
-export function saveEntryData(text, prompt) {
+function saveEntryData(text, prompt) {
     if (!text.trim()) return { success: false, error: 'Empty content' };
     const entries = getEntries();
     const newEntry = {
@@ -18,7 +18,7 @@ export function saveEntryData(text, prompt) {
     return { success: true, entry: newEntry };
 }
 
-export function deleteEntryData(id) {
+function deleteEntryData(id) {
     let entries = getEntries();
     entries = entries.filter(e => e.id !== id);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
