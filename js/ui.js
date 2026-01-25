@@ -1,4 +1,6 @@
-export function renderHistory(entries, listContainer, onDeleteClick) {
+import { deleteEntryData, getEntries } from './journal.js';
+
+export function renderHistoryUI(entries, listContainer) {
     if (entries.length === 0) {
         listContainer.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Aún no has escrito ninguna reflexión. Tu viaje comienza con la primera palabra.</p>';
         return;
@@ -16,11 +18,6 @@ export function renderHistory(entries, listContainer, onDeleteClick) {
             <p style="white-space: pre-wrap;">${entry.text}</p>
         </div>
     `).join('');
-
-    // Bind delete events
-    listContainer.querySelectorAll('.action-link.delete').forEach(btn => {
-        btn.onclick = () => onDeleteClick(Number(btn.dataset.id));
-    });
 }
 
 export function notify(msg, type) {
@@ -30,14 +27,15 @@ export function notify(msg, type) {
     toast.style.cssText = `
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         background: ${type === 'error' ? '#e74c3c' : accentColor};
         color: white;
         padding: 1rem 2rem;
         border-radius: 50px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         z-index: 1000;
-        animation: slideIn 0.3s ease-out;
+        transition: all 0.3s ease;
     `;
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 3000);
@@ -49,7 +47,7 @@ export function toggleParadoxUI(element) {
 
     document.querySelectorAll('.paradox-explanation').forEach(exp => {
         exp.style.display = 'none';
-        exp.parentElement.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+        exp.parentElement.style.borderColor = 'rgba(0, 0, 0, 0.1)';
     });
 
     if (!isVisible) {
