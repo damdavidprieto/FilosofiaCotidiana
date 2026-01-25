@@ -1,96 +1,69 @@
-# Filosofía Cotidiana
+# 📖 Filosofía Cotidiana
 
-**Reflexiones filosóficas aplicadas a la vida diaria**
+**Una bitácora interactiva de sabiduría práctica para el siglo XXI.**
 
-## 📖 Concepto del proyecto
+[![Public Release](https://img.shields.io/badge/Release-Public-brightgreen.svg)](https://github.com/damdavidprieto/FilosofiaCotidiana)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Pure JS](https://img.shields.io/badge/Vanilla-JS-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-Filosofía Cotidiana es una aplicación web educativa que acerca conceptos filosóficos complejos al público general, presentándolos de forma accesible y práctica. El objetivo es demostrar que la filosofía no es solo para académicos, sino una herramienta útil para la reflexión diaria y la toma de decisiones.
+## 🌟 ¿Qué es Filosofía Cotidiana?
 
-## ✨ Características
+**Filosofía Cotidiana** no es solo una biblioteca; es un compañero diario diseñado para acercar el pensamiento profundo a la vida real. A través de una interfaz elegante y minimalista basada en *Glassmorphism*, transformamos conceptos abstractos de los grandes pensadores en herramientas accionables para tu día a día.
 
-### 1. Conceptos filosóficos diarios
-- **Estoicismo**: Control sobre nuestras reacciones ante eventos externos
-- **Existencialismo**: Creación de significado personal
-- **Minimalismo filosófico**: Libertad a través de la reducción de necesidades
-- **Memento Mori**: Conciencia de la mortalidad para vivir plenamente
-- **Navaja de Ockham**: Preferencia por explicaciones simples
+## ✨ Características Principales
 
-Cada concepto incluye:
-- Cita representativa
-- Filósofo(s) asociado(s)
-- Aplicación práctica para la vida cotidiana
+### 1. 🧠 Océano de Sabiduría (+60 Conceptos)
+Hemos curado una base de datos con **más de 60 conceptos rigurosos** que recorren toda la historia del pensamiento:
+- **Clásicos**: Estoicismo (Marco Aurelio, Epicteto), Epicureísmo, Cínicos (Diógenes).
+- **Medievales**: Escolástica (Tomás de Aquino, Agustín de Hipona).
+- **Modernos**: Racionalismo (Descartes, Leibniz), Empirismo (Hume), Idealismo (Kant).
+- **Contemporáneos**: Existencialismo (Sartre, Beauvoir, Camus), Perspectivismo (Ortega y Gasset), Teoría Crítica (Foucault, Arendt).
+- **Orientales**: Budismo, Taoísmo (Lao Tsé).
 
-### 2. Experimentos mentales interactivos
-- **El Barco de Teseo**: Explora la naturaleza de la identidad y el cambio
-- Opciones de respuesta múltiple
-- Reflexiones sobre aplicación personal
+Cada entrada incluye:
+- Una **cita verificada** del autor.
+- Una **aplicación práctica** real para situaciones modernas.
+- Una **pregunta guía** para tu reflexión personal.
 
-### 3. Paradojas filosóficas
-- **Paradoja del mentiroso**: Límites del lenguaje y la lógica
-- **Paradoja de Zenón**: Cuestionamiento del movimiento y el infinito
-- **Si un árbol cae en el bosque**: Relación entre realidad y percepción
+### 2. 🧪 Experimentos Mentales & Paradojas
+Interactúa con dilemas clásicos como el **Barco de Teseo** o las **Paradojas de Zenón**, diseñados para desafiar tus prejuicios y ampliar tu perspectiva lógica.
 
-### 4. Diario filosófico personal
-- Espacio para reflexiones personales
-- Almacenamiento local en el navegador
-- Preguntas guía para la introspección
+### 3. ✍️ Bitácora de Reflexión (Privacidad Total)
+Un espacio personal para guardar tus pensamientos. Los datos se almacenan exclusivamente en tu navegador (LocalStorage), garantizando que tus reflexiones más íntimas nunca salgan de tu dispositivo.
 
-## 🎯 Casos de uso
+## 🚀 Instalación y Uso
 
-### Para estudiantes
-- Introducción accesible a conceptos filosóficos fundamentales
-- Comprensión de paradojas clásicas
-- Práctica de pensamiento crítico
+Este proyecto es **Pure Vanilla JS**, lo que significa cero dependencias y máxima ligereza.
 
-### Para educadores
-- Recurso didáctico para clases de filosofía o ética
-- Ejemplos prácticos de aplicación filosófica
-- Herramienta de discusión en grupo
+### Lanzamiento Local
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/damdavidprieto/FilosofiaCotidiana.git
+   ```
+2. Abre `index.html` en tu navegador favorito.
+   *(Compatible con el protocolo `file://`, funciona sin necesidad de servidor local).*
 
-### Para el público general
-- Reflexión diaria guiada
-- Herramientas filosóficas para la vida cotidiana
-- Desarrollo del pensamiento crítico
+## 🎨 Diseño y Aestética
 
-### Para profesionales
-- Aplicación de principios estoicos en gestión del estrés
-- Toma de decisiones basada en principios filosóficos
-- Reflexión sobre valores y propósito
+- **Premium UI**: Diseño basado en cristales (Glassmorphism) con animaciones suaves.
+- **Tipografía**: Combinación de *Playfair Display* (elegancia académica) e *Inter* (claridad moderna).
+- **Mobile First**: Optimizado para que reflexiones desde tu móvil en cualquier parte.
 
-## 🚀 Cómo usar
+## 🤝 Contribuciones
 
-### Navegación básica
-1. **Concepto del día**: Lee el concepto presentado y su aplicación práctica
-2. **Siguiente concepto**: Haz clic para rotar entre diferentes escuelas filosóficas
-3. **Experimento mental**: Selecciona una respuesta para ver la reflexión completa
-4. **Paradojas**: Haz clic en cada tarjeta para expandir la explicación
-5. **Diario**: Escribe tus reflexiones y guárdalas localmente
+¿Tienes un concepto filosófico que ha cambiado tu vida? ¡Añádelo!
+1. Haz un Fork del proyecto.
+2. Crea una rama para tu concepto (`git checkout -b feature/nuevo-concepto`).
+3. Realiza un Pull Request.
 
-### Uso recomendado
-- **Diario**: Dedica 5-10 minutos cada mañana para reflexionar sobre el concepto del día
-- **Semanal**: Explora una paradoja diferente cada semana y discútela con otros
-- **Mensual**: Revisa tus entradas del diario para observar tu evolución
+## 📧 Contacto y Autoría
 
-## 🛠️ Tecnologías utilizadas
+Proyecto desarrollado con rigor y pasión por **David Prieto**.
+- GitHub: [@damdavidprieto](https://github.com/damdavidprieto)
+- LinkedIn: [David Prieto](https://www.linkedin.com/in/tu-perfil) (Opcional: actualiza este enlace)
 
-- **HTML5**: Estructura semántica
-- **CSS3**: Diseño responsivo con estética minimalista
-- **JavaScript (Vanilla)**: Interactividad sin dependencias
-- **LocalStorage API**: Persistencia de datos del diario
-
-## 🎨 Diseño
-
-### Principios de diseño
-- **Humildad**: Sin elementos pretenciosos o innecesarios
-- **Legibilidad**: Tipografía serif clásica (Georgia) para facilitar la lectura
-- **Minimalismo**: Enfoque en el contenido, no en la decoración
-- **Accesibilidad**: Contraste adecuado y tamaños de fuente legibles
-
-### Paleta de colores
-- Fondo primario: `#f5f5f0` (beige claro)
-- Fondo secundario: `#ffffff` (blanco)
-- Texto primario: `#2c2c2c` (gris oscuro)
-- Acento: `#8b7355` (marrón tierra)
+---
+*"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."*
 
 ## 📚 Referencias y fuentes
 

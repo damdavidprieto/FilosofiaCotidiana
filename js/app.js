@@ -1,7 +1,4 @@
-// Consolidated Script for FilosofiaCotidiana
-// Works with local file:// access by avoiding ES Modules
-
-console.log("Filosofía Cotidiana: Script inicializado");
+// Consolidated Script for FilosofiaCotidiana - Public Edition
 
 // 1. DATA
 const concepts = [
@@ -424,6 +421,27 @@ const concepts = [
         philosopher: "Hannah Arendt",
         application: "Participa. Habla. Actúa en el espacio público. Tu voz es necesaria para que el mundo sea humano.",
         prompt: "¿En qué conversación importante has guardado silencio hoy pudiendo haber aportado valor?"
+    },
+    {
+        title: "Autenticidad contra la Falsedad",
+        quote: "Está lleno de gente falsa... y todo lo que haces es estudiar para ser lo suficientemente listo como para poder comprarte un Cadillac algún día.",
+        philosopher: "Holden Caulfield (J.D. Salinger)",
+        application: "Identifica qué partes de tu rutina haces solo por estatus o 'apariencia'. Busca lo que es genuino para ti.",
+        prompt: "¿Qué acción has realizado hoy solo para 'encajar' o impresionar a otros en lugar de ser fiel a ti mismo?"
+    },
+    {
+        title: "El Guardián en el Centeno",
+        quote: "Mi misión es atrapar a los niños si se acercan demasiado al precipicio.",
+        philosopher: "El Guardián entre el Centeno (J.D. Salinger)",
+        application: "Protege la curiosidad y la inocencia, tanto en los demás como en tu propio 'niño interior'. No dejes que el cinismo te ciegue.",
+        prompt: "¿Qué pequeña alegría o curiosidad genuina has sentido hoy que un adulto 'serio' habría ignorado?"
+    },
+    {
+        title: "Soledad Existencial",
+        quote: "Me sentía tan abandonado y tan solo... Me gustaría que alguien me hablara de verdad.",
+        philosopher: "Holden Caulfield (J.D. Salinger)",
+        application: "Reconoce que la soledad es parte de la condición humana, pero la cura es la comunicación honesta, no la superficial.",
+        prompt: "¿Con quién podrías tener hoy una conversación 'de verdad', sin máscaras ni temas triviales?"
     }
 ];
 
@@ -608,7 +626,6 @@ function renderHistoryList() {
 
 // Bootstrap
 function init() {
-    console.log("Ejecutando inicialización...");
     const now = new Date();
     const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
     currentConceptIndex = dayOfYear % concepts.length;
