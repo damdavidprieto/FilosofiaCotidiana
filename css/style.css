@@ -2,14 +2,20 @@
 
 :root {
     --bg-primary: #f8f9fa;
-    --bg-glass: rgba(255, 255, 255, 0.7);
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --accent: #8b7355;
-    --accent-light: #b0997a;
-    --accent-dark: #5d4d39;
-    --border-glass: rgba(255, 255, 255, 0.3);
-    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    /* Slightly less transparent for better contrast */
+    --text-primary: #121212;
+    /* Darker near-black */
+    --text-secondary: #333333;
+    /* Darker gray */
+    --accent: #6d5942;
+    /* Much darker brown for titles */
+    --accent-light: #8b7355;
+    --accent-dark: #3e3325;
+    /* Very dark brown for high contrast */
+    --border-glass: rgba(0, 0, 0, 0.1);
+    /* Darker border */
+    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
