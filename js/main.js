@@ -141,10 +141,15 @@ window.toggleHistory = () => {
 };
 
 window.confirmDelete = (id) => {
-    if (confirm('¿Eliminar?')) {
-        deleteEntryData(id);
-        renderHistoryUI(getEntries(), document.getElementById('entries-list'));
-    }
+    showConfirm(
+        '¿Eliminar Reflexión?',
+        'Esta acción es permanente y tu pensamiento se perderá en el éter.',
+        () => {
+            deleteEntryData(id);
+            renderHistoryUI(getEntries(), document.getElementById('entries-list'));
+            notify('Pensamiento eliminado');
+        }
+    );
 };
 
 // Orchestration
