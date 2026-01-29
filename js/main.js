@@ -114,8 +114,15 @@ function renderParadox(index) {
 
 // Global exposure
 window.nextConcept = () => {
-    currentConceptIndex = Math.floor(Math.random() * concepts.length);
-    renderConcept(currentConceptIndex);
+    // Use filteredConcepts if search/filter is active, otherwise use all concepts
+    const conceptsToUse = filteredConcepts.length > 0 ? filteredConcepts : concepts;
+    currentConceptIndex = Math.floor(Math.random() * conceptsToUse.length);
+
+    if (filteredConcepts.length > 0) {
+        displayConcept(conceptsToUse[currentConceptIndex]);
+    } else {
+        renderConcept(currentConceptIndex);
+    }
 };
 
 window.nextExperiment = () => {
