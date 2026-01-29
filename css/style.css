@@ -13,6 +13,19 @@
     --transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-glass: rgba(30, 30, 30, 0.95);
+    --text-primary: #e8e8e8;
+    --text-secondary: #b0b0b0;
+    --accent: #c9a876;
+    --accent-light: #d4b88a;
+    --accent-dark: #e8d4b0;
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -405,4 +418,165 @@ textarea:focus {
 
 .btn-modal.cancel:hover {
     background: #e5e5e5;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-soft);
+    z-index: 1000;
+    font-size: 1.5rem;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+/* Search Bar */
+.search-container {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1.2rem 3rem 1.2rem 1.5rem;
+    border-radius: 100px;
+    border: 1px solid var(--border-glass);
+    background: var(--bg-glass);
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(109, 89, 66, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+/* Category Filters */
+.category-filters {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.category-btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 100px;
+    border: 1px solid var(--border-glass);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* Favorite Button */
+.favorite-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+    opacity: 0.5;
+}
+
+.favorite-btn:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.favorite-btn.favorited {
+    opacity: 1;
+    color: #f39c12;
+}
+
+/* Stats Dashboard */
+.stats-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-soft);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Playfair Display', serif;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+/* Concept Card Position Relative for Favorite Button */
+.glass-card {
+    position: relative;
+}
+
+/* Smooth transitions for theme change */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

@@ -31,13 +31,56 @@
 </head>
 
 <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
     <div class="container">
         <header>
             <h1>📖 Filosofía Cotidiana</h1>
             <p class="subtitle">Conceptos filosóficos aplicados a la vida diaria</p>
         </header>
 
+        <!-- Search and Filters -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Buscar conceptos, filósofos..."
+                oninput="searchConcepts()">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="category-filters" id="category-filters">
+            <button class="category-btn active" onclick="filterCategory('TODOS')">Todos</button>
+            <button class="category-btn" onclick="filterCategory('ESTOICISMO')">Estoicismo</button>
+            <button class="category-btn" onclick="filterCategory('EXISTENCIALISMO')">Existencialismo</button>
+            <button class="category-btn" onclick="filterCategory('ORIENTAL')">Oriental</button>
+            <button class="category-btn" onclick="filterCategory('ETICA')">Ética</button>
+            <button class="category-btn" onclick="filterCategory('CONTEMPORANEO')">Contemporáneo</button>
+            <button class="category-btn" onclick="filterCategory('FAVORITOS')">⭐ Favoritos</button>
+        </div>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-dashboard" id="stats-dashboard" style="display: none;">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-concepts">0</div>
+                <div class="stat-label">Conceptos leídos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-streak">0</div>
+                <div class="stat-label">Racha de días 🔥</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-favorites">0</div>
+                <div class="stat-label">Favoritos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-journal">0</div>
+                <div class="stat-label">Reflexiones</div>
+            </div>
+        </div>
+
         <main>
+
             <!-- Concepto del día -->
             <section class="daily-concept">
                 <h2>Concepto</h2>
@@ -124,6 +167,7 @@
 
     <!-- Scripts en orden de dependencia (Sin módulos para evitar CORS local) -->
     <script src="js/data.js"></script>
+    <script src="js/features.js"></script>
     <script src="js/journal.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/main.js"></script>
