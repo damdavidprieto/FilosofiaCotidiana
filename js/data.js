@@ -440,7 +440,183 @@ const concepts = [
         philosopher: "Holden Caulfield (J.D. Salinger)",
         application: "Reconoce que la soledad es parte de la condición humana, pero la cura es la comunicación honesta, no la superficial.",
         prompt: "¿Con quién podrías tener hoy una conversación 'de verdad', sin máscaras ni temas triviales?"
+    },
+    {
+        title: "Ubuntu",
+        quote: "Una persona es persona a través de otras personas.",
+        philosopher: "Filosofía Africana (Proverbio Zulú)",
+        application: "Tu humanidad está entrelazada con la de los demás. No existes en aislamiento; tu bienestar depende del bienestar colectivo.",
+        prompt: "¿Cómo has contribuido hoy al bienestar de tu comunidad, aunque sea con un gesto pequeño?"
+    },
+    {
+        title: "Sankofa",
+        quote: "No es tabú volver atrás por lo que olvidaste.",
+        philosopher: "Filosofía Akan (Ghana)",
+        application: "Aprender del pasado no es retroceder, es sabiduría. Recupera las lecciones olvidadas para avanzar mejor.",
+        prompt: "¿Qué lección de tu pasado has olvidado que podría ayudarte a resolver un problema actual?"
+    },
+    {
+        title: "Filosofía de la Liberación",
+        quote: "La filosofía debe partir desde el oprimido, no desde el opresor.",
+        philosopher: "Enrique Dussel",
+        application: "Cuestiona las estructuras de poder. Escucha las voces marginadas antes de formar tu opinión sobre justicia.",
+        prompt: "¿A qué voz silenciada o marginada podrías escuchar hoy para entender mejor una situación?"
+    },
+    {
+        title: "Conciencia Mestiza",
+        quote: "Vivir en las fronteras significa que desarrollas una tolerancia a las contradicciones.",
+        philosopher: "Gloria Anzaldúa",
+        application: "Si vives entre dos culturas o identidades, tu perspectiva única es una fortaleza, no una debilidad.",
+        prompt: "¿Qué contradicción o dualidad en tu identidad has visto hoy como problema en lugar de como riqueza?"
+    },
+    {
+        title: "Epistemología del Sur",
+        quote: "Hay conocimientos que han sido suprimidos por el colonialismo.",
+        philosopher: "Boaventura de Sousa Santos",
+        application: "No todo conocimiento válido viene de Occidente. Busca sabiduría en tradiciones no europeas.",
+        prompt: "¿Qué conocimiento o práctica de una cultura no occidental has descartado hoy sin investigar?"
+    },
+    {
+        title: "Performatividad de Género",
+        quote: "El género es un acto repetido, no una esencia.",
+        philosopher: "Judith Butler",
+        application: "No 'eres' hombre o mujer por naturaleza; lo 'actúas' mediante gestos culturales. Puedes redefinirlo.",
+        prompt: "¿Qué comportamiento has realizado hoy solo porque 'se espera' de tu género?"
+    },
+    {
+        title: "Ética del Cuidado Feminista",
+        quote: "La moralidad no es solo justicia abstracta, sino cuidado concreto.",
+        philosopher: "Nel Noddings",
+        application: "No basta con ser 'justo'; debes cuidar activamente de quienes dependen de ti con empatía real.",
+        prompt: "¿A quién has cuidado hoy más allá de tu 'deber', con genuina atención a sus necesidades?"
+    },
+    {
+        title: "Interseccionalidad Ampliada",
+        quote: "Las opresiones no son aditivas, son multiplicativas.",
+        philosopher: "Kimberlé Crenshaw",
+        application: "Una mujer negra no sufre racismo + sexismo, sino una opresión única. Reconoce la complejidad de las identidades.",
+        prompt: "¿A quién has juzgado hoy sin considerar las múltiples capas de su experiencia?"
+    },
+    {
+        title: "Juegos del Lenguaje",
+        quote: "El significado de una palabra es su uso en el lenguaje.",
+        philosopher: "Ludwig Wittgenstein",
+        application: "Las palabras no tienen significados fijos. Entiende el contexto antes de juzgar lo que alguien dice.",
+        prompt: "¿Qué palabra has malinterpretado hoy por no entender el 'juego de lenguaje' del otro?"
+    },
+    {
+        title: "Descripción Definida",
+        quote: "El actual rey de Francia es calvo.",
+        philosopher: "Bertrand Russell",
+        application: "Algunas afirmaciones son falsas no por su predicado, sino porque su sujeto no existe. Cuestiona las presuposiciones.",
+        prompt: "¿Qué pregunta te han hecho hoy que asumía algo falso desde el principio?"
+    },
+    {
+        title: "Verificacionismo",
+        quote: "Una proposición solo tiene sentido si puede ser verificada empíricamente.",
+        philosopher: "Círculo de Viena",
+        application: "Si una afirmación no puede probarse ni refutarse, quizás no vale la pena discutirla.",
+        prompt: "¿Sobre qué tema has debatido hoy que en realidad no puede verificarse de ninguna manera?"
+    },
+    {
+        title: "Ecología Profunda",
+        quote: "Todos los seres vivos tienen el mismo derecho a vivir y florecer.",
+        philosopher: "Arne Næss",
+        application: "La naturaleza no es un recurso para humanos; tiene valor intrínseco. Actúa en consecuencia.",
+        prompt: "¿Qué decisión de consumo has tomado hoy sin considerar su impacto en otros seres vivos?"
+    },
+    {
+        title: "Principio de Precaución",
+        quote: "Ante la duda sobre el daño, mejor prevenir que lamentar.",
+        philosopher: "Hans Jonas",
+        application: "Si una acción podría causar daño irreversible (clima, tecnología), no esperes certeza absoluta para actuar.",
+        prompt: "¿Qué riesgo has ignorado hoy porque 'no hay pruebas definitivas' de su peligro?"
+    },
+    {
+        title: "Responsabilidad hacia el Futuro",
+        quote: "Obra de tal modo que los efectos de tu acción sean compatibles con la permanencia de la vida humana.",
+        philosopher: "Hans Jonas",
+        application: "Tus decisiones de hoy afectan a generaciones futuras. Piensa a largo plazo.",
+        prompt: "¿Qué acción has tomado hoy pensando solo en el presente, ignorando el futuro?"
+    },
+    {
+        title: "Banalidad del Mal",
+        quote: "Los mayores males son cometidos por gente ordinaria que solo 'cumple órdenes'.",
+        philosopher: "Hannah Arendt",
+        application: "No hace falta ser un monstruo para hacer daño. La obediencia ciega es peligrosa.",
+        prompt: "¿Qué has hecho hoy 'porque te lo dijeron' sin cuestionar si era lo correcto?"
+    },
+    {
+        title: "Pensamiento sin Barandillas",
+        quote: "Pensar sin el apoyo de categorías tradicionales es peligroso pero necesario.",
+        philosopher: "Hannah Arendt",
+        application: "No te aferres a ideologías heredadas. Atrévete a pensar por ti mismo, aunque sea incómodo.",
+        prompt: "¿Qué creencia política o religiosa has defendido hoy sin haberla examinado realmente?"
+    },
+    {
+        title: "Razón Instrumental",
+        quote: "La racionalidad moderna solo busca medios, no fines.",
+        philosopher: "Max Horkheimer",
+        application: "Ser 'eficiente' no es suficiente. Pregúntate si tus objetivos son valiosos, no solo si tus métodos funcionan.",
+        prompt: "¿Qué tarea has optimizado hoy sin preguntarte si valía la pena hacerla?"
+    },
+    {
+        title: "Industria Cultural",
+        quote: "El entretenimiento masivo no libera, adormece.",
+        philosopher: "Theodor Adorno",
+        application: "El consumo pasivo de contenido te distrae de pensar críticamente. Elige tus estímulos con cuidado.",
+        prompt: "¿Cuántas horas has pasado hoy consumiendo contenido sin reflexionar sobre él?"
+    },
+    {
+        title: "Reconocimiento Mutuo",
+        quote: "Solo soy libre si el otro también lo es.",
+        philosopher: "Axel Honneth",
+        application: "Tu dignidad depende de que otros te reconozcan. Devuelve ese reconocimiento a los demás.",
+        prompt: "¿A quién has negado hoy reconocimiento o respeto, aunque sea sutilmente?"
+    },
+    {
+        title: "Vulnerabilidad Compartida",
+        quote: "Todos somos precarios y dependientes. Esa es nuestra condición común.",
+        philosopher: "Judith Butler",
+        application: "Reconocer tu fragilidad no es debilidad; es la base de la empatía y la solidaridad.",
+        prompt: "¿Qué vulnerabilidad tuya has ocultado hoy por miedo a parecer débil?"
+    },
+    {
+        title: "Necropolítica",
+        quote: "El poder soberano decide quién vive y quién muere.",
+        philosopher: "Achille Mbembe",
+        application: "Observa cómo las estructuras políticas valoran unas vidas más que otras. Resiste esa lógica.",
+        prompt: "¿Qué noticia de muerte has ignorado hoy porque la víctima no era de 'tu grupo'?"
+    },
+    {
+        title: "Capitalismo de Vigilancia",
+        quote: "Tu comportamiento es el producto que se vende.",
+        philosopher: "Shoshana Zuboff",
+        application: "Cada clic, like y búsqueda alimenta algoritmos que te manipulan. Sé consciente de tu huella digital.",
+        prompt: "¿Qué dato personal has entregado hoy a cambio de 'conveniencia' sin pensar en las consecuencias?"
+    },
+    {
+        title: "Aceleracionismo",
+        quote: "Quizás debemos acelerar el colapso del sistema para construir algo nuevo.",
+        philosopher: "Nick Land / Mark Fisher",
+        application: "A veces, intentar 'arreglar' un sistema roto solo prolonga el sufrimiento. Considera alternativas radicales.",
+        prompt: "¿Qué sistema o hábito en tu vida estás 'parcheando' en lugar de reemplazar completamente?"
+    },
+    {
+        title: "Realismo Capitalista",
+        quote: "Es más fácil imaginar el fin del mundo que el fin del capitalismo.",
+        philosopher: "Mark Fisher",
+        application: "No dejes que la falta de imaginación te impida pensar en alternativas al statu quo.",
+        prompt: "¿Qué problema has aceptado hoy como 'inevitable' cuando en realidad es producto de un sistema específico?"
+    },
+    {
+        title: "Filosofía Cyborg",
+        quote: "Somos todos cyborgs: híbridos de máquina y organismo.",
+        philosopher: "Donna Haraway",
+        application: "La tecnología no es externa a ti; ya eres parte máquina (teléfono, gafas, marcapasos). Abraza la hibridez.",
+        prompt: "¿Qué tecnología usas hoy que ya es parte inseparable de tu identidad?"
     }
+
 ];
 
 const experiments = [

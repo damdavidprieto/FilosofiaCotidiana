@@ -24,7 +24,32 @@ function renderConcept(index) {
         `;
     }
     if (promptEl) promptEl.innerHTML = `Pregunta de hoy: <strong>${concept.prompt}</strong>`;
+
+    // Add favorite button
+    const existingFavBtn = card.querySelector('.favorite-btn');
+    if (existingFavBtn) existingFavBtn.remove();
+
+    const favBtn = document.createElement('button');
+    favBtn.className = 'favorite-btn';
+    favBtn.textContent = isFavorite(concept.title) ? '⭐' : '☆';
+    if (isFavorite(concept.title)) favBtn.classList.add('favorited');
+    favBtn.onclick = () => toggleFavorite(concept.title);
+    favBtn.setAttribute('aria-label', 'Marcar como favorito');
+    card.appendChild(favBtn);
+
+    // Track concept read
+    trackConceptRead(concept.title);
 }
+
+// Helper function to display concept (used by search/filter)
+function displayConcept(concept) {
+    const index = concepts.indexOf(concept);
+    if (index !== -1) {
+        currentConceptIndex = index;
+        renderConcept(index);
+    }
+}
+
 
 function renderExperiment(index) {
     const exp = experiments[index];
