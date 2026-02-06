@@ -5,6 +5,12 @@
 [![Public Release](https://img.shields.io/badge/Release-Public-brightgreen.svg)](https://github.com/damdavidprieto/FilosofiaCotidiana)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Pure JS](https://img.shields.io/badge/Vanilla-JS-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Demo Live](https://img.shields.io/badge/Demo-Live_App-orange.svg)](https://damdavidprieto.github.io/FilosofiaCotidiana/)
+
+## 📸 Vista Previa
+
+![Vista Previa de la Aplicación](assets/preview.png)
+*(Interfaz Glassmorphism: Reflexiones filosóficas con diseño moderno)*
 
 ## 🌟 ¿Qué es Filosofía Cotidiana?
 

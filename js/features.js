@@ -130,7 +130,7 @@ const categories = {
         'La Sociedad del Espectáculo', 'Razón Instrumental', 'Reconocimiento Mutuo',
         'Vulnerabilidad Compartida', 'Pensamiento sin Barandillas', 'La Vida Activa',
         'Filosofía de la Liberación', 'Conciencia Mestiza', 'Epistemología del Sur',
-        'Performatividad de Género', 'Interseccionalidad Ampliada'
+        'Performatividad de Género', 'Interseccionalidad'
     ]
 };
 
