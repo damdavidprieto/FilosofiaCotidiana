@@ -100,58 +100,95 @@ function clearSearch() {
     searchConcepts();
 }
 
-// === CATEGORY FILTERS ===
-const categories = {
-    ESTOICISMO: [
-        'Dicotomía del Control', 'Amor Fati', 'Meditación sobre la Muerte',
-        'Apatheia', 'Tranquilidad de Ánimo', 'Ataraxia', 'Minimalismo Cínico'
-    ],
-    EXISTENCIALISMO: [
-        'Existencialismo (Esencia)', 'Mala Fe', 'El Absurdo', 'El Otro',
-        'Autenticidad Moderna', 'Soledad Existencial', 'Ética de la Ambigüedad',
-        'El Compromiso', 'Ser-en-el-mundo', 'Autenticidad contra la Falsedad',
-        'El Guardián en el Centeno'
-    ],
-    ORIENTAL: [
-        'Impermanencia', 'Wu Wei (No-Acción)', 'Karma (Causalidad)',
-        'Dharma (Propósito)', 'El Camino Medio', 'Anatman (No-Yo)',
-        'Ubuntu', 'Sankofa'
-    ],
-    ETICA: [
-        'El Imperativo Categórico', 'Eudaimonía', 'El Velo de la Ignorancia',
-        'Ley Natural', 'Ética del Cuidado', 'Ética del Cuidado Feminista',
-        'Justicia como Imparcialidad', 'El Contrato Social', 'Libre Albedrío',
-        'Soberanía sobre uno mismo'
-    ],
-    CONTEMPORANEO: [
-        'Capitalismo de Vigilancia', 'Realismo Capitalista', 'Filosofía Cyborg',
-        'Necropolítica', 'Banalidad del Mal', 'Industria Cultural', 'Aceleracionismo',
-        'Poder y Conocimiento', 'Microfísica del Poder', 'Sociedad Líquida',
-        'La Sociedad del Espectáculo', 'Razón Instrumental', 'Reconocimiento Mutuo',
-        'Vulnerabilidad Compartida', 'Pensamiento sin Barandillas', 'La Vida Activa',
-        'Filosofía de la Liberación', 'Conciencia Mestiza', 'Epistemología del Sur',
-        'Performatividad de Género', 'Interseccionalidad'
-    ]
-};
+// === CATEGORY FILTERS - INDIVIDUAL FUNCTIONS ===
+function showTodos() {
+    currentCategory = 'TODOS';
+    updateActiveButton(event);
+    filteredConcepts = [...concepts];
+    displayResults();
+}
 
-function filterCategory(category) {
-    currentCategory = category;
+function showEstoicismo() {
+    console.log("=== showEstoicismo CALLED ===");
+    console.log("concepts array:", concepts);
+    console.log("concepts.length:", concepts.length);
 
-    // Update active button
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
+    currentCategory = 'ESTOICISMO';
+    updateActiveButton(event);
 
-    if (category === 'TODOS') {
-        filteredConcepts = [...concepts];
-    } else if (category === 'FAVORITOS') {
-        filteredConcepts = concepts.filter(c => isFavorite(c.title));
-    } else {
-        applyCategoryFilter();
+    filteredConcepts = concepts.filter(c => c.category === 'ESTOICISMO');
+    console.log("filteredConcepts.length:", filteredConcepts.length);
+    console.log("filteredConcepts:", filteredConcepts);
+
+    displayResults();
+}
+
+function showExistencialismo() {
+    currentCategory = 'EXISTENCIALISMO';
+    updateActiveButton(event);
+    filteredConcepts = concepts.filter(c => c.category === 'EXISTENCIALISMO');
+    displayResults();
+}
+
+function showOriental() {
+    currentCategory = 'ORIENTAL';
+    updateActiveButton(event);
+    filteredConcepts = concepts.filter(c => c.category === 'ORIENTAL');
+    displayResults();
+}
+
+function showEtica() {
+    currentCategory = 'ETICA';
+    updateActiveButton(event);
+    filteredConcepts = concepts.filter(c => c.category === 'ETICA');
+    displayResults();
+}
+
+function showContemporaneo() {
+    currentCategory = 'CONTEMPORANEO';
+    updateActiveButton(event);
+    filteredConcepts = concepts.filter(c => c.category === 'CONTEMPORANEO');
+    displayResults();
+}
+
+function showFavoritos() {
+    currentCategory = 'FAVORITOS';
+    updateActiveButton(event);
+    filteredConcepts = concepts.filter(c => isFavorite(c.title));
+    displayResults();
+}
+
+function updateActiveButton(evt) {
+    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+    if (evt && evt.target) evt.target.classList.add('active');
+}
+
+function displayConcept(concept) {
+    if (!concept) return;
+
+    const card = document.getElementById('daily-card');
+    if (!card) return;
+
+    card.innerHTML = `
+        <h3 class="concept-title">${concept.title}</h3>
+        <blockquote class="concept-quote">"${concept.quote}"</blockquote>
+        <p class="concept-philosopher">— ${concept.philosopher}</p>
+        <div class="concept-details">
+            <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
+        </div>
+        <div class="concept-actions">
+            <button class="btn-premium" onclick="nextConcept()">Siguiente concepto <span>→</span></button>
+        </div>
+    `;
+
+    // Update journal prompt
+    const promptEl = document.getElementById('journal-prompt');
+    if (promptEl && concept.prompt) {
+        promptEl.textContent = concept.prompt;
     }
+}
 
-    // Show first result
+function displayResults() {
     if (filteredConcepts.length > 0) {
         currentConceptIndex = 0;
         displayConcept(filteredConcepts[currentConceptIndex]);
@@ -160,9 +197,28 @@ function filterCategory(category) {
     }
 }
 
+// Legacy function for compatibility
+function filterCategory(category) {
+    const funcMap = {
+        'TODOS': showTodos,
+        'ESTOICISMO': showEstoicismo,
+        'EXISTENCIALISMO': showExistencialismo,
+        'ORIENTAL': showOriental,
+        'ETICA': showEtica,
+        'CONTEMPORANEO': showContemporaneo,
+        'FAVORITOS': showFavoritos
+    };
+    if (funcMap[category]) funcMap[category]();
+}
+
 function applyCategoryFilter() {
-    const categoryTitles = categories[currentCategory] || [];
-    filteredConcepts = filteredConcepts.filter(c => categoryTitles.includes(c.title));
+    // Dynamic filtering based on the 'category' property
+    // We filter the ALREADY filtered list (filteredConcepts) to respect search queries!
+    if (currentCategory === 'FAVORITOS') {
+        filteredConcepts = filteredConcepts.filter(c => isFavorite(c.title));
+    } else {
+        filteredConcepts = filteredConcepts.filter(c => c.category === currentCategory);
+    }
 }
 
 // === STATS TRACKING ===
@@ -259,4 +315,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show stats dashboard by default
     document.getElementById('stats-dashboard').style.display = 'grid';
+
+    // DEBUG: Show count
+    const debugDiv = document.createElement('div');
+    debugDiv.setAttribute('style', 'position:fixed;bottom:10px;right:10px;background:#000;color:#0f0;padding:15px;z-index:9999;font-size:16px;font-weight:bold;border:2px solid #0f0;');
+    debugDiv.innerHTML = `DEBUG: Concepts loaded: ${concepts.length}<br>Click a category to test.`;
+    document.body.appendChild(debugDiv);
+
+    // Override filter for debug
+    const oldFilter = window.filterCategory;
+    window.filterCategory = function (cat) {
+        if (oldFilter) oldFilter(cat);
+        setTimeout(() => {
+            debugDiv.innerHTML = `DEBUG: Category: ${cat}<br>Found: ${filteredConcepts.length} items`;
+        }, 200);
+    }
 });

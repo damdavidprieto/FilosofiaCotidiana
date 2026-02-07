@@ -50,13 +50,13 @@
         </div>
 
         <div class="category-filters" id="category-filters">
-            <button class="category-btn active" onclick="filterCategory('TODOS')">Todos</button>
-            <button class="category-btn" onclick="filterCategory('ESTOICISMO')">Estoicismo</button>
-            <button class="category-btn" onclick="filterCategory('EXISTENCIALISMO')">Existencialismo</button>
-            <button class="category-btn" onclick="filterCategory('ORIENTAL')">Oriental</button>
-            <button class="category-btn" onclick="filterCategory('ETICA')">Ética</button>
-            <button class="category-btn" onclick="filterCategory('CONTEMPORANEO')">Contemporáneo</button>
-            <button class="category-btn" onclick="filterCategory('FAVORITOS')">⭐ Favoritos</button>
+            <button class="category-btn active" onclick="showTodos()">Todos</button>
+            <button class="category-btn" onclick="showEstoicismo()">Estoicismo</button>
+            <button class="category-btn" onclick="showExistencialismo()">Existencialismo</button>
+            <button class="category-btn" onclick="showOriental()">Oriental</button>
+            <button class="category-btn" onclick="showEtica()">Ética</button>
+            <button class="category-btn" onclick="showContemporaneo()">Contemporáneo</button>
+            <button class="category-btn" onclick="showFavoritos()">⭐ Favoritos</button>
         </div>
 
         <!-- Stats Dashboard -->
@@ -166,8 +166,8 @@
     </div>
 
     <!-- Scripts en orden de dependencia (Sin módulos para evitar CORS local) -->
-    <script src="js/data.js"></script>
-    <script src="js/features.js"></script>
+    <script src="js/data_NEW.js"></script>
+    <script src="js/features.js?t=20260207091900"></script>
     <script src="js/journal.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/main.js"></script>
