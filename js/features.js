@@ -38,6 +38,7 @@ function toggleFavorite(conceptTitle) {
     localStorage.setItem('favorites', JSON.stringify(favorites));
     updateFavoriteButton(conceptTitle);
     updateStats();
+    updateCategoryCounts();
 }
 
 function isFavorite(conceptTitle) {
@@ -75,9 +76,9 @@ function searchConcepts() {
         applyCategoryFilter();
     }
 
-    // Show first result
+    // Show random result
     if (filteredConcepts.length > 0) {
-        currentConceptIndex = 0;
+        currentConceptIndex = Math.floor(Math.random() * filteredConcepts.length);
         displayConcept(filteredConcepts[currentConceptIndex]);
     } else {
         showNoResults();
@@ -89,9 +90,9 @@ function showNoResults() {
     card.innerHTML = `
         <h3 class="concept-title">No se encontraron resultados</h3>
         <p class="concept-definition">
-            Intenta con otros términos de búsqueda o explora las categorías.
+            Intenta con otros términos.
         </p>
-        <button class="btn-premium" onclick="clearSearch()">Limpiar búsqueda</button>
+        <button class="btn-premium" onclick="clearSearch()">Siguiente concepto <span>→</span></button>
     `;
 }
 
@@ -130,6 +131,20 @@ function showExistencialismo() {
     displayResults();
 }
 
+function showEpistemologia() {
+    currentCategory = 'EPISTEMOLOGIA';
+    updateActiveButton(event);
+    filteredConcepts = concepts.filter(c => c.category === 'EPISTEMOLOGIA');
+    displayResults();
+}
+
+function showPolitica() {
+    currentCategory = 'POLITICA';
+    updateActiveButton(event);
+    filteredConcepts = concepts.filter(c => c.category === 'POLITICA');
+    displayResults();
+}
+
 function showOriental() {
     currentCategory = 'ORIENTAL';
     updateActiveButton(event);
@@ -163,38 +178,46 @@ function updateActiveButton(evt) {
     if (evt && evt.target) evt.target.classList.add('active');
 }
 
-function displayConcept(concept) {
-    if (!concept) return;
 
-    const card = document.getElementById('daily-card');
-    if (!card) return;
-
-    card.innerHTML = `
-        <h3 class="concept-title">${concept.title}</h3>
-        <blockquote class="concept-quote">"${concept.quote}"</blockquote>
-        <p class="concept-philosopher">— ${concept.philosopher}</p>
-        <div class="concept-details">
-            <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
-        </div>
-        <div class="concept-actions">
-            <button class="btn-premium" onclick="nextConcept()">Siguiente concepto <span>→</span></button>
-        </div>
-    `;
-
-    // Update journal prompt
-    const promptEl = document.getElementById('journal-prompt');
-    if (promptEl && concept.prompt) {
-        promptEl.textContent = concept.prompt;
-    }
-}
 
 function displayResults() {
     if (filteredConcepts.length > 0) {
-        currentConceptIndex = 0;
+        currentConceptIndex = Math.floor(Math.random() * filteredConcepts.length);
         displayConcept(filteredConcepts[currentConceptIndex]);
     } else {
         showNoResults();
     }
+}
+
+function updateCategoryCounts() {
+    const counts = {
+        'TODOS': concepts.length,
+        'ESTOICISMO': concepts.filter(c => c.category === 'ESTOICISMO').length,
+        'EXISTENCIALISMO': concepts.filter(c => c.category === 'EXISTENCIALISMO').length,
+        'EPISTEMOLOGIA': concepts.filter(c => c.category === 'EPISTEMOLOGIA').length,
+        'POLITICA': concepts.filter(c => c.category === 'POLITICA').length,
+        'ORIENTAL': concepts.filter(c => c.category === 'ORIENTAL').length,
+        'ETICA': concepts.filter(c => c.category === 'ETICA').length,
+        'CONTEMPORANEO': concepts.filter(c => c.category === 'CONTEMPORANEO').length,
+        'FAVORITOS': favorites.length
+    };
+
+    // Helper to finding button by text content roughly or onclick
+    // Since we don't have IDs, we'll try to match by onclick attr text
+    const setBtnText = (fnName, label, count) => {
+        const btn = document.querySelector(`button[onclick="${fnName}()"]`);
+        if (btn) btn.innerHTML = `${label} <span style="opacity:0.6; font-size:0.8em; margin-left:4px;">${count}</span>`;
+    };
+
+    setBtnText('showTodos', 'Todos', counts.TODOS);
+    setBtnText('showEstoicismo', 'Estoicismo', counts.ESTOICISMO);
+    setBtnText('showExistencialismo', 'Existencialismo', counts.EXISTENCIALISMO);
+    setBtnText('showEpistemologia', 'Epistemología', counts.EPISTEMOLOGIA);
+    setBtnText('showPolitica', 'Política', counts.POLITICA);
+    setBtnText('showOriental', 'Oriental', counts.ORIENTAL);
+    setBtnText('showEtica', 'Ética', counts.ETICA);
+    setBtnText('showContemporaneo', 'Contemporáneo', counts.CONTEMPORANEO);
+    setBtnText('showFavoritos', '⭐ Favoritos', counts.FAVORITOS);
 }
 
 // Legacy function for compatibility
@@ -314,6 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateStats();
 
     // Show stats dashboard by default
+    // Show stats dashboard by default
     document.getElementById('stats-dashboard').style.display = 'grid';
+
+    // Initialize counts
+    updateCategoryCounts();
 });
 

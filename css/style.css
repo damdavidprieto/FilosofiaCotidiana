@@ -134,18 +134,54 @@ h2::after {
 
 .concept-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
     color: var(--accent-dark);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
 }
 
-.concept-definition {
-    font-size: 1.4rem;
+.concept-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
     font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.concept-philosopher {
+    text-align: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 3.5rem;
+    display: block;
+}
+
+.concept-details {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 2rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
-    margin-bottom: 2.5rem;
-    padding-left: 2rem;
-    border-left: 5px solid var(--accent);
+    line-height: 1.7;
+    position: relative;
+}
+
+.concept-details strong {
+    color: var(--accent-dark);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
 }
 
 .btn-premium {
@@ -825,4 +861,64 @@ textarea:focus {
 /* Smooth transitions for theme change */
 * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Experiment Results - New Layout */
+.experiment-result {
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.result-block {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    transition: var(--transition);
+}
+
+.result-block:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.result-block h4 {
+    color: var(--accent-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 0.5rem;
+}
+
+.result-block p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Specific styling for types */
+.result-block.reflection {
+    border-left: 4px solid var(--accent);
+}
+
+.result-block.application {
+    border-left: 4px solid var(--accent-light);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
