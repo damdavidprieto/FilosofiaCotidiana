@@ -315,19 +315,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show stats dashboard by default
     document.getElementById('stats-dashboard').style.display = 'grid';
-
-    // DEBUG: Show count
-    const debugDiv = document.createElement('div');
-    debugDiv.setAttribute('style', 'position:fixed;bottom:10px;right:10px;background:#000;color:#0f0;padding:15px;z-index:9999;font-size:16px;font-weight:bold;border:2px solid #0f0;');
-    debugDiv.innerHTML = `DEBUG: Concepts loaded: ${concepts.length}<br>Click a category to test.`;
-    document.body.appendChild(debugDiv);
-
-    // Override filter for debug
-    const oldFilter = window.filterCategory;
-    window.filterCategory = function (cat) {
-        if (oldFilter) oldFilter(cat);
-        setTimeout(() => {
-            debugDiv.innerHTML = `DEBUG: Category: ${cat}<br>Found: ${filteredConcepts.length} items`;
-        }, 200);
-    }
 });
+
