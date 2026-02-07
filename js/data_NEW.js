@@ -697,12 +697,124 @@ const concepts = [
         prompt: "¿Qué problema has aceptado hoy como 'inevitable' cuando en realidad es producto de un sistema específico?"
     },
     {
-        title: "Filosofía Cyborg",
-        category: "CONTEMPORANEO",
-        quote: "Somos todos cyborgs: híbridos de máquina y organismo.",
-        philosopher: "Donna Haraway",
-        application: "La tecnología no es externa a ti; ya eres parte máquina (teléfono, gafas, marcapasos). Abraza la hibridez.",
-        prompt: "¿Qué tecnología usas hoy que ya es parte inseparable de tu identidad?"
+        title: "Falsacionismo",
+        category: "EPISTEMOLOGIA",
+        quote: "No podemos probar que una teoría sea verdadera, solo que aún no ha sido refutada.",
+        philosopher: "Karl Popper",
+        application: "No busques confirmar lo que ya crees. Busca activamente pruebas que te contradigan para fortalecer tu verdad.",
+        prompt: "¿Qué creencia tienes que te asusta poner a prueba? Intenta refutarla hoy."
+    },
+    {
+        title: "Cambio de Paradigma",
+        category: "EPISTEMOLOGIA",
+        quote: "La ciencia no avanza por acumulación, sino por revoluciones que cambian la forma de ver el mundo.",
+        philosopher: "Thomas Kuhn",
+        application: "A veces no necesitas más datos, sino cambiar radicalmente la forma en que interpretas los datos que ya tienes.",
+        prompt: "¿Qué problema persiste en tu vida porque lo sigues atacando desde el mismo ángulo (paradigma)?"
+    },
+    {
+        title: "Ídolos de la Tribu",
+        category: "EPISTEMOLOGIA",
+        quote: "El entendimiento humano no es luz seca, sino que recibe infusión de la voluntad y los afectos.",
+        philosopher: "Francis Bacon",
+        application: "Reconoce que tus deseos deforman tu percepción. Tiendes a ver lo que quieres ver.",
+        prompt: "¿Qué verdad incómoda estás ignorando hoy porque no te 'conviene' emocionalmente?"
+    },
+    {
+        title: "El Leviatán",
+        category: "POLITICA",
+        quote: "La vida del hombre en estado natural es solitaria, pobre, desagradable, brutal y corta.",
+        philosopher: "Thomas Hobbes",
+        application: "Valorar el orden y la seguridad social implica ceder parte de nuestra libertad absoluta. Es un contrato necesario.",
+        prompt: "¿Qué norma social te molesta cumplir pero reconoces que es necesaria para la paz común?"
+    },
+    {
+        title: "Alienación del Trabajo",
+        category: "POLITICA",
+        quote: "El trabajador se vuelve más pobre cuanto más riqueza produce.",
+        philosopher: "Karl Marx",
+        application: "Cuando trabajas sin ver el fruto final ni el propósito, te desconectas de ti mismo. Busca sentido en tu labor.",
+        prompt: "¿En qué tarea te has sentido hoy como una máquina sin alma? ¿Cómo podrías reconectar con su propósito humano?"
+    },
+    {
+        title: "Velo de Maya",
+        category: "EPISTEMOLOGIA",
+        quote: "El mundo tal como lo vemos es una ilusión que oculta la unidad subyacente de la realidad.",
+        philosopher: "Filosofía Hindú (Advaita Vedanta)",
+        application: "No te tomes las apariencias del mundo (fama, dinero, separación) demasiado en serio. Son un juego de sombras.",
+        prompt: "¿Qué 'drama' superficial te ha atrapado hoy? Intenta ver más allá de la ilusión de separación."
+    },
+    {
+        title: "La Banalidad del Mal",
+        category: "POLITICA",
+        quote: "El mal no necesita ser monstruoso; solo necesita que la gente normal deje de pensar.",
+        philosopher: "Hannah Arendt",
+        application: "El peligro político no son solo los tiranos, sino la obediencia irreflexiva de los ciudadanos comunes.",
+        prompt: "¿En qué momento has seguido la corriente hoy sin cuestionar si era ético?"
+    },
+    {
+        title: "Biopolítica",
+        category: "POLITICA",
+        quote: "El poder ya no decide solo la muerte, sino que administra y controla la vida misma.",
+        philosopher: "Michel Foucault",
+        application: "Sé consciente de cómo el Estado y las empresas gestionan tu salud, cuerpo y hábitos como recursos productivos.",
+        prompt: "¿Qué decisión sobre tu salud o cuerpo has tomado hoy influenciado por campañas políticas o comerciales?"
+    },
+    {
+        title: "Justicia Distributiva",
+        category: "POLITICA",
+        quote: "La injusticia en cualquier lugar es una amenaza para la justicia en todas partes.",
+        philosopher: "Martin Luther King / Rawls",
+        application: "La verdadera paz no es la ausencia de tensión, sino la presencia de justicia. Lucha por la equidad real.",
+        prompt: "¿En qué situación has aceptado una desigualdad injusta hoy porque no te afectaba directamente?"
+    },
+    {
+        title: "Escepticismo Radical",
+        category: "EPISTEMOLOGIA",
+        quote: "Acepto que no sé si estoy soñando o despierto, pero decido investigar igualmente.",
+        philosopher: "Pirrón de Elis",
+        application: "Suspende el juicio (Epoché). No necesitas tener una opinión firme sobre todo instantáneamente. La duda trae paz.",
+        prompt: "¿Sobre qué tema has opinado hoy con certeza absoluta? ¿Podrías permitirte decir 'no lo sé'?"
+    },
+    {
+        title: "Sympatheia",
+        category: "ESTOICISMO",
+        quote: "Todas las cosas están entrelazadas entre sí y su vínculo es sagrado.",
+        philosopher: "Marco Aurelio",
+        application: "No eres una isla. Tus acciones reverberan en el todo. Actúa sabiendo que eres parte de un organismo mayor.",
+        prompt: "¿Cómo ha afectado tu estado de ánimo de hoy a las personas que te rodean?"
+    },
+    {
+        title: "Prosoché (Atención)",
+        category: "ESTOICISMO",
+        quote: "La atención es la vigilia fundamental del alma.",
+        philosopher: "Epicteto",
+        application: "Vive en guardia constante sobre tus pensamientos. No dejes que ninguna impresión entre en tu mente sin examen.",
+        prompt: "¿En qué momento de hoy has vivido en 'piloto automático' y has perdido el control de tu mente?"
+    },
+    {
+        title: "Salto de Fe",
+        category: "EXISTENCIALISMO",
+        quote: "La fe comienza precisamente allí donde termina la razón.",
+        philosopher: "Søren Kierkegaard",
+        application: "A veces, la lógica no basta para dar sentido a la vida. Hay decisiones que requieren un salto apasionado hacia lo desconocido.",
+        prompt: "¿Qué decisión irracional pero vital sientes que debes tomar, aunque no tengas garantías?"
+    },
+    {
+        title: "La Náusea",
+        category: "EXISTENCIALISMO",
+        quote: "La existencia es plenitud que el hombre no puede abandonar.",
+        philosopher: "Jean-Paul Sartre",
+        application: "Sentir el peso absurdo de existir es el primer paso para despertar. No huyas de esa angustia; úsala para crear.",
+        prompt: "¿Has sentido hoy el vacío o el absurdo de la rutina? No lo tapes con distracción; obsérvalo."
+    },
+    {
+        title: "Hermenéutica",
+        category: "EPISTEMOLOGIA",
+        quote: "No hay hechos, solo interpretaciones.",
+        philosopher: "Friedrich Nietzsche / Gadamer",
+        application: "Todo lo que entiendes pasa por el filtro de tu historia y cultura. Sé humilde con tu 'verdad'.",
+        prompt: "Revisa una discusión reciente. ¿Cuánto era 'hecho' y cuánto era tu 'interpretación' sesgada?"
     }
 ];
 

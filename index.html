@@ -43,21 +43,9 @@
         </header>
 
         <!-- Search and Filters -->
-        <div class="search-container">
-            <input type="text" class="search-input" id="search-input" placeholder="Buscar conceptos, filósofos..."
-                oninput="searchConcepts()">
-            <span class="search-icon">🔍</span>
-        </div>
 
-        <div class="category-filters" id="category-filters">
-            <button class="category-btn active" onclick="showTodos()">Todos</button>
-            <button class="category-btn" onclick="showEstoicismo()">Estoicismo</button>
-            <button class="category-btn" onclick="showExistencialismo()">Existencialismo</button>
-            <button class="category-btn" onclick="showOriental()">Oriental</button>
-            <button class="category-btn" onclick="showEtica()">Ética</button>
-            <button class="category-btn" onclick="showContemporaneo()">Contemporáneo</button>
-            <button class="category-btn" onclick="showFavoritos()">⭐ Favoritos</button>
-        </div>
+
+
 
         <!-- Stats Dashboard -->
         <div class="stats-dashboard" id="stats-dashboard" style="display: none;">
@@ -84,6 +72,25 @@
             <!-- Concepto del día -->
             <section class="daily-concept">
                 <h2>Concepto</h2>
+
+                <div class="search-container">
+                    <input type="text" class="search-input" id="search-input"
+                        placeholder="Buscar conceptos, filósofos..." oninput="searchConcepts()">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="category-filters" id="category-filters">
+                    <button class="category-btn active" onclick="showTodos()">Todos</button>
+                    <button class="category-btn" onclick="showEstoicismo()">Estoicismo</button>
+                    <button class="category-btn" onclick="showExistencialismo()">Existencialismo</button>
+                    <button class="category-btn" onclick="showEpistemologia()">Epistemología</button>
+                    <button class="category-btn" onclick="showPolitica()">Política</button>
+                    <button class="category-btn" onclick="showOriental()">Oriental</button>
+                    <button class="category-btn" onclick="showEtica()">Ética</button>
+                    <button class="category-btn" onclick="showContemporaneo()">Contemporáneo</button>
+                    <button class="category-btn" onclick="showFavoritos()">⭐ Favoritos</button>
+                </div>
+
                 <div class="glass-card" id="daily-card">
                     <h3 class="concept-title">Cargando...</h3>
                     <p class="concept-definition">
@@ -94,6 +101,8 @@
                     </div>
                     <button class="btn-premium" onclick="nextConcept()">Siguiente concepto <span>→</span></button>
                 </div>
+
+
             </section>
 
             <!-- Experimento mental -->

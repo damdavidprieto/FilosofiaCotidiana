@@ -10,30 +10,40 @@ function renderConcept(index) {
     const concept = concepts[index];
     const card = document.getElementById('daily-card');
     if (!card) return;
-    const titleEl = card.querySelector('.concept-title');
-    const defEl = card.querySelector('.concept-definition');
-    const detailsEl = card.querySelector('.concept-details');
-    const promptEl = document.getElementById('journal-prompt');
 
-    if (titleEl) titleEl.textContent = concept.title;
-    if (defEl) defEl.textContent = `"${concept.quote}"`;
-    if (detailsEl) {
-        detailsEl.innerHTML = `
-            <p><strong>Filósofo:</strong> ${concept.philosopher}</p>
+    // Fully rebuild the card to ensure structure exists (recovering from No Results state)
+    card.innerHTML = `
+        <h3 class="concept-title">${concept.title}</h3>
+        <blockquote class="concept-quote">"${concept.quote}"</blockquote>
+        <p class="concept-philosopher">— ${concept.philosopher}</p>
+        <div class="concept-details">
             <p><strong>Aplicación práctica:</strong> ${concept.application}</p>
-        `;
+        </div>
+        <div class="concept-actions">
+            <button class="btn-premium" onclick="nextConcept()">Siguiente concepto <span>→</span></button>
+        </div>
+    `;
+
+    // Update journal prompt
+    const promptEl = document.getElementById('journal-prompt');
+    if (promptEl && concept.prompt) {
+        promptEl.innerHTML = `Pregunta de hoy: <strong>${concept.prompt}</strong>`;
     }
-    if (promptEl) promptEl.innerHTML = `Pregunta de hoy: <strong>${concept.prompt}</strong>`;
 
     // Add favorite button
-    const existingFavBtn = card.querySelector('.favorite-btn');
-    if (existingFavBtn) existingFavBtn.remove();
-
     const favBtn = document.createElement('button');
     favBtn.className = 'favorite-btn';
     favBtn.textContent = isFavorite(concept.title) ? '⭐' : '☆';
     if (isFavorite(concept.title)) favBtn.classList.add('favorited');
-    favBtn.onclick = () => toggleFavorite(concept.title);
+
+    favBtn.onclick = (e) => {
+        e.stopPropagation(); // Prevent bubbling if needed
+        toggleFavorite(concept.title);
+        // Re-render button state immediately without full re-render
+        favBtn.textContent = isFavorite(concept.title) ? '⭐' : '☆';
+        favBtn.classList.toggle('favorited', isFavorite(concept.title));
+    };
+
     favBtn.setAttribute('aria-label', 'Marcar como favorito');
     card.appendChild(favBtn);
 
@@ -72,8 +82,16 @@ function renderExperiment(index) {
 
     if (answerEl) {
         answerEl.innerHTML = `
-            <p><strong>Reflexión:</strong> ${exp.reflection}</p>
-            <p><strong>Aplicado a ti:</strong> ${exp.application}</p>
+            <div class="experiment-result">
+                <div class="result-block reflection">
+                    <h4>💡 Reflexión Filosófica</h4>
+                    <p>${exp.reflection}</p>
+                </div>
+                <div class="result-block application">
+                    <h4>🫵 Aplicado a ti</h4>
+                    <p>${exp.application}</p>
+                </div>
+            </div>
         `;
     }
 }
