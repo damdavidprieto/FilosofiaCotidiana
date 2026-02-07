@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PRUEBA MÍNIMA</title>
+</head>
+
+<body>
+    <h1>PRUEBA DE FILTRO</h1>
+    <button onclick="testEstoicismo()">Test Estoicismo</button>
+    <div id="result" style="margin-top:20px; padding:20px; background:#f0f0f0;"></div>
+
+    <script>
+        // Mini data
+        const concepts = [
+            { title: "Concepto 1", category: "ESTOICISMO" },
+            { title: "Concepto 2", category: "EXISTENCIALISMO" },
+            { title: "Concepto 3", category: "ESTOICISMO" },
+            { title: "Concepto 4", category: "ORIENTAL" }
+        ];
+
+        function testEstoicismo() {
+            const filtered = concepts.filter(c => c.category === 'ESTOICISMO');
+            document.getElementById('result').innerHTML =
+                `<strong>Filtrados:</strong> ${filtered.length}<br>` +
+                filtered.map(c => `- ${c.title}`).join('<br>');
+        }
+    </script>
+</body>
+
+</html>

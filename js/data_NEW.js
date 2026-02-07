@@ -10,27 +10,27 @@ const concepts = [
     },
     {
         title: "Ataraxia",
-        category: "ETICA",
+        category: "ESTOICISMO",
         quote: "El límite de la magnitud de los placeres es la eliminación de todo dolor.",
         philosopher: "Epicuro",
         application: "Busca la tranquilidad mental evitando deseos innecesarios y miedos infundados. Valora lo simple.",
-        prompt: "Identifica un deseo innecesario que estés persiguiendo hoy. ¿Qué pasaría si lo soltaras?"
+        prompt: "¿Qué deseo innecesario estás persiguiendo hoy que te impide alcanzar la paz?"
     },
     {
         title: "Amor Fati",
-        category: "EXISTENCIALISMO",
-        quote: "Amor Fati: no querer que nada sea distinto, ni en el pasado ni en el futuro.",
+        category: "ESTOICISMO",
+        quote: "Mi fórmula para la grandeza humana es el Amor Fati: no querer que nada sea distinto ni en el pasado ni en el futuro.",
         philosopher: "Friedrich Nietzsche",
         application: "No solo aceptes lo que sucede; ámalo como una parte necesaria de tu historia única.",
-        prompt: "Reflexiona sobre algo difícil que viviste hoy. ¿Puedes amarlo como parte de tu destino?"
+        prompt: "Piensa en algo 'malo' que te haya pasado hoy. ¿Cómo podrías verlo como una oportunidad para crecer?"
     },
     {
-        title: "La Existencia Precede a la Esencia",
+        title: "Existencialismo (Esencia)",
         category: "EXISTENCIALISMO",
         quote: "La existencia precede a la esencia.",
         philosopher: "Jean-Paul Sartre",
         application: "No has nacido con un destino. Eres lo que haces. Tienes la libertad total de definirte hoy.",
-        prompt: "Borra mentalmente todas tus etiquetas (puesto, edad, rol). ¿Quién decidirías ser mañana?"
+        prompt: "Si hoy borraras todas tus etiquetas (puesto, edad, rol), ¿quién decidirías empezar a ser mañana?"
     },
     {
         title: "La Navaja de Ockham",
@@ -81,12 +81,12 @@ const concepts = [
         prompt: "Si hoy fuera el día que se va a repetir por siempre, ¿estarías feliz de revivir estas últimas horas?"
     },
     {
-        title: "Memento Mori",
+        title: "Meditación sobre la Muerte",
         category: "ESTOICISMO",
         quote: "Podrías dejar la vida ahora mismo. Deja que eso determine lo que haces, dices y piensas.",
         philosopher: "Marco Aurelio",
         application: "El Memento Mori no es para deprimirse, sino para priorizar lo que realmente importa y descartar lo trivial.",
-        prompt: "Imagina que te quedan 24 horas de vida. ¿Qué conflicto de hoy perdería toda importancia?"
+        prompt: "Si supieras que te queda 24 horas, ¿qué conflicto o queja de hoy dejaría de tener importancia?"
     },
     {
         title: "Minimalismo Cínico",
@@ -889,85 +889,5 @@ const paradoxes = [
         explanation: "Diderot argumentaba que si un actor sintiera realmente la emoción, no podría controlarla noche tras noche. La verdad escénica nace de la falta de sensibilidad real.",
         reflection: "Nos hace pensar en la autenticidad. ¿Es más real el que siente o el que domina la expresión de lo que siente?",
         application: "A veces, para comunicar bien tus emociones o liderar, debes tomar distancia de ellas, no ahogarte en ellas."
-    },
-    {
-        title: "El Segundo Sexo",
-        category: "CONTEMPORANEO",
-        quote: "No se nace mujer: se llega a serlo.",
-        philosopher: "Simone de Beauvoir",
-        application: "Tu identidad no es un destino biológico, sino una construcción social que puedes cuestionar y redefinir.",
-        prompt: "Escribe sobre un rol que te asignaron desde niño/a. ¿Realmente lo elegiste tú?"
-    },
-    {
-        title: "El Mito de Sísifo",
-        category: "EXISTENCIALISMO",
-        quote: "Hay que imaginarse a Sísifo feliz.",
-        philosopher: "Albert Camus",
-        application: "Aunque la vida sea absurda y repetitiva, encontrar significado en el esfuerzo mismo es la rebelión más noble.",
-        prompt: "Piensa en una tarea repetitiva de tu día. ¿Puedes encontrarle belleza o propósito?"
-    },
-    {
-        title: "La Banalidad del Mal",
-        category: "CONTEMPORANEO",
-        quote: "El mal en el mundo es casi siempre cometido por personas que nunca se decidieron a ser buenas o malas.",
-        philosopher: "Hannah Arendt",
-        application: "No hace falta ser un monstruo para hacer daño. La obediencia ciega y la falta de pensamiento crítico son peligrosas.",
-        prompt: "¿En qué momento hoy obedeciste sin cuestionar? ¿Fue lo correcto?"
-    },
-    {
-        title: "Rectificación de Nombres",
-        category: "ORIENTAL",
-        quote: "Si los nombres no son correctos, el lenguaje carece de objeto. Si el lenguaje carece de objeto, los asuntos no pueden llevarse a efecto.",
-        philosopher: "Confucio",
-        application: "Llama a las cosas por su nombre. Si mientes con las palabras, engañas tu realidad y tus acciones pierden sentido.",
-        prompt: "¿Qué situación estás nombrando incorrectamente para evitar enfrentarla?"
-    },
-    {
-        title: "Wu Wei (No Acción)",
-        category: "ORIENTAL",
-        quote: "El sabio no actúa, y por eso no fracasa.",
-        philosopher: "Lao Tzu",
-        application: "No se trata de no hacer nada, sino de actuar sin forzar, fluyendo con la naturaleza de las cosas.",
-        prompt: "Identifica algo que estés forzando. ¿Qué pasaría si dejaras que fluyera naturalmente?"
-    },
-    {
-        title: "El Velo de la Ignorancia",
-        category: "ETICA",
-        quote: "La justicia es imparcialidad.",
-        philosopher: "John Rawls",
-        application: "Diseña las reglas de la sociedad como si no supieras qué posición ocuparás en ella: rico, pobre, sano, enfermo.",
-        prompt: "Si no supieras tu género, raza o clase social, ¿cambiarías alguna regla de tu entorno?"
-    },
-    {
-        title: "La Muerte de Dios",
-        category: "EXISTENCIALISMO",
-        quote: "Dios ha muerto. Y nosotros lo hemos matado.",
-        philosopher: "Friedrich Nietzsche",
-        application: "Sin valores absolutos impuestos, eres libre pero también responsable de crear tu propio significado.",
-        prompt: "Si no hubiera ninguna autoridad moral externa, ¿qué valores elegirías vivir hoy?"
-    },
-    {
-        title: "El Superhombre",
-        category: "EXISTENCIALISMO",
-        quote: "El hombre es algo que debe ser superado.",
-        philosopher: "Friedrich Nietzsche",
-        application: "No te conformes con lo que eres. Aspira constantemente a una versión superior de ti mismo.",
-        prompt: "¿Qué versión de ti mismo estás evitando convertirte por miedo o comodidad?"
-    },
-    {
-        title: "Cogito Ergo Sum",
-        category: "ETICA",
-        quote: "Pienso, luego existo.",
-        philosopher: "René Descartes",
-        application: "Puedes dudar de todo, pero no de que estás dudando. Tu conciencia es la única certeza absoluta.",
-        prompt: "¿De qué estás absolutamente seguro hoy, más allá de toda duda?"
-    },
-    {
-        title: "El Contrato Social",
-        category: "ETICA",
-        quote: "El hombre nace libre, pero en todas partes está encadenado.",
-        philosopher: "Jean-Jacques Rousseau",
-        application: "Cedemos libertad individual a cambio de seguridad colectiva. Pero ¿es un trato justo?",
-        prompt: "¿Qué libertad personal has sacrificado por pertenecer a tu comunidad o trabajo?"
     }
 ];

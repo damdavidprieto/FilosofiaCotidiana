@@ -159,11 +159,16 @@ h2::after {
     letter-spacing: 1.5px;
     cursor: pointer;
     transition: var(--transition);
+    margin-top: 2rem;
 }
 
 .btn-premium:hover {
     background: var(--accent-dark);
     transform: scale(1.05);
+}
+
+.concept-actions {
+    margin-top: 3rem !important;
 }
 
 /* Thought Experiment Options */
@@ -381,9 +386,13 @@ textarea:focus {
 
     /* Buttons */
     .btn-premium {
-        padding: 1rem 2rem;
+        padding: 2rem;
         font-size: 0.85rem;
         letter-spacing: 1px;
+    }
+
+    .concept-actions {
+        margin-top: 1.5rem;
     }
 
     /* Ornaments - hide on very small screens */
