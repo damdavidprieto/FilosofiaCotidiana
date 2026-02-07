@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TEST - Filtros de Categoría</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .active {
+            background: #0f0;
+            color: #000;
+            font-weight: bold;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        .concept-item {
+            background: #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 4px solid #0f0;
+        }
+
+        #debug {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            border: 2px solid #f00;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🧪 TEST DE FILTROS</h1>
+    <div id="debug">Cargando...</div>
+
+    <div>
+        <button onclick="testFilter('TODOS')" class="active">TODOS</button>
+        <button onclick="testFilter('ESTOICISMO')">ESTOICISMO</button>
+        <button onclick="testFilter('EXISTENCIALISMO')">EXISTENCIALISMO</button>
+        <button onclick="testFilter('ORIENTAL')">ORIENTAL</button>
+        <button onclick="testFilter('ETICA')">ÉTICA</button>
+        <button onclick="testFilter('CONTEMPORANEO')">CONTEMPORÁNEO</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script src="js/data.js?t=20260207091900"></script>
+    <script>
+        // Verificar que concepts existe
+        const debugDiv = document.getElementById('debug');
+        const resultsDiv = document.getElementById('results');
+
+        if (typeof concepts === 'undefined') {
+            debugDiv.innerHTML = '❌ ERROR: concepts no está definido!';
+            debugDiv.style.borderColor = '#f00';
+        } else {
+            debugDiv.innerHTML = `✅ Concepts cargados: ${concepts.length}`;
+            debugDiv.style.borderColor = '#0f0';
+            debugDiv.style.color = '#0f0';
+
+            // Verificar si tienen category
+            const firstWithCategory = concepts.find(c => c.category);
+            if (!firstWithCategory) {
+                debugDiv.innerHTML += '<br>❌ NINGÚN concepto tiene propiedad "category"!';
+                debugDiv.style.color = '#f00';
+            } else {
+                debugDiv.innerHTML += `<br>✅ Primer category encontrado: "${firstWithCategory.category}"`;
+            }
+        }
+
+        function testFilter(category) {
+            // Actualizar botones
+            document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            let filtered;
+            if (category === 'TODOS') {
+                filtered = concepts;
+            } else {
+                filtered = concepts.filter(c => c.category === category);
+            }
+
+            debugDiv.innerHTML = `Categoría: ${category}<br>Encontrados: ${filtered.length} conceptos`;
+
+            resultsDiv.innerHTML = '<h2>Resultados:</h2>';
+            if (filtered.length === 0) {
+                resultsDiv.innerHTML += '<p style="color: #f00; font-size: 24px;">❌ NO SE ENCONTRÓ NADA</p>';
+            } else {
+                filtered.forEach(c => {
+                    resultsDiv.innerHTML += `<div class="concept-item">
+                        <strong>${c.title}</strong> (${c.category || 'SIN CATEGORY'})
+                    </div>`;
+                });
+            }
+        }
+
+        // Mostrar todos al cargar
+        testFilter('TODOS');
+    </script>
+</body>
+
+</html>
