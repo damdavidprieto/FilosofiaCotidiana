@@ -1009,15 +1009,14 @@ body {
     padding: 2rem;
     background: var(--bg-primary);
     border-top: 1px solid var(--border-light);
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: max-height 0.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.4s;
     opacity: 0;
     visibility: hidden;
+    max-height: 0;
 }
 
 .accordion-section.active .accordion-content {
-    max-height: 5000px;
     opacity: 1;
     visibility: visible;
 }

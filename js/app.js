@@ -213,6 +213,22 @@ function updateConceptsPagination() {
 
     if (prevBtn) prevBtn.disabled = APP_STATE.conceptsPage <= 1;
     if (nextBtn) nextBtn.disabled = APP_STATE.conceptsPage >= totalPages;
+
+    // Actualizar altura del acordeón después de cambiar contenido
+    updateAccordionHeight('concepts');
+}
+
+function updateAccordionHeight(section) {
+    const targetSection = document.getElementById(`${section}-section`);
+    if (!targetSection || !targetSection.classList.contains('active')) return;
+
+    const content = targetSection.querySelector('.accordion-content');
+    if (!content) return;
+
+    setTimeout(() => {
+        content.style.maxHeight = 'none';
+        content.style.maxHeight = content.scrollHeight + 50 + 'px';
+    }, 0);
 }
 
 function createConceptCard(concept) {
@@ -370,12 +386,20 @@ function toggleAccordion(section, forceOpen = false) {
     const targetSection = document.getElementById(`${section}-section`);
     if (!targetSection) return;
 
+    const content = targetSection.querySelector('.accordion-content');
     const isActive = targetSection.classList.contains('active');
 
     if (forceOpen || !isActive) {
         targetSection.classList.add('active');
+        if (content) {
+            content.style.maxHeight = 'none';
+            content.style.maxHeight = content.scrollHeight + 50 + 'px';
+        }
     } else {
         targetSection.classList.remove('active');
+        if (content) {
+            content.style.maxHeight = '0';
+        }
     }
 
     APP_STATE.activeAccordion = section;
@@ -488,6 +512,9 @@ function updateParadoxesPagination(paradoxes = PARADOXES_DATABASE) {
 
     if (prevBtn) prevBtn.disabled = APP_STATE.paradoxesPage <= 1;
     if (nextBtn) nextBtn.disabled = APP_STATE.paradoxesPage >= totalPages;
+
+    // Actualizar altura del acordeón después de cambiar contenido
+    updateAccordionHeight('paradoxes');
 }
 
 function showParadoxDetail(paradox) {
