@@ -36,6 +36,10 @@ function initializeApp() {
     loadJournalPrompt();
     loadJournalHistory();
 
+    // Inicializar paradojas
+    renderParadoxCategories();
+    renderParadoxesGrid();
+
     // Calcular racha
     calculateStreak();
 }
@@ -326,6 +330,90 @@ function getRandomConcept() {
     ];
 }
 
+// ============= PARADOXES FUNCTIONS =============
+function renderParadoxCategories() {
+    const container = document.getElementById('paradox-categories');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const allBtn = document.createElement('button');
+    allBtn.className = 'paradox-category-pill active';
+    allBtn.textContent = 'Todas';
+    allBtn.onclick = () => filterParadoxesByCategory('Todas');
+    container.appendChild(allBtn);
+
+    const categories = getParadoxCategories();
+    categories.forEach(category => {
+        const btn = document.createElement('button');
+        btn.className = 'paradox-category-pill';
+        btn.textContent = category;
+        btn.onclick = () => filterParadoxesByCategory(category);
+        container.appendChild(btn);
+    });
+}
+
+function renderParadoxesGrid(paradoxes = PARADOXES_DATABASE) {
+    const grid = document.getElementById('paradoxes-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    if (paradoxes.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 2rem;">No se encontraron paradojas.</p>';
+        return;
+    }
+
+    paradoxes.forEach(paradox => {
+        const card = document.createElement('div');
+        card.className = 'paradox-card';
+        card.innerHTML = `
+            <h3>${paradox.title}</h3>
+            <p class="paradox-preview">${paradox.explanation.substring(0, 120)}...</p>
+            <span class="paradox-category-label">${paradox.category}</span>
+        `;
+        card.onclick = () => showParadoxDetail(paradox);
+        grid.appendChild(card);
+    });
+}
+
+function showParadoxDetail(paradox) {
+    const featured = document.getElementById('featured-paradox');
+    if (!featured) return;
+
+    document.getElementById('paradox-title-expanded').textContent = paradox.title;
+    document.getElementById('paradox-explanation-expanded').textContent = paradox.explanation;
+    document.getElementById('paradox-reflection-expanded').textContent = paradox.reflection;
+    document.getElementById('paradox-application-expanded').textContent = paradox.application;
+    document.getElementById('paradox-philosopher-expanded').textContent = `${paradox.philosopher} • ${paradox.category}`;
+
+    featured.style.display = 'block';
+    window.scrollTo({ top: featured.offsetTop - 100, behavior: 'smooth' });
+}
+
+function closeParadoxFeatured() {
+    const featured = document.getElementById('featured-paradox');
+    if (featured) featured.style.display = 'none';
+}
+
+function filterParadoxesByCategory(category) {
+    document.querySelectorAll('.paradox-category-pill').forEach(pill => {
+        pill.classList.toggle('active', pill.textContent === category);
+    });
+
+    const filtered = category === 'Todas'
+        ? PARADOXES_DATABASE
+        : getParadoxesByCategory(category);
+
+    renderParadoxesGrid(filtered);
+}
+
+function searchParadoxSearch() {
+    const query = document.getElementById('paradox-search-input').value;
+    const results = query ? searchParadoxes(query) : PARADOXES_DATABASE;
+    renderParadoxesGrid(results);
+}
+
 // Exponer funciones globales necesarias
 window.toggleTheme = toggleTheme;
 window.loadFeatured = loadFeatured;
@@ -336,3 +424,7 @@ window.saveJournalEntry = saveJournalEntry;
 window.toggleJournalHistory = toggleJournalHistory;
 window.toggleConceptFavorite = toggleConceptFavorite;
 window.viewConceptDetail = viewConceptDetail;
+window.showParadoxDetail = showParadoxDetail;
+window.closeParadoxFeatured = closeParadoxFeatured;
+window.filterParadoxesByCategory = filterParadoxesByCategory;
+window.searchParadoxSearch = searchParadoxSearch;

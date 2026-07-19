@@ -97,6 +97,54 @@
             </div>
         </main>
 
+        <!-- PARADOXES SECTION -->
+        <section class="paradoxes-section">
+            <h2 class="section-title">🎭 Paradojas Filosóficas</h2>
+            <p class="section-subtitle">Dilemas clásicos que desafían tu lógica</p>
+
+            <!-- Paradox Search -->
+            <div class="paradox-search-box">
+                <input type="text" id="paradox-search-input" placeholder="Buscar paradojas..." class="search-input" oninput="searchParadoxSearch()">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <!-- Paradox Categories -->
+            <div class="paradox-categories" id="paradox-categories">
+                <!-- Generado dinámicamente -->
+            </div>
+
+            <!-- Paradoxes Grid -->
+            <div class="paradoxes-grid" id="paradoxes-grid">
+                <!-- Generado dinámicamente -->
+            </div>
+
+            <!-- Featured Paradox (Expandido) -->
+            <div class="featured-paradox" id="featured-paradox" style="display: none; margin-top: 3rem;">
+                <div class="paradox-card-expanded">
+                    <h3 class="paradox-title" id="paradox-title-expanded">...</h3>
+                    <div class="paradox-section-content">
+                        <div class="paradox-item">
+                            <h4>🤔 El Dilema</h4>
+                            <p id="paradox-explanation-expanded">...</p>
+                        </div>
+                        <div class="paradox-item">
+                            <h4>💭 Reflexión</h4>
+                            <p id="paradox-reflection-expanded">...</p>
+                        </div>
+                        <div class="paradox-item">
+                            <h4>🎯 Aplicación</h4>
+                            <p id="paradox-application-expanded">...</p>
+                        </div>
+                        <div class="paradox-item">
+                            <h4>📚 Origen</h4>
+                            <p id="paradox-philosopher-expanded">...</p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="closeParadoxFeatured()">Cerrar</button>
+                </div>
+            </div>
+        </section>
+
         <!-- JOURNAL SECTION -->
         <section class="journal-section">
             <h2 class="section-title">📝 Mi Bitácora de Reflexión</h2>
@@ -150,6 +198,7 @@
 
     <!-- Scripts -->
     <script src="js/concepts-data.js"></script>
+    <script src="js/paradoxes-data.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
