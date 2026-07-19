@@ -159,11 +159,15 @@ function loadFeatured() {
     const concept = getRandomConcept();
     APP_STATE.currentConcept = concept;
 
-    document.getElementById('featured-title').textContent = concept.title;
-    document.getElementById('featured-quote').textContent = `"${concept.quote}"`;
+    // Translate if needed
+    const currentLang = getCurrentLanguage();
+    const translatedConcept = translateConcept(concept, currentLang);
+
+    document.getElementById('featured-title').textContent = translatedConcept.title;
+    document.getElementById('featured-quote').textContent = `"${translatedConcept.quote}"`;
     document.getElementById('featured-philosopher').textContent = concept.philosopher + (concept.era ? ` (${concept.era})` : '');
-    document.getElementById('featured-school').textContent = concept.school || concept.category;
-    document.getElementById('featured-application').textContent = concept.application;
+    document.getElementById('featured-school').textContent = translatedConcept.category;
+    document.getElementById('featured-application').textContent = translatedConcept.application;
 
     updateFavoriteButton();
 }
@@ -265,7 +269,7 @@ function renderConceptsGrid() {
     grid.innerHTML = '';
 
     if (APP_STATE.filteredConcepts.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 3rem;">No se encontraron conceptos. Intenta otro búsqueda.</p>';
+        grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 3rem;">${t('no_concepts_found')}</p>`;
         updateConceptsPagination();
         return;
     }
@@ -295,7 +299,9 @@ function updateConceptsPagination() {
     const nextBtn = btns[1];
 
     if (pageIndicator) {
-        pageIndicator.textContent = `Página ${APP_STATE.conceptsPage} de ${totalPages}`;
+        pageIndicator.textContent = t('pagination_page')
+            .replace('{page}', APP_STATE.conceptsPage)
+            .replace('{total}', totalPages);
     }
 
     if (prevBtn) prevBtn.disabled = APP_STATE.conceptsPage <= 1;
@@ -306,14 +312,18 @@ function createConceptCard(concept) {
     const card = document.createElement('div');
     card.className = 'concept-card';
 
+    // Translate concept if needed
+    const currentLang = getCurrentLanguage();
+    const translatedConcept = translateConcept(concept, currentLang);
+
     const isFavorite = APP_STATE.favorites.some(f => f.title === concept.title);
 
     card.innerHTML = `
-        <span class="category-badge">${concept.category}</span>
-        <h3 class="concept-title">${concept.title}</h3>
+        <span class="category-badge">${translatedConcept.category}</span>
+        <h3 class="concept-title">${translatedConcept.title}</h3>
         <p class="philosopher">${concept.philosopher}${concept.era ? ` (${concept.era})` : ''}</p>
-        <p class="quote">"${concept.quote}"</p>
-        <div class="application">${concept.application}</div>
+        <p class="quote">"${translatedConcept.quote}"</p>
+        <div class="application">${translatedConcept.application}</div>
         <div class="card-actions">
             <button class="btn-icon" title="Favorito" onclick="event.stopPropagation(); toggleConceptFavorite(this, '${concept.title}')">
                 ${isFavorite ? '♥' : '♡'}
@@ -518,7 +528,7 @@ function renderParadoxesGrid(paradoxes = PARADOXES_DATABASE) {
     grid.innerHTML = '';
 
     if (paradoxes.length === 0) {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 2rem;">No se encontraron paradojas.</p>';
+        grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 2rem;">${t('no_paradoxes_found')}</p>`;
         updateParadoxesPagination(paradoxes);
         return;
     }
@@ -555,7 +565,9 @@ function updateParadoxesPagination(paradoxes = PARADOXES_DATABASE) {
     const nextBtn = btns[1];
 
     if (pageIndicator) {
-        pageIndicator.textContent = `Página ${APP_STATE.paradoxesPage} de ${totalPages}`;
+        pageIndicator.textContent = t('pagination_page')
+            .replace('{page}', APP_STATE.paradoxesPage)
+            .replace('{total}', totalPages);
     }
 
     if (prevBtn) prevBtn.disabled = APP_STATE.paradoxesPage <= 1;
