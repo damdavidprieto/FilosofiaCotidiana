@@ -15,14 +15,13 @@ const APP_STATE = {
     searchQuery: '',
     conceptsPage: 1,
     paradoxesPage: 1,
-    itemsPerPage: getItemsPerPage(),
-    activeAccordion: 'concepts'
+    itemsPerPage: getItemsPerPage()
 };
 
 function getItemsPerPage() {
-    if (window.innerWidth < 480) return 3;  // Mobile: 3 items
-    if (window.innerWidth < 768) return 5;  // Tablet: 5 items
-    return 9;                                // Desktop: 9 items
+    if (window.innerWidth < 480) return 5;  // Mobile: 5 items
+    if (window.innerWidth < 768) return 8;  // Tablet: 8 items
+    return 10;                               // Desktop: 10 items
 }
 
 // ============= INITIALIZATION =============
@@ -40,6 +39,13 @@ window.addEventListener('resize', () => {
         renderConceptsGrid();
         renderParadoxesGrid();
     }
+});
+
+// Recalcular también cuando la página carga completamente
+window.addEventListener('load', () => {
+    APP_STATE.itemsPerPage = getItemsPerPage();
+    renderConceptsGrid();
+    renderParadoxesGrid();
 });
 
 function initializeApp() {
@@ -61,9 +67,6 @@ function initializeApp() {
     // Inicializar paradojas
     renderParadoxCategories();
     renderParadoxesGrid();
-
-    // Abrir primer acordeón por defecto
-    toggleAccordion('concepts', true);
 
     // Calcular racha
     calculateStreak();
@@ -383,21 +386,6 @@ function getRandomConcept() {
     ];
 }
 
-// ============= ACCORDION MANAGEMENT =============
-function toggleAccordion(section, forceOpen = false) {
-    const targetSection = document.getElementById(`${section}-section`);
-    if (!targetSection) return;
-
-    const isActive = targetSection.classList.contains('active');
-
-    if (forceOpen || !isActive) {
-        targetSection.classList.add('active');
-    } else {
-        targetSection.classList.remove('active');
-    }
-
-    APP_STATE.activeAccordion = section;
-}
 
 // ============= PAGINATION MANAGEMENT =============
 function nextConceptsPage() {
@@ -561,7 +549,6 @@ window.showParadoxDetail = showParadoxDetail;
 window.closeParadoxFeatured = closeParadoxFeatured;
 window.filterParadoxesByCategory = filterParadoxesByCategory;
 window.searchParadoxSearch = searchParadoxSearch;
-window.toggleAccordion = toggleAccordion;
 window.nextConceptsPage = nextConceptsPage;
 window.prevConceptsPage = prevConceptsPage;
 window.nextParadoxesPage = nextParadoxesPage;

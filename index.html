@@ -78,149 +78,127 @@
         </div>
 
 
-        <!-- MAIN CONTENT WITH ACCORDION -->
+        <!-- MAIN CONTENT -->
         <main class="main-content">
-            <!-- CONCEPTS ACCORDION -->
-            <div class="accordion-section active" id="concepts-section">
-                <button class="accordion-header" onclick="toggleAccordion('concepts')">
-                    <span class="accordion-title">📚 Conceptos Filosóficos</span>
-                    <span class="accordion-icon">▼</span>
-                </button>
-                <div class="accordion-content" id="concepts-accordion">
-                    <div class="search-box" style="margin-bottom: 1.5rem;">
-                        <input type="text" id="search-input" placeholder="Buscar conceptos, filósofos..." class="search-input" oninput="filterConcepts()">
-                        <span class="search-icon">🔍</span>
-                    </div>
+            <h2 class="section-title">📚 Conceptos Filosóficos</h2>
 
-                    <div class="filter-pills" id="filter-pills">
-                        <!-- Generado dinámicamente -->
-                    </div>
+            <div class="search-box" style="margin-bottom: 1.5rem;">
+                <input type="text" id="search-input" placeholder="Buscar conceptos, filósofos..." class="search-input" oninput="filterConcepts()">
+                <span class="search-icon">🔍</span>
+            </div>
 
-                    <div class="concepts-grid" id="concepts-grid">
-                        <!-- Generado dinámicamente -->
-                    </div>
+            <div class="filter-pills" id="filter-pills">
+                <!-- Generado dinámicamente -->
+            </div>
 
-                    <div class="pagination-controls" id="concepts-pagination">
-                        <button class="btn-pagination" onclick="prevConceptsPage()">← Anterior</button>
-                        <span class="page-indicator" id="concepts-page-indicator">Página 1</span>
-                        <button class="btn-pagination" onclick="nextConceptsPage()">Siguiente →</button>
-                    </div>
-                </div>
+            <div class="concepts-grid" id="concepts-grid">
+                <!-- Generado dinámicamente -->
+            </div>
+
+            <div class="pagination-controls" id="concepts-pagination">
+                <button class="btn-pagination" onclick="prevConceptsPage()">← Anterior</button>
+                <span class="page-indicator" id="concepts-page-indicator">Página 1</span>
+                <button class="btn-pagination" onclick="nextConceptsPage()">Siguiente →</button>
             </div>
         </main>
 
-        <!-- PARADOXES ACCORDION -->
-        <div class="accordion-section" id="paradoxes-section">
-            <button class="accordion-header" onclick="toggleAccordion('paradoxes')">
-                <span class="accordion-title">🎭 Paradojas Filosóficas</span>
-                <span class="accordion-icon">▼</span>
-            </button>
-            <div class="accordion-content" id="paradoxes-accordion">
-                <p class="section-subtitle" style="margin-bottom: 1.5rem;">Dilemas clásicos que desafían tu lógica</p>
+        <!-- PARADOXES SECTION -->
+        <section class="paradoxes-section">
+            <h2 class="section-title">🎭 Paradojas Filosóficas</h2>
+            <p class="section-subtitle">Dilemas clásicos que desafían tu lógica</p>
 
-                <!-- Paradox Search -->
-                <div class="paradox-search-box" style="margin-bottom: 1.5rem;">
-                    <input type="text" id="paradox-search-input" placeholder="Buscar paradojas..." class="search-input" oninput="searchParadoxSearch()">
-                    <span class="search-icon">🔍</span>
-                </div>
+            <!-- Paradox Search -->
+            <div class="paradox-search-box" style="margin-bottom: 1.5rem;">
+                <input type="text" id="paradox-search-input" placeholder="Buscar paradojas..." class="search-input" oninput="searchParadoxSearch()">
+                <span class="search-icon">🔍</span>
+            </div>
 
-                <!-- Paradox Categories -->
-                <div class="paradox-categories" id="paradox-categories">
-                    <!-- Generado dinámicamente -->
-                </div>
+            <!-- Paradox Categories -->
+            <div class="paradox-categories" id="paradox-categories">
+                <!-- Generado dinámicamente -->
+            </div>
 
-                <!-- Paradoxes Grid -->
-                <div class="paradoxes-grid" id="paradoxes-grid">
-                    <!-- Generado dinámicamente -->
-                </div>
+            <!-- Paradoxes Grid -->
+            <div class="paradoxes-grid" id="paradoxes-grid">
+                <!-- Generado dinámicamente -->
+            </div>
 
-                <div class="pagination-controls" id="paradoxes-pagination">
-                    <button class="btn-pagination" onclick="prevParadoxesPage()">← Anterior</button>
-                    <span class="page-indicator" id="paradoxes-page-indicator">Página 1</span>
-                    <button class="btn-pagination" onclick="nextParadoxesPage()">Siguiente →</button>
-                </div>
+            <div class="pagination-controls" id="paradoxes-pagination">
+                <button class="btn-pagination" onclick="prevParadoxesPage()">← Anterior</button>
+                <span class="page-indicator" id="paradoxes-page-indicator">Página 1</span>
+                <button class="btn-pagination" onclick="nextParadoxesPage()">Siguiente →</button>
+            </div>
 
-                <!-- Featured Paradox (Expandido) -->
-                <div class="featured-paradox" id="featured-paradox" style="display: none; margin-top: 3rem;">
-                    <div class="paradox-card-expanded">
-                        <h3 class="paradox-title" id="paradox-title-expanded">...</h3>
-                        <div class="paradox-section-content">
-                            <div class="paradox-item">
-                                <h4>🤔 El Dilema</h4>
-                                <p id="paradox-explanation-expanded">...</p>
-                            </div>
-                            <div class="paradox-item">
-                                <h4>💭 Reflexión</h4>
-                                <p id="paradox-reflection-expanded">...</p>
-                            </div>
-                            <div class="paradox-item">
-                                <h4>🎯 Aplicación</h4>
-                                <p id="paradox-application-expanded">...</p>
-                            </div>
-                            <div class="paradox-item">
-                                <h4>📚 Origen</h4>
-                                <p id="paradox-philosopher-expanded">...</p>
-                            </div>
+            <!-- Featured Paradox (Expandido) -->
+            <div class="featured-paradox" id="featured-paradox" style="display: none; margin-top: 3rem;">
+                <div class="paradox-card-expanded">
+                    <h3 class="paradox-title" id="paradox-title-expanded">...</h3>
+                    <div class="paradox-section-content">
+                        <div class="paradox-item">
+                            <h4>🤔 El Dilema</h4>
+                            <p id="paradox-explanation-expanded">...</p>
                         </div>
-                        <button class="btn-secondary" onclick="closeParadoxFeatured()">Cerrar</button>
+                        <div class="paradox-item">
+                            <h4>💭 Reflexión</h4>
+                            <p id="paradox-reflection-expanded">...</p>
+                        </div>
+                        <div class="paradox-item">
+                            <h4>🎯 Aplicación</h4>
+                            <p id="paradox-application-expanded">...</p>
+                        </div>
+                        <div class="paradox-item">
+                            <h4>📚 Origen</h4>
+                            <p id="paradox-philosopher-expanded">...</p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="closeParadoxFeatured()">Cerrar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOURNAL SECTION -->
+        <section class="journal-section">
+            <h2 class="section-title">📝 Mi Bitácora de Reflexión</h2>
+            <div class="journal-container">
+                <div class="journal-card">
+                    <p class="journal-prompt" id="journal-prompt">Pregunta del día: ¿Cómo puedes aplicar la sabiduría a tu vida hoy?</p>
+                    <textarea id="journal-entry" class="journal-textarea" placeholder="Escribe tu reflexión aquí. Solo tú lo verás..."></textarea>
+                    <div class="journal-buttons">
+                        <button class="btn-primary" onclick="saveJournalEntry()">Guardar Reflexión</button>
+                        <button class="btn-secondary" onclick="toggleJournalHistory()">Ver Historial</button>
+                    </div>
+                    <p class="privacy-note">🔒 Privacidad total: Tus datos nunca salen de este navegador.</p>
+                </div>
+
+                <!-- Journal History -->
+                <div class="journal-history" id="journal-history" style="display: none;">
+                    <h3>Mis Reflexiones</h3>
+                    <div id="journal-entries-list">
+                        <!-- Generado dinámicamente -->
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- JOURNAL ACCORDION -->
-        <div class="accordion-section" id="journal-section">
-            <button class="accordion-header" onclick="toggleAccordion('journal')">
-                <span class="accordion-title">📝 Mi Bitácora de Reflexión</span>
-                <span class="accordion-icon">▼</span>
-            </button>
-            <div class="accordion-content" id="journal-accordion">
-                <div class="journal-container">
-                    <div class="journal-card">
-                        <p class="journal-prompt" id="journal-prompt">Pregunta del día: ¿Cómo puedes aplicar la sabiduría a tu vida hoy?</p>
-                        <textarea id="journal-entry" class="journal-textarea" placeholder="Escribe tu reflexión aquí. Solo tú lo verás..."></textarea>
-                        <div class="journal-buttons">
-                            <button class="btn-primary" onclick="saveJournalEntry()">Guardar Reflexión</button>
-                            <button class="btn-secondary" onclick="toggleJournalHistory()">Ver Historial</button>
-                        </div>
-                        <p class="privacy-note">🔒 Privacidad total: Tus datos nunca salen de este navegador.</p>
-                    </div>
-
-                    <!-- Journal History -->
-                    <div class="journal-history" id="journal-history" style="display: none;">
-                        <h3>Mis Reflexiones</h3>
-                        <div id="journal-entries-list">
-                            <!-- Generado dinámicamente -->
-                        </div>
-                    </div>
-                </div>
+        <!-- ABOUT SECTION -->
+        <section class="about-section">
+            <h2 class="section-title">📚 Sobre Este Proyecto</h2>
+            <div class="about-content">
+                <p>Filosofía Cotidiana es un proyecto dedicado a acercar el pensamiento profundo a la vida real. Cada concepto incluye:</p>
+                <ul>
+                    <li>✓ Una cita verificada del filósofo original</li>
+                    <li>✓ Contexto histórico y escuela de pensamiento</li>
+                    <li>✓ Aplicación práctica para tu vida hoy</li>
+                    <li>✓ Preguntas para tu reflexión personal</li>
+                    <li>✓ Referencias académicas y fuentes</li>
+                </ul>
+                <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.95rem;">
+                    Creado con rigor por <strong>David Prieto</strong> |
+                    <a href="https://github.com/damdavidprieto/FilosofiaCotidiana" target="_blank" class="link">GitHub</a> |
+                    MIT License
+                </p>
             </div>
-        </div>
-
-        <!-- ABOUT ACCORDION -->
-        <div class="accordion-section" id="about-section">
-            <button class="accordion-header" onclick="toggleAccordion('about')">
-                <span class="accordion-title">📚 Sobre Este Proyecto</span>
-                <span class="accordion-icon">▼</span>
-            </button>
-            <div class="accordion-content" id="about-accordion">
-                <div class="about-content">
-                    <p>Filosofía Cotidiana es un proyecto dedicado a acercar el pensamiento profundo a la vida real. Cada concepto incluye:</p>
-                    <ul>
-                        <li>✓ Una cita verificada del filósofo original</li>
-                        <li>✓ Contexto histórico y escuela de pensamiento</li>
-                        <li>✓ Aplicación práctica para tu vida hoy</li>
-                        <li>✓ Preguntas para tu reflexión personal</li>
-                        <li>✓ Referencias académicas y fuentes</li>
-                    </ul>
-                    <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.95rem;">
-                        Creado con rigor por <strong>David Prieto</strong> |
-                        <a href="https://github.com/damdavidprieto/FilosofiaCotidiana" target="_blank" class="link">GitHub</a> |
-                        MIT License
-                    </p>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <!-- FOOTER -->
         <footer class="footer">
