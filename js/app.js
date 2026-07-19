@@ -12,7 +12,11 @@ const APP_STATE = {
     lastVisit: localStorage.getItem('philosophy-last-visit') || new Date().toISOString(),
     currentStreak: parseInt(localStorage.getItem('philosophy-streak')) || 0,
     currentCategory: 'Todos',
-    searchQuery: ''
+    searchQuery: '',
+    conceptsPage: 1,
+    paradoxesPage: 1,
+    itemsPerPage: 9,
+    activeAccordion: 'concepts'
 };
 
 // ============= INITIALIZATION =============
@@ -39,6 +43,9 @@ function initializeApp() {
     // Inicializar paradojas
     renderParadoxCategories();
     renderParadoxesGrid();
+
+    // Abrir primer acordeón por defecto
+    toggleAccordion('concepts', true);
 
     // Calcular racha
     calculateStreak();
@@ -161,6 +168,7 @@ function applyFilters() {
     }
 
     APP_STATE.filteredConcepts = concepts;
+    APP_STATE.conceptsPage = 1; // Reset pagination
     renderConceptsGrid();
 }
 
@@ -171,13 +179,40 @@ function renderConceptsGrid() {
 
     if (APP_STATE.filteredConcepts.length === 0) {
         grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 3rem;">No se encontraron conceptos. Intenta otro búsqueda.</p>';
+        updateConceptsPagination();
         return;
     }
 
-    APP_STATE.filteredConcepts.forEach((concept, idx) => {
+    // Calcular paginación
+    const start = (APP_STATE.conceptsPage - 1) * APP_STATE.itemsPerPage;
+    const end = start + APP_STATE.itemsPerPage;
+    const paginatedConcepts = APP_STATE.filteredConcepts.slice(start, end);
+
+    paginatedConcepts.forEach((concept) => {
         const card = createConceptCard(concept);
         grid.appendChild(card);
     });
+
+    updateConceptsPagination();
+}
+
+function updateConceptsPagination() {
+    const totalPages = Math.ceil(APP_STATE.filteredConcepts.length / APP_STATE.itemsPerPage);
+    const pageIndicator = document.getElementById('concepts-page-indicator');
+    const paginationControls = document.getElementById('concepts-pagination');
+
+    if (!paginationControls) return;
+
+    const btns = paginationControls.querySelectorAll('.btn-pagination');
+    const prevBtn = btns[0];
+    const nextBtn = btns[1];
+
+    if (pageIndicator) {
+        pageIndicator.textContent = `Página ${APP_STATE.conceptsPage} de ${totalPages}`;
+    }
+
+    if (prevBtn) prevBtn.disabled = APP_STATE.conceptsPage <= 1;
+    if (nextBtn) nextBtn.disabled = APP_STATE.conceptsPage >= totalPages;
 }
 
 function createConceptCard(concept) {
@@ -330,6 +365,57 @@ function getRandomConcept() {
     ];
 }
 
+// ============= ACCORDION MANAGEMENT =============
+function toggleAccordion(section, forceOpen = false) {
+    const targetSection = document.getElementById(`${section}-section`);
+    if (!targetSection) return;
+
+    const isActive = targetSection.classList.contains('active');
+
+    if (forceOpen || !isActive) {
+        targetSection.classList.add('active');
+    } else {
+        targetSection.classList.remove('active');
+    }
+
+    APP_STATE.activeAccordion = section;
+}
+
+// ============= PAGINATION MANAGEMENT =============
+function nextConceptsPage() {
+    const totalPages = Math.ceil(APP_STATE.filteredConcepts.length / APP_STATE.itemsPerPage);
+    if (APP_STATE.conceptsPage < totalPages) {
+        APP_STATE.conceptsPage++;
+        renderConceptsGrid();
+        window.scrollTo({ top: document.getElementById('concepts-accordion')?.offsetTop - 100, behavior: 'smooth' });
+    }
+}
+
+function prevConceptsPage() {
+    if (APP_STATE.conceptsPage > 1) {
+        APP_STATE.conceptsPage--;
+        renderConceptsGrid();
+        window.scrollTo({ top: document.getElementById('concepts-accordion')?.offsetTop - 100, behavior: 'smooth' });
+    }
+}
+
+function nextParadoxesPage() {
+    const totalPages = Math.ceil(PARADOXES_DATABASE.length / APP_STATE.itemsPerPage);
+    if (APP_STATE.paradoxesPage < totalPages) {
+        APP_STATE.paradoxesPage++;
+        renderParadoxesGrid();
+        window.scrollTo({ top: document.getElementById('paradoxes-accordion')?.offsetTop - 100, behavior: 'smooth' });
+    }
+}
+
+function prevParadoxesPage() {
+    if (APP_STATE.paradoxesPage > 1) {
+        APP_STATE.paradoxesPage--;
+        renderParadoxesGrid();
+        window.scrollTo({ top: document.getElementById('paradoxes-accordion')?.offsetTop - 100, behavior: 'smooth' });
+    }
+}
+
 // ============= PARADOXES FUNCTIONS =============
 function renderParadoxCategories() {
     const container = document.getElementById('paradox-categories');
@@ -361,10 +447,16 @@ function renderParadoxesGrid(paradoxes = PARADOXES_DATABASE) {
 
     if (paradoxes.length === 0) {
         grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 2rem;">No se encontraron paradojas.</p>';
+        updateParadoxesPagination(paradoxes);
         return;
     }
 
-    paradoxes.forEach(paradox => {
+    // Calcular paginación
+    const start = (APP_STATE.paradoxesPage - 1) * APP_STATE.itemsPerPage;
+    const end = start + APP_STATE.itemsPerPage;
+    const paginatedParadoxes = paradoxes.slice(start, end);
+
+    paginatedParadoxes.forEach(paradox => {
         const card = document.createElement('div');
         card.className = 'paradox-card';
         card.innerHTML = `
@@ -375,6 +467,27 @@ function renderParadoxesGrid(paradoxes = PARADOXES_DATABASE) {
         card.onclick = () => showParadoxDetail(paradox);
         grid.appendChild(card);
     });
+
+    updateParadoxesPagination(paradoxes);
+}
+
+function updateParadoxesPagination(paradoxes = PARADOXES_DATABASE) {
+    const totalPages = Math.ceil(paradoxes.length / APP_STATE.itemsPerPage);
+    const pageIndicator = document.getElementById('paradoxes-page-indicator');
+    const paginationControls = document.getElementById('paradoxes-pagination');
+
+    if (!paginationControls) return;
+
+    const btns = paginationControls.querySelectorAll('.btn-pagination');
+    const prevBtn = btns[0];
+    const nextBtn = btns[1];
+
+    if (pageIndicator) {
+        pageIndicator.textContent = `Página ${APP_STATE.paradoxesPage} de ${totalPages}`;
+    }
+
+    if (prevBtn) prevBtn.disabled = APP_STATE.paradoxesPage <= 1;
+    if (nextBtn) nextBtn.disabled = APP_STATE.paradoxesPage >= totalPages;
 }
 
 function showParadoxDetail(paradox) {
@@ -405,12 +518,14 @@ function filterParadoxesByCategory(category) {
         ? PARADOXES_DATABASE
         : getParadoxesByCategory(category);
 
+    APP_STATE.paradoxesPage = 1; // Reset pagination
     renderParadoxesGrid(filtered);
 }
 
 function searchParadoxSearch() {
     const query = document.getElementById('paradox-search-input').value;
     const results = query ? searchParadoxes(query) : PARADOXES_DATABASE;
+    APP_STATE.paradoxesPage = 1; // Reset pagination
     renderParadoxesGrid(results);
 }
 
@@ -428,3 +543,8 @@ window.showParadoxDetail = showParadoxDetail;
 window.closeParadoxFeatured = closeParadoxFeatured;
 window.filterParadoxesByCategory = filterParadoxesByCategory;
 window.searchParadoxSearch = searchParadoxSearch;
+window.toggleAccordion = toggleAccordion;
+window.nextConceptsPage = nextConceptsPage;
+window.prevConceptsPage = prevConceptsPage;
+window.nextParadoxesPage = nextParadoxesPage;
+window.prevParadoxesPage = prevParadoxesPage;
