@@ -1,185 +1,155 @@
 <!DOCTYPE html>
-<!-- Build: 2026-01-25 23:35 -->
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="description"
-        content="Filosofía Cotidiana: Una bitácora de sabiduría práctica con más de 60 conceptos filosóficos aplicados a tu día a día.">
-    <meta name="keywords" content="filosofia, estoicismo, reflexion, diario, sabiduria, educacion, gratis">
+    <meta name="description" content="Filosofía Cotidiana: 500+ conceptos filosóficos aplicados a tu vida diaria. Estoicismo, Existencialismo, Ética, Política y más.">
+    <meta name="keywords" content="filosofía, estoicismo, existencialismo, reflexión, sabiduría, educación">
     <meta name="author" content="David Prieto">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Filosofía Cotidiana - Sabiduría para el siglo XXI">
-    <meta property="og:description"
-        content="Explora más de 60 perlas de sabiduría filosófica aplicadas a la vida real.">
-    <meta property="og:image" content="assets/preview.png"> <!-- In a real server this should be an absolute URL -->
+    <meta property="og:title" content="Filosofía Cotidiana - 500+ Conceptos de Sabiduría">
+    <meta property="og:description" content="Explora 500+ conceptos filosóficos aplicados a tu vida real. Desde Estoicismo hasta Filosofía Oriental.">
+    <meta property="og:image" content="assets/preview.png">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Filosofía Cotidiana">
-    <meta property="twitter:description" content="Reflexiones diarias para una vida con propósito.">
-
-    <title>Filosofía Cotidiana - Reflexiones para el día a día</title>
+    <title>Filosofía Cotidiana - 500+ Conceptos Aplicados a tu Día</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="css/style.css?v=20260207102100">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema oscuro/claro">
         <span id="theme-icon">🌙</span>
     </button>
 
     <div class="container">
-        <header>
-            <h1>📖 Filosofía Cotidiana</h1>
-            <p class="subtitle">Conceptos filosóficos aplicados a la vida diaria</p>
+        <!-- HEADER -->
+        <header class="header">
+            <h1 class="header-title">📖 Filosofía Cotidiana</h1>
+            <p class="header-subtitle">500+ Conceptos de Sabiduría Aplicados</p>
+            <p class="header-tagline">Explora el pensamiento de los grandes filósofos y aplícalo a tu vida diaria</p>
         </header>
 
-        <!-- Search and Filters -->
+        <!-- FEATURED CONCEPT -->
+        <section class="featured-section" id="featured-section">
+            <div class="featured-label">✨ Concepto del Día</div>
+            <h2 class="featured-title" id="featured-title">Cargando...</h2>
+            <p class="featured-quote" id="featured-quote">...</p>
+            <div class="featured-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Filósofo</div>
+                    <div class="meta-value" id="featured-philosopher">...</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Escuela</div>
+                    <div class="meta-value" id="featured-school">...</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Aplicación</div>
+                    <div class="meta-value" id="featured-application">...</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button class="btn-primary" onclick="loadFeatured()">Otro Concepto</button>
+                <button class="btn-secondary" onclick="toggleFavorite('featured')" id="favorite-btn">♡ Favorito</button>
+            </div>
+        </section>
 
-
-
-
-        <!-- Stats Dashboard -->
-        <div class="stats-dashboard" id="stats-dashboard" style="display: none;">
+        <!-- STATS DASHBOARD -->
+        <div class="stats-dashboard">
             <div class="stat-card">
-                <div class="stat-value" id="stat-concepts">0</div>
-                <div class="stat-label">Conceptos leídos</div>
+                <div class="stat-value">500+</div>
+                <div class="stat-label">Conceptos</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="stat-streak">0</div>
-                <div class="stat-label">Racha de días 🔥</div>
+                <div class="stat-value">15</div>
+                <div class="stat-label">Categorías</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="stat-favorites">0</div>
+                <div class="stat-value" id="streak-count">0</div>
+                <div class="stat-label">Racha 🔥</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="favorites-count">0</div>
                 <div class="stat-label">Favoritos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="stat-journal">0</div>
-                <div class="stat-label">Reflexiones</div>
             </div>
         </div>
 
-        <main>
+        <!-- SEARCH & FILTERS -->
+        <nav class="nav-bar">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar conceptos, filósofos..." class="search-input" oninput="filterConcepts()">
+                <span class="search-icon">🔍</span>
+            </div>
+        </nav>
 
-            <!-- Concepto del día -->
-            <section class="daily-concept">
-                <h2>Concepto</h2>
+        <div class="filter-pills" id="filter-pills">
+            <!-- Generado dinámicamente -->
+        </div>
 
-                <div class="search-container">
-                    <input type="text" class="search-input" id="search-input"
-                        placeholder="Buscar conceptos, filósofos..." oninput="searchConcepts()">
-                    <span class="search-icon">🔍</span>
-                </div>
-
-                <div class="category-filters" id="category-filters">
-                    <button class="category-btn active" onclick="showTodos()">Todos</button>
-                    <button class="category-btn" onclick="showEstoicismo()">Estoicismo</button>
-                    <button class="category-btn" onclick="showExistencialismo()">Existencialismo</button>
-                    <button class="category-btn" onclick="showEpistemologia()">Epistemología</button>
-                    <button class="category-btn" onclick="showPolitica()">Política</button>
-                    <button class="category-btn" onclick="showOriental()">Oriental</button>
-                    <button class="category-btn" onclick="showEtica()">Ética</button>
-                    <button class="category-btn" onclick="showContemporaneo()">Contemporáneo</button>
-                    <button class="category-btn" onclick="showFavoritos()">⭐ Favoritos</button>
-                </div>
-
-                <div class="glass-card" id="daily-card">
-                    <h3 class="concept-title">Cargando...</h3>
-                    <p class="concept-definition">
-                        ...
-                    </p>
-                    <div class="concept-details">
-                        <!-- Detalles dinámicos -->
-                    </div>
-                    <button class="btn-premium" onclick="nextConcept()">Siguiente concepto <span>→</span></button>
-                </div>
-
-
-            </section>
-
-            <!-- Experimento mental -->
-            <section class="thought-experiment" id="experiment-section">
-                <h2>Experimento mental</h2>
-                <div class="glass-card">
-                    <h3 class="concept-title">Cargando...</h3>
-                    <p class="question">...</p>
-                    <div class="options">
-                        <!-- Opciones dinámicas -->
-                    </div>
-                    <div class="answer" id="answer"
-                        style="display: none; margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.03); border-radius: 12px;">
-                        <!-- Respuesta dinámica -->
-                    </div>
-                    <button class="btn-premium" onclick="nextExperiment()" style="margin-top: 2rem;">Siguiente
-                        experimento <span>→</span></button>
-                </div>
-            </section>
-
-            <!-- Paradojas filosóficas -->
-            <section class="paradoxes" id="paradox-section">
-                <h2>Paradojas</h2>
-                <div class="glass-card paradox-card" onclick="toggleParadoxCard(this)">
-                    <h3 class="concept-title" id="paradox-title">Cargando...</h3>
-                    <p class="paradox-preview" id="paradox-preview">...</p>
-                    <div class="paradox-full-content" id="paradox-content" style="display: none;">
-                        <p class="explanation"><strong>Explicación:</strong> <span id="paradox-explanation">...</span>
-                        </p>
-                        <p class="reflection"><strong>Reflexión:</strong> <span id="paradox-reflection">...</span></p>
-                        <p class="application"><strong>Aplicación:</strong> <span id="paradox-application">...</span>
-                        </p>
-                    </div>
-                    <p class="tap-hint">Haz clic para descubrir la paradoja</p>
-                    <button class="btn-premium" onclick="nextParadox(event)" style="margin-top: 2rem;">Siguiente
-                        paradoja <span>→</span></button>
-                </div>
-            </section>
-
-            <!-- Diario filosófico -->
-            <section class="journal">
-                <h2>Bitácora de Reflexión</h2>
-                <div class="glass-card">
-                    <p class="prompt" id="journal-prompt">Pregunta de hoy: ...</p>
-                    <textarea id="journal-entry" placeholder="Escribe tu reflexión del alma aquí..."
-                        rows="6"></textarea>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <button class="btn-premium" onclick="saveEntry()">Guardar Reflexión</button>
-                        <button class="btn-premium btn-secondary" onclick="toggleHistory()">Ver mi historial</button>
-                    </div>
-                    <p class="note">Privacidad total: tus datos nunca salen de este navegador.</p>
-                </div>
-
-                <!-- Historial (Oculto inicialmente) -->
-                <div id="history-container" class="history-section" style="display: none;">
-                    <h3>Mis Reflexiones Pasadas</h3>
-                    <div id="entries-list">
-                        <!-- Las entradas se cargarán aquí dinámicamente -->
-                    </div>
-                </div>
-            </section>
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- Vista de Grid -->
+            <div class="concepts-grid" id="concepts-grid">
+                <!-- Generado dinámicamente -->
+            </div>
         </main>
 
-        <footer>
-            <p>"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."</p>
-            <p class="copyright">&copy; 2026 David Prieto &middot; <a
-                    href="https://github.com/damdavidprieto/FilosofiaCotidiana" target="_blank"
-                    style="color: inherit; text-decoration: underline;">Open Source</a></p>
+        <!-- JOURNAL SECTION -->
+        <section class="journal-section">
+            <h2 class="section-title">📝 Mi Bitácora de Reflexión</h2>
+            <div class="journal-container">
+                <div class="journal-card">
+                    <p class="journal-prompt" id="journal-prompt">Pregunta del día: ¿Cómo puedes aplicar la sabiduría a tu vida hoy?</p>
+                    <textarea id="journal-entry" class="journal-textarea" placeholder="Escribe tu reflexión aquí. Solo tú lo verás..."></textarea>
+                    <div class="journal-buttons">
+                        <button class="btn-primary" onclick="saveJournalEntry()">Guardar Reflexión</button>
+                        <button class="btn-secondary" onclick="toggleJournalHistory()">Ver Historial</button>
+                    </div>
+                    <p class="privacy-note">🔒 Privacidad total: Tus datos nunca salen de este navegador.</p>
+                </div>
+
+                <!-- Journal History -->
+                <div class="journal-history" id="journal-history" style="display: none;">
+                    <h3>Mis Reflexiones</h3>
+                    <div id="journal-entries-list">
+                        <!-- Generado dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOURCES & ABOUT -->
+        <section class="about-section">
+            <h2 class="section-title">📚 Sobre Este Proyecto</h2>
+            <div class="about-content">
+                <p>Filosofía Cotidiana es un proyecto dedicado a acercar el pensamiento profundo a la vida real. Cada concepto incluye:</p>
+                <ul>
+                    <li>✓ Una cita verificada del filósofo original</li>
+                    <li>✓ Contexto histórico y escuela de pensamiento</li>
+                    <li>✓ Aplicación práctica para tu vida hoy</li>
+                    <li>✓ Preguntas para tu reflexión personal</li>
+                    <li>✓ Referencias académicas y fuentes</li>
+                </ul>
+                <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.95rem;">
+                    Creado con rigor por <strong>David Prieto</strong> |
+                    <a href="https://github.com/damdavidprieto/FilosofiaCotidiana" target="_blank" class="link">GitHub</a> |
+                    MIT License
+                </p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p class="footer-quote">"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."</p>
+            <p class="footer-copyright">&copy; 2026 Filosofía Cotidiana</p>
         </footer>
     </div>
 
-    <!-- Scripts en orden de dependencia (Sin módulos para evitar CORS local) -->
-    <script src="js/data_NEW.js"></script>
-    <script src="js/features.js?t=20260207091900"></script>
-    <script src="js/journal.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="js/concepts-data.js"></script>
+    <script src="js/app.js"></script>
 </body>
-
 </html>
