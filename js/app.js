@@ -373,7 +373,7 @@ function loadJournalPrompt() {
 function saveJournalEntry() {
     const text = document.getElementById('journal-entry').value.trim();
     if (!text) {
-        alert('Por favor escribe algo en tu reflexión.');
+        alert(t('alert_write_reflection'));
         return;
     }
 
@@ -391,7 +391,7 @@ function saveJournalEntry() {
     loadJournalHistory();
     updateStats();
 
-    alert('Reflexión guardada. ¡Excelente trabajo!');
+    alert(t('alert_reflection_saved'));
 }
 
 function toggleJournalHistory() {
@@ -541,9 +541,14 @@ function renderParadoxesGrid(paradoxes = PARADOXES_DATABASE) {
     paginatedParadoxes.forEach(paradox => {
         const card = document.createElement('div');
         card.className = 'paradox-card';
+
+        // Translate paradox if needed
+        const currentLang = getCurrentLanguage();
+        const translatedParadox = translateParadox(paradox, currentLang);
+
         card.innerHTML = `
-            <h3>${paradox.title}</h3>
-            <p class="paradox-preview">${paradox.explanation.substring(0, 120)}...</p>
+            <h3>${translatedParadox.title}</h3>
+            <p class="paradox-preview">${translatedParadox.explanation.substring(0, 120)}...</p>
             <span class="paradox-category-label">${paradox.category}</span>
         `;
         card.onclick = () => showParadoxDetail(paradox);
@@ -578,10 +583,14 @@ function showParadoxDetail(paradox) {
     const featured = document.getElementById('featured-paradox');
     if (!featured) return;
 
-    document.getElementById('paradox-title-expanded').textContent = paradox.title;
-    document.getElementById('paradox-explanation-expanded').textContent = paradox.explanation;
-    document.getElementById('paradox-reflection-expanded').textContent = paradox.reflection;
-    document.getElementById('paradox-application-expanded').textContent = paradox.application;
+    // Translate paradox if needed
+    const currentLang = getCurrentLanguage();
+    const translatedParadox = translateParadox(paradox, currentLang);
+
+    document.getElementById('paradox-title-expanded').textContent = translatedParadox.title;
+    document.getElementById('paradox-explanation-expanded').textContent = translatedParadox.explanation;
+    document.getElementById('paradox-reflection-expanded').textContent = translatedParadox.reflection;
+    document.getElementById('paradox-application-expanded').textContent = translatedParadox.application;
     document.getElementById('paradox-philosopher-expanded').textContent = `${paradox.philosopher} • ${paradox.category}`;
 
     featured.style.display = 'block';
