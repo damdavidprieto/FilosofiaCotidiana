@@ -15,13 +15,31 @@ const APP_STATE = {
     searchQuery: '',
     conceptsPage: 1,
     paradoxesPage: 1,
-    itemsPerPage: 9,
+    itemsPerPage: getItemsPerPage(),
     activeAccordion: 'concepts'
 };
+
+function getItemsPerPage() {
+    if (window.innerWidth < 480) return 3;  // Mobile: 3 items
+    if (window.innerWidth < 768) return 5;  // Tablet: 5 items
+    return 9;                                // Desktop: 9 items
+}
 
 // ============= INITIALIZATION =============
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
+});
+
+// Recalcular items por página cuando cambia el tamaño de ventana
+window.addEventListener('resize', () => {
+    const newItemsPerPage = getItemsPerPage();
+    if (newItemsPerPage !== APP_STATE.itemsPerPage) {
+        APP_STATE.itemsPerPage = newItemsPerPage;
+        APP_STATE.conceptsPage = 1;
+        APP_STATE.paradoxesPage = 1;
+        renderConceptsGrid();
+        renderParadoxesGrid();
+    }
 });
 
 function initializeApp() {
