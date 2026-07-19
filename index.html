@@ -24,12 +24,18 @@
         <span id="theme-icon">🌙</span>
     </button>
 
+    <!-- Language Toggle -->
+    <div class="language-selector">
+        <button class="lang-btn active" data-lang="es" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
+    </div>
+
     <div class="container">
         <!-- HEADER -->
         <header class="header">
-            <h1 class="header-title">📖 Filosofía Cotidiana</h1>
-            <p class="header-subtitle">500+ Conceptos de Sabiduría Aplicados</p>
-            <p class="header-tagline">Explora el pensamiento de los grandes filósofos y aplícalo a tu vida diaria</p>
+            <h1 class="header-title" data-i18n="header_title">📖 Filosofía Cotidiana</h1>
+            <p class="header-subtitle" data-i18n="header_subtitle">500+ Conceptos de Sabiduría Aplicados</p>
+            <p class="header-tagline" data-i18n="header_tagline">Explora el pensamiento de los grandes filósofos y aplícalo a tu vida diaria</p>
         </header>
 
         <!-- FEATURED CONCEPT -->
@@ -208,6 +214,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="js/translations.js"></script>
     <script src="js/concepts-data.js"></script>
     <script src="js/paradoxes-data.js"></script>
     <script src="js/app.js"></script>

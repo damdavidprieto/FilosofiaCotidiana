@@ -26,6 +26,7 @@ function getItemsPerPage() {
 
 // ============= INITIALIZATION =============
 document.addEventListener('DOMContentLoaded', () => {
+    updateLanguageUI();
     initializeApp();
 });
 
@@ -47,6 +48,71 @@ window.addEventListener('load', () => {
     renderConceptsGrid();
     renderParadoxesGrid();
 });
+
+// ============= LANGUAGE MANAGEMENT =============
+function updateLanguageUI() {
+    const currentLang = getCurrentLanguage();
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+    });
+
+    // Actualizar header
+    document.querySelector('.header-title').textContent = t('header_title');
+    document.querySelector('.header-subtitle').textContent = t('header_subtitle');
+    document.querySelector('.header-tagline').textContent = t('header_tagline');
+
+    // Actualizar featured section
+    document.querySelector('.featured-label').textContent = t('featured_label');
+    document.querySelector('[aria-label="Cambiar tema oscuro/claro"]').title = currentLang === 'es' ? 'Cambiar tema' : 'Alterar tema';
+
+    // Actualizar stats
+    const statCards = document.querySelectorAll('.stat-card');
+    if (statCards.length >= 4) {
+        statCards[0].querySelector('.stat-label').textContent = t('stat_concepts');
+        statCards[1].querySelector('.stat-label').textContent = t('stat_categories');
+        statCards[2].querySelector('.stat-label').textContent = t('stat_streak');
+        statCards[3].querySelector('.stat-label').textContent = t('stat_favorites');
+    }
+
+    // Actualizar búsqueda
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) searchInput.placeholder = t('search_concepts');
+
+    const paradoxSearch = document.getElementById('paradox-search-input');
+    if (paradoxSearch) paradoxSearch.placeholder = t('search_paradoxes');
+
+    // Actualizar secciones
+    const sectionTitles = document.querySelectorAll('.section-title');
+    if (sectionTitles.length >= 4) {
+        sectionTitles[0].textContent = t('section_concepts');
+        sectionTitles[1].textContent = t('section_paradoxes');
+        sectionTitles[2].textContent = t('section_journal');
+        sectionTitles[3].textContent = t('section_about');
+    }
+
+    const sectionSubtitle = document.querySelector('.section-subtitle');
+    if (sectionSubtitle) sectionSubtitle.textContent = t('paradoxes_subtitle');
+
+    // Actualizar journal
+    const journalPrompt = document.getElementById('journal-prompt');
+    if (journalPrompt) journalPrompt.textContent = t('journal_prompt');
+
+    const journalEntry = document.getElementById('journal-entry');
+    if (journalEntry) journalEntry.placeholder = t('journal_placeholder');
+
+    const privacyNote = document.querySelector('.privacy-note');
+    if (privacyNote) privacyNote.textContent = t('privacy_note');
+
+    // Actualizar botones
+    const buttons = document.querySelectorAll('button.btn-primary, button.btn-secondary');
+    buttons.forEach(btn => {
+        const text = btn.textContent.trim();
+        if (text.includes('Otro') || text.includes('Outro')) btn.textContent = t('btn_another_concept');
+        if (text.includes('Guardar') || text.includes('Salvar')) btn.textContent = t('btn_save_reflection');
+        if (text.includes('Historial') || text.includes('Histórico')) btn.textContent = t('btn_view_history');
+        if (text.includes('Cerrar') || text.includes('Fechar')) btn.textContent = t('btn_close');
+    });
+}
 
 function initializeApp() {
     // Cargar tema guardado
@@ -536,6 +602,7 @@ function searchParadoxSearch() {
 }
 
 // Exponer funciones globales necesarias
+window.setLanguage = setLanguage;
 window.toggleTheme = toggleTheme;
 window.loadFeatured = loadFeatured;
 window.toggleFavorite = toggleFavorite;
