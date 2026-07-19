@@ -314,7 +314,7 @@ body {
 /* ============= CONCEPTS GRID ============= */
 .concepts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
     animation: fadeIn 0.8s ease 0.6s both;
@@ -923,6 +923,28 @@ body {
     .featured-section {
         padding: 1.5rem;
         margin-bottom: 2.5rem;
+    }
+
+    .concepts-grid,
+    .paradoxes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .concept-card,
+    .paradox-card {
+        min-height: auto;
+    }
+
+    .pagination-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn-pagination {
+        width: 100%;
+        padding: 0.75rem 1rem;
     }
 
     .featured-quote {
