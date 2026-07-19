@@ -883,19 +883,6 @@ body {
         width: 100%;
     }
 
-    .accordion-header {
-        padding: 1.25rem;
-        font-size: 1rem;
-    }
-
-    .accordion-title {
-        font-size: 1rem;
-    }
-
-    .accordion-content {
-        padding: 1.5rem;
-    }
-
     .pagination-controls {
         gap: 1rem;
         padding: 1rem;
@@ -969,81 +956,6 @@ body {
     }
 }
 
-/* ============= ACCORDION LAYOUT ============= */
-.accordion-section {
-    margin-bottom: 1.5rem;
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-light);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-smooth);
-}
-
-.accordion-section:hover {
-    box-shadow: var(--shadow-md);
-}
-
-.accordion-header {
-    width: 100%;
-    padding: 1.5rem;
-    background: var(--bg-secondary);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    transition: var(--transition-smooth);
-    gap: 1rem;
-}
-
-.accordion-header:hover {
-    background: var(--bg-tertiary);
-    color: var(--accent-primary);
-}
-
-.accordion-header:active {
-    transform: scale(0.98);
-}
-
-.accordion-title {
-    flex: 1;
-    text-align: left;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.accordion-icon {
-    display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    font-size: 0.9rem;
-    color: var(--accent-primary);
-}
-
-.accordion-section.active .accordion-icon {
-    transform: rotate(180deg);
-}
-
-.accordion-content {
-    padding: 2rem;
-    background: var(--bg-primary);
-    border-top: 1px solid var(--border-light);
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.4s;
-    opacity: 0;
-    visibility: hidden;
-    max-height: 0;
-}
-
-.accordion-section.active .accordion-content {
-    max-height: 5000px !important;
-    opacity: 1;
-    visibility: visible;
-}
-
 /* ============= PAGINATION CONTROLS ============= */
 .pagination-controls {
     display: flex;
@@ -1107,25 +1019,6 @@ body {
 
 [data-theme="dark"] .journal-entry-item {
     background: var(--bg-primary);
-}
-
-[data-theme="dark"] .accordion-section {
-    background: var(--bg-secondary);
-    border-color: var(--border);
-}
-
-[data-theme="dark"] .accordion-header {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-}
-
-[data-theme="dark"] .accordion-header:hover {
-    background: var(--bg-tertiary);
-}
-
-[data-theme="dark"] .accordion-content {
-    background: var(--bg-primary);
-    border-color: var(--border);
 }
 
 [data-theme="dark"] .pagination-controls {
