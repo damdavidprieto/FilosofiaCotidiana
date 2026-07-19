@@ -1017,6 +1017,7 @@ body {
 }
 
 .accordion-section.active .accordion-content {
+    max-height: 5000px !important;
     opacity: 1;
     visibility: visible;
 }
