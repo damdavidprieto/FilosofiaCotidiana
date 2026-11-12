@@ -66,7 +66,6 @@ Este proyecto es **Pure Vanilla JS**, lo que significa cero dependencias y máxi
 
 Proyecto desarrollado con rigor y pasión por **David Prieto**.
 - GitHub: [@damdavidprieto](https://github.com/damdavidprieto)
-- LinkedIn: [David Prieto](https://www.linkedin.com/in/tu-perfil) (Opcional: actualiza este enlace)
 
 ---
 *"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."*
