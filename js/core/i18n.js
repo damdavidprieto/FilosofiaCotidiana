@@ -1,12 +1,9 @@
 /**
  * Core · Internacionalización (ES / PT)
  *
- * Dos capas:
- *  1. Textos de interfaz  → I18N_UI (js/i18n/ui.js), accesibles con t('clave').
- *  2. Contenido           → diccionarios registrados con I18n.registerContent().
- *     El español es el idioma de origen de los datos; los diccionarios mapean
- *     "texto en español" → "texto en el otro idioma", campo a campo.
- *     Si falta una traducción se muestra el original (nunca se rompe la UI).
+ *  - Textos de interfaz: I18N_UI (js/i18n/ui.js) → t('clave', {variables})
+ *  - Contenido (conceptos, paradojas, autores, corrientes): cada entrada lleva sus
+ *    textos en ambos idiomas ({ es, pt }) → I18n.pick(objeto)
  *
  * El HTML se traduce de forma declarativa:
  *   data-i18n="clave"              → textContent
@@ -17,8 +14,6 @@
 const I18n = {
     SOURCE_LANG: 'es',
     LOCALES: { es: 'es-ES', pt: 'pt-BR' },
-
-    _content: {},      // { tipo: { lang: { campo: {es: traducido} } } }
     _listeners: [],
 
     get lang() {
@@ -44,43 +39,15 @@ const I18n = {
 
     t(key, vars = {}) {
         let text = I18N_UI[this.lang][key] ?? I18N_UI[this.SOURCE_LANG][key] ?? key;
-        for (const name in vars) text = text.replace(`{${name}}`, vars[name]);
+        for (const name in vars) text = text.split(`{${name}}`).join(vars[name]);
         return text;
     },
 
-    // ----- contenido -----
-
-    registerContent(type, lang, fields) {
-        this._content[type] = this._content[type] || {};
-        this._content[type][lang] = fields;
+    /** Elige el texto del idioma actual de un objeto { es, pt } (con respaldo en español). */
+    pick(obj) {
+        if (obj == null) return obj;
+        return obj[this.lang] ?? obj[this.SOURCE_LANG];
     },
-
-    _dict(type, field) {
-        return this._content[type]?.[this.lang]?.[field];
-    },
-
-    hasTranslation(type, field, value) {
-        return this.lang === this.SOURCE_LANG || Boolean(this._dict(type, field)?.[value]);
-    },
-
-    localizeField(type, field, value) {
-        if (this.lang === this.SOURCE_LANG) return value;
-        return this._dict(type, field)?.[value] ?? value;
-    },
-
-    /** Devuelve una copia del elemento con todos sus campos traducibles traducidos. */
-    localize(type, item) {
-        if (this.lang === this.SOURCE_LANG) return item;
-        const fields = this._content[type]?.[this.lang];
-        if (!fields) return item;
-        const out = { ...item };
-        for (const field in fields) {
-            if (field in item) out[field] = fields[field][item[field]] ?? item[field];
-        }
-        return out;
-    },
-
-    // ----- HTML estático -----
 
     apply(root = document) {
         document.documentElement.lang = this.lang;

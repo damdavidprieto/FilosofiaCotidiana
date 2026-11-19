@@ -1,144 +1,108 @@
 # 📖 Filosofía Cotidiana
 
-**Una bitácora interactiva de sabiduría práctica para el siglo XXI.**
+**Conceptos de la filosofía occidental y oriental, con su fuente, explorables por corriente, época y autor, y con el linaje de maestros y discípulos.**
 
-[![Public Release](https://img.shields.io/badge/Release-Public-brightgreen.svg)](https://github.com/damdavidprieto/FilosofiaCotidiana)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Pure JS](https://img.shields.io/badge/Vanilla-JS-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Demo Live](https://img.shields.io/badge/Demo-Live_App-orange.svg)](https://damdavidprieto.github.io/FilosofiaCotidiana/)
 
-## 📸 Vista Previa
+![Vista previa](assets/preview.png)
 
-![Vista Previa de la Aplicación](assets/preview.png)
-*(Interfaz Glassmorphism: Reflexiones filosóficas con diseño moderno)*
+## ✨ Qué ofrece
 
-## 🌟 ¿Qué es Filosofía Cotidiana?
+- **152 conceptos** de 100 autores y 36 corrientes (Grecia, Roma, China, India, Edad Media, Moderna y Contemporánea). Cada uno incluye **autor, fuente concreta, aplicación práctica y pregunta de reflexión**.
+- **Explorar por corriente, época o autor**, combinando con búsqueda y favoritos.
+- **Mapa de linaje**: quién fue maestro directo (línea continua) o influencia (línea discontinua) de quién, con cadena de maestros por autor.
+- **19 paradojas** con su fuente real y notas cuando la atribución popular es errónea.
+- **Bilingüe ES / PT** sin recargar la página; todo el contenido está en ambos idiomas.
+- **Bitácora de reflexión** privada: los datos se guardan solo en tu navegador (`localStorage`).
+- Sin dependencias ni compilación: HTML + CSS + JavaScript.
 
-**Filosofía Cotidiana** no es solo una biblioteca; es un compañero diario diseñado para acercar el pensamiento profundo a la vida real. A través de una interfaz elegante y minimalista basada en *Glassmorphism*, transformamos conceptos abstractos de los grandes pensadores en herramientas accionables para tu día a día.
+## 🔍 Criterio de fuentes (leer antes de citar)
 
-## ✨ Características Principales
+Cada concepto es de uno de dos tipos, y la interfaz lo indica:
 
-### 1. 🧠 Océano de Sabiduría (+60 Conceptos)
-Hemos curado una base de datos con **más de 60 conceptos rigurosos** que recorren toda la historia del pensamiento:
-- **Clásicos**: Estoicismo (Marco Aurelio, Epicteto), Epicureísmo, Cínicos (Diógenes).
-- **Medievales**: Escolástica (Tomás de Aquino, Agustín de Hipona).
-- **Modernos**: Racionalismo (Descartes, Leibniz), Empirismo (Hume), Idealismo (Kant).
-- **Contemporáneos**: Existencialismo (Sartre, Beauvoir, Camus), Perspectivismo (Ortega y Gasset), Teoría Crítica (Foucault, Arendt).
-- **Orientales**: Budismo, Taoísmo (Lao Tsé).
+| Tipo | Qué es |
+| --- | --- |
+| **Cita** | Texto de una obra concreta (se indica pasaje o edición), **traducido por el proyecto**. |
+| **Idea resumida** | Paráfrasis de una idea del autor. Nunca se entrecomilla ni se presenta como cita literal. |
 
-Cada entrada incluye:
-- Una **cita verificada** del autor.
-- Una **aplicación práctica** real para situaciones modernas.
-- Una **pregunta guía** para tu reflexión personal.
+Cuando una frase famosa se atribuye mal (p. ej. «solo sé que no sé nada», «somos lo que hacemos repetidamente», la «navaja de Ockham» o la tesis–antítesis–síntesis de Hegel) el concepto lleva una **nota de atribución**. Las traducciones no sustituyen a la obra original; el contenido se ha escrito a partir de fuentes y manuales de referencia, pero **no ha pasado una revisión por pares externa**. Si encuentras un error, abre una incidencia.
 
-### 2. 🧪 Experimentos Mentales & Paradojas
-Interactúa con dilemas clásicos como el **Barco de Teseo** o las **Paradojas de Zenón**, diseñados para desafiar tus prejuicios y ampliar tu perspectiva lógica.
+## 🚀 Uso
 
-### 3. ✍️ Bitácora de Reflexión (Privacidad Total)
-Un espacio personal para guardar tus pensamientos. Los datos se almacenan exclusivamente en tu navegador (LocalStorage), garantizando que tus reflexiones más íntimas nunca salgan de tu dispositivo.
+Abre `index.html` en el navegador (funciona con `file://`). Para desarrollar con un servidor local:
 
-## 🚀 Instalación y Uso
+```bash
+python3 -m http.server 8765      # y abre http://localhost:8765
+```
 
-Este proyecto es **Pure Vanilla JS**, lo que significa cero dependencias y máxima ligereza.
+## 📁 Estructura
 
-### Lanzamiento Local
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/damdavidprieto/FilosofiaCotidiana.git
-   ```
-2. Abre `index.html` en tu navegador favorito.
-   *(Compatible con el protocolo `file://`, funciona sin necesidad de servidor local).*
+```
+index.html                    Marcado declarativo (data-i18n, data-view, data-action)
+css/style.css                 Tokens, temas claro/oscuro, componentes
+js/
+  core/                       Componentes reutilizables, sin lógica de dominio
+    utils.js                    Store (localStorage seguro) y esc() (escapado HTML)
+    i18n.js                     Idioma, t(), I18n.pick(), data-i18n
+    atlas.js                    Índices y consultas de linaje sobre los datos
+    collection-view.js          Búsqueda + filtros + rejilla paginada (conceptos y paradojas)
+  data/                       Contenido bilingüe { es, pt }
+    taxonomy.js                 Épocas, carriles del mapa y corrientes
+    philosophers.js             Autores con maestros e influencias
+    concepts/                   Conceptos por periodo (antigua, oriental, medieval, moderna…)
+    paradoxes.js                Paradojas
+  features/                   Una responsabilidad por archivo
+    explorer.js                 Corrientes · épocas · autores · ficha de contexto
+    lineage.js                  Mapa de linaje (SVG)
+    dialogs.js                  Detalle de concepto y de paradoja (<dialog>)
+    favorites.js · journal.js · theme.js
+  i18n/ui.js                  Textos de la interfaz
+  app.js                      Punto de entrada: configura y conecta los componentes
+tools/
+  check-data.js               Valida datos: referencias, maestros, fechas, bilingüismo
+  e2e.js                      Pruebas en navegador real (Playwright)
+```
 
-## 🎨 Diseño y Aestética
+Orden de carga de los scripts: `core/utils` → `i18n/ui` → `core/i18n` → `data/*` → `core/atlas` → `core/collection-view` → `features/*` → `app`.
 
-- **Premium UI**: Diseño basado en cristales (Glassmorphism) con animaciones suaves.
-- **Tipografía**: Combinación de *Playfair Display* (elegancia académica) e *Inter* (claridad moderna).
-- **Mobile First**: Optimizado para que reflexiones desde tu móvil en cualquier parte.
+## ➕ Añadir contenido
 
-## 🤝 Contribuciones
+**Un concepto** (en `js/data/concepts/<periodo>.js`):
 
-¿Tienes un concepto filosófico que ha cambiado tu vida? ¡Añádelo!
-1. Haz un Fork del proyecto.
-2. Crea una rama para tu concepto (`git checkout -b feature/nuevo-concepto`).
-3. Realiza un Pull Request.
+```js
+C('id-unico', 'autor-id', 'corriente-id', 'Obra, capítulo/pasaje', 'q',   // 'q' cita · 'i' idea resumida
+  ['Título', 'Cita o idea en español', 'Aplicación', 'Pregunta de reflexión'],
+  ['Título', 'Citação ou ideia em português', 'Aplicação', 'Pergunta de reflexão'],
+  ['etiqueta1', 'etiqueta2'], 2,          // nivel: 1 principiante · 2 intermedio · 3 avanzado
+  ['Nota de atribución en español (opcional)', 'Nota em português']);
+```
 
-## 📧 Contacto y Autoría
+**Un autor** (en `js/data/philosophers.js`): `_p(id, nombre, nacimiento, muerte, [corrientes], [maestros directos], [influencias], [bio es, bio pt], { approx, label })`.
+Usa **`teachers`** solo si el maestro enseñó personalmente al autor; para el resto usa **`influences`**. Un maestro o influencia debe ser anterior al autor (lo comprueba el validador).
 
-Proyecto desarrollado con rigor y pasión por **David Prieto**.
-- GitHub: [@damdavidprieto](https://github.com/damdavidprieto)
-- LinkedIn: [David Prieto](https://www.linkedin.com/in/tu-perfil) (Opcional: actualiza este enlace)
+**Después, valida:**
 
----
-*"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."*
+```bash
+node tools/check-data.js                       # integridad y bilingüismo
+python3 -m http.server 8765 &                  # y, con playwright instalado:
+node tools/e2e.js                              # pruebas en navegador
+```
 
-## 📚 Referencias y fuentes
+## 🧭 Decisiones de diseño
 
-### Conceptos filosóficos
+- **Corrientes y épocas, no categorías sueltas.** Cada concepto pertenece a una corriente y a un autor; la época se deduce del año de nacimiento del autor (antigua < 300, medieval < 1450, moderna < 1770, contemporánea).
+- **Los eventos usan delegación** (`data-action`, `data-pick`, `data-pager`): no hay `onclick` inline ni funciones globales expuestas.
+- **Todo texto insertado con `innerHTML` pasa por `esc()`.**
+- **Solo se pinta la página actual** de cada lista (5 / 8 / 10 elementos según el ancho).
 
-**Estoicismo**
-- Marco Aurelio. (c. 170-180 d.C.). *Meditaciones*
-- Epicteto. (c. 108 d.C.). *Enquiridión*
-- Séneca. (c. 65 d.C.). *Cartas a Lucilio*
+## 🤝 Contribuir
 
-**Existencialismo**
-- Sartre, J.-P. (1946). *El existencialismo es un humanismo*
-- Camus, A. (1942). *El mito de Sísifo*
+Las contribuciones son bienvenidas: conceptos, paradojas, correcciones de atribución o de traducción. Toda aportación debe indicar la **fuente concreta** y pasar `node tools/check-data.js`.
 
-**Minimalismo filosófico**
-- Diógenes Laercio. (c. 300 d.C.). *Vidas de los filósofos más ilustres* (Libro VI: Diógenes de Sinope)
+## 📜 Licencia y autoría
 
-**Memento Mori**
-- Tradición estoica romana
-- Marco Aurelio. *Meditaciones*, Libro 2
-
-**Navaja de Ockham**
-- Guillermo de Ockham. (c. 1320). *Summa Logicae*
-
-### Experimentos mentales
-
-**El Barco de Teseo**
-- Plutarco. (c. 75 d.C.). *Vidas paralelas: Teseo*
-- Hobbes, T. (1656). *De Corpore*
-
-### Paradojas
-
-**Paradoja del mentiroso**
-- Epiménides de Creta (siglo VI a.C.)
-- Tarski, A. (1944). "The Semantic Conception of Truth"
-
-**Paradoja de Zenón**
-- Zenón de Elea (c. 490-430 a.C.)
-- Aristóteles. *Física*, Libro VI
-
-**Si un árbol cae en el bosque**
-- Berkeley, G. (1710). *Tratado sobre los principios del conocimiento humano*
-
-### Recursos adicionales consultados
-
-- Stanford Encyclopedia of Philosophy. (2023). https://plato.stanford.edu/
-- Internet Encyclopedia of Philosophy. (2023). https://iep.utm.edu/
-- Russell, B. (1912). *Los problemas de la filosofía*
-- Nagel, T. (1987). *¿Qué significa todo esto? Una brevísima introducción a la filosofía*
-
-## 📄 Licencia
-
-Este proyecto es de código abierto y está disponible para uso educativo.
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas añadir:
-- Nuevos conceptos filosóficos
-- Experimentos mentales adicionales
-- Paradojas o dilemas éticos
-- Mejoras en la accesibilidad
-
-Por favor, asegúrate de incluir referencias bibliográficas apropiadas.
-
-## 📧 Contacto
-
-Proyecto creado por David Prieto
-- GitHub: [@damdavidprieto](https://github.com/damdavidprieto)
-
----
+MIT. Proyecto de **David Prieto** · [@damdavidprieto](https://github.com/damdavidprieto)
 
 *"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."*

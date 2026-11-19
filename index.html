@@ -3,67 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta name="description" content="Filosofía Cotidiana: 500+ conceptos filosóficos aplicados a tu vida diaria. Estoicismo, Existencialismo, Ética, Política y más.">
-    <meta name="keywords" content="filosofía, estoicismo, existencialismo, reflexión, sabiduría, educación">
+    <meta name="description" content="Filosofía Cotidiana: conceptos de la filosofía occidental y oriental con su fuente, explorables por corriente, época y autor, con el linaje de maestros y discípulos.">
+    <meta name="keywords" content="filosofía, estoicismo, existencialismo, corrientes filosóficas, linaje de filósofos, reflexión, sabiduría">
     <meta name="author" content="David Prieto">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Filosofía Cotidiana - 500+ Conceptos de Sabiduría">
-    <meta property="og:description" content="Explora 500+ conceptos filosóficos aplicados a tu vida real. Desde Estoicismo hasta Filosofía Oriental.">
+    <meta property="og:title" content="Filosofía Cotidiana - Corrientes, autores y linajes del pensamiento">
+    <meta property="og:description" content="Explora a los grandes filósofos por corriente, época o autor, con citas fuente y una aplicación para tu vida.">
     <meta property="og:image" content="assets/preview.png">
 
-    <title>Filosofía Cotidiana - 500+ Conceptos Aplicados a tu Día</title>
+    <title>Filosofía Cotidiana - Conceptos, autores y linajes</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" data-action="toggle-theme" data-i18n-title="btn_theme" aria-label="Cambiar tema claro/oscuro">
-        <span id="theme-icon">🌙</span>
-    </button>
-
-    <!-- Language Toggle -->
-    <div class="language-selector">
-        <button class="lang-btn active" data-lang="es" data-action="set-lang">ES</button>
-        <button class="lang-btn" data-lang="pt" data-action="set-lang">PT</button>
+    <!-- BARRA SUPERIOR -->
+    <div class="topbar">
+        <nav class="site-nav" aria-label="Secciones">
+            <a href="#explorar" data-i18n="nav_explore">Explorar</a>
+            <a href="#conceptos" data-i18n="nav_concepts">Conceptos</a>
+            <a href="#paradojas" data-i18n="nav_paradoxes">Paradojas</a>
+            <a href="#bitacora" data-i18n="nav_journal">Bitácora</a>
+            <a href="#sobre" data-i18n="nav_about">Sobre el proyecto</a>
+        </nav>
+        <div class="controls">
+            <div class="language-selector" role="group" aria-label="Idioma / Idioma">
+                <button class="lang-btn active" data-lang="es" data-action="set-lang">ES</button>
+                <button class="lang-btn" data-lang="pt" data-action="set-lang">PT</button>
+            </div>
+            <button class="theme-toggle" data-action="toggle-theme" data-i18n-title="btn_theme" aria-label="Cambiar tema claro/oscuro">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
     </div>
 
     <div class="container">
-        <!-- HEADER -->
+        <!-- CABECERA -->
         <header class="header">
             <h1 class="header-title" data-i18n="header_title">📖 Filosofía Cotidiana</h1>
-            <p class="header-subtitle" data-i18n="header_subtitle">500+ Conceptos de Sabiduría Aplicados</p>
-            <p class="header-tagline" data-i18n="header_tagline">Explora el pensamiento de los grandes filósofos y aplícalo a tu vida diaria</p>
+            <p class="header-subtitle" data-i18n="header_subtitle">Corrientes, autores y linajes del pensamiento aplicados a tu vida</p>
+            <p class="header-tagline" data-i18n="header_tagline">Explora a los grandes filósofos por corriente, época o autor, y llévalos a tu día a día</p>
         </header>
 
-        <!-- FEATURED CONCEPT -->
+        <!-- CONCEPTO DEL DÍA -->
         <section class="featured-section" id="featured-section">
             <div class="featured-label" data-i18n="featured_label">✨ Concepto del Día</div>
-            <h2 class="featured-title" id="featured-title">Cargando...</h2>
-            <p class="featured-quote" id="featured-quote">...</p>
+            <h2 class="featured-title" id="featured-title">…</h2>
+            <p class="featured-quote" id="featured-quote">…</p>
             <div class="featured-meta">
                 <div class="meta-item">
-                    <div class="meta-label" data-i18n="featured_philosopher">Filósofo</div>
-                    <div class="meta-value" id="featured-philosopher">...</div>
+                    <div class="meta-label" data-i18n="featured_philosopher">Autor</div>
+                    <div class="meta-value" id="featured-philosopher">…</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label" data-i18n="featured_school">Escuela</div>
-                    <div class="meta-value" id="featured-school">...</div>
+                    <div class="meta-label" data-i18n="featured_school">Corriente</div>
+                    <div class="meta-value" id="featured-school">…</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label" data-i18n="featured_application">Aplicación</div>
-                    <div class="meta-value" id="featured-application">...</div>
+                    <div class="meta-label" data-i18n="featured_application">En tu vida</div>
+                    <div class="meta-value" id="featured-application">…</div>
                 </div>
             </div>
-            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                <button class="btn-primary" data-action="featured-next" data-i18n="btn_another_concept">Otro Concepto</button>
+            <div class="featured-actions">
+                <button class="btn-primary" data-action="featured-next" data-i18n="btn_another_concept">Otro concepto</button>
+                <button class="btn-secondary" data-action="featured-detail" data-i18n="btn_see_detail">Ver detalle</button>
                 <button class="btn-secondary" data-action="featured-favorite" id="favorite-btn">♡ Favorito</button>
             </div>
         </section>
 
-        <!-- STATS DASHBOARD -->
+        <!-- ESTADÍSTICAS -->
         <div class="stats-dashboard">
             <div class="stat-card">
                 <div class="stat-value" id="concepts-count">0</div>
@@ -71,7 +80,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="categories-count">0</div>
-                <div class="stat-label" data-i18n="stat_categories">Categorías</div>
+                <div class="stat-label" data-i18n="stat_categories">Corrientes</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value" id="streak-count">0</div>
@@ -83,23 +92,36 @@
             </div>
         </div>
 
+        <!-- EXPLORAR: corriente, época, autor y linaje -->
+        <section class="explore-section" id="explorar" data-view="explore">
+            <h2 class="section-title" data-i18n="section_explore">🧭 Explorar el pensamiento</h2>
+            <p class="section-subtitle" data-i18n="explore_subtitle">Entra por la corriente, la época o el autor, o recorre quién fue maestro de quién.</p>
+            <div class="tabs" role="tablist">
+                <button class="tab active" role="tab" data-action="explore-tab" data-tab="schools" aria-selected="true" data-i18n="tab_schools">Corrientes</button>
+                <button class="tab" role="tab" data-action="explore-tab" data-tab="eras" aria-selected="false" data-i18n="tab_eras">Épocas</button>
+                <button class="tab" role="tab" data-action="explore-tab" data-tab="authors" aria-selected="false" data-i18n="tab_authors">Autores</button>
+                <button class="tab" role="tab" data-action="explore-tab" data-tab="lineage" aria-selected="false" data-i18n="tab_lineage">Linaje</button>
+            </div>
+            <p class="tab-hint" data-role="hint"></p>
+            <div class="tab-panel" data-role="panel"></div>
+            <div class="context" data-role="context" aria-live="polite"></div>
+        </section>
 
-        <!-- MAIN CONTENT -->
-        <main class="main-content" data-view="concepts">
+        <!-- CONCEPTOS -->
+        <main class="main-content" id="conceptos" data-view="concepts">
             <h2 class="section-title" data-i18n="section_concepts">📚 Conceptos Filosóficos</h2>
 
-            <div class="search-box" style="margin-bottom: 1.5rem;">
-                <input type="text" data-role="search" data-i18n-placeholder="search_concepts" placeholder="Buscar conceptos, filósofos..." class="search-input">
-                <span class="search-icon">🔍</span>
+            <div class="toolbar">
+                <div class="search-box">
+                    <input type="search" data-role="search" class="search-input" data-i18n-placeholder="search_concepts" placeholder="Buscar por concepto, autor o idea…">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <button class="btn-secondary toggle-btn" id="favorites-only-btn" data-action="toggle-favorites-only" aria-pressed="false">♥ Solo favoritos</button>
             </div>
+            <div class="active-filters" data-role="active-filters" hidden></div>
+            <p class="results-count" data-role="count" aria-live="polite"></p>
 
-            <div class="filter-pills" data-role="pills">
-                <!-- Generado dinámicamente -->
-            </div>
-
-            <div class="concepts-grid" data-role="grid">
-                <!-- Generado dinámicamente -->
-            </div>
+            <div class="concepts-grid" data-role="grid"></div>
 
             <div class="pagination-controls" data-role="pager">
                 <button class="btn-pagination" data-pager="prev" data-i18n="btn_previous">← Anterior</button>
@@ -108,123 +130,105 @@
             </div>
         </main>
 
-        <!-- PARADOXES SECTION -->
-        <section class="paradoxes-section" data-view="paradoxes">
+        <!-- PARADOJAS -->
+        <section class="paradoxes-section" id="paradojas" data-view="paradoxes">
             <h2 class="section-title" data-i18n="section_paradoxes">🎭 Paradojas Filosóficas</h2>
-            <p class="section-subtitle" data-i18n="paradoxes_subtitle">Dilemas clásicos que desafían tu lógica</p>
+            <p class="section-subtitle" data-i18n="paradoxes_subtitle">Dilemas clásicos con su fuente y su historia real</p>
 
-            <!-- Paradox Search -->
-            <div class="paradox-search-box" style="margin-bottom: 1.5rem;">
-                <input type="text" data-role="search" data-i18n-placeholder="search_paradoxes" placeholder="Buscar paradojas..." class="search-input">
-                <span class="search-icon">🔍</span>
+            <div class="toolbar">
+                <div class="search-box">
+                    <input type="search" data-role="search" class="search-input" data-i18n-placeholder="search_paradoxes" placeholder="Buscar paradoja…">
+                    <span class="search-icon">🔍</span>
+                </div>
             </div>
-
-            <!-- Paradox Categories -->
-            <div class="paradox-categories" data-role="pills">
-                <!-- Generado dinámicamente -->
-            </div>
-
-            <!-- Paradoxes Grid -->
-            <div class="paradoxes-grid" data-role="grid">
-                <!-- Generado dinámicamente -->
-            </div>
+            <div class="paradox-categories" data-role="pills"></div>
+            <div class="paradoxes-grid" data-role="grid"></div>
 
             <div class="pagination-controls" data-role="pager">
                 <button class="btn-pagination" data-pager="prev" data-i18n="btn_previous">← Anterior</button>
                 <span class="page-indicator" data-role="indicator"></span>
                 <button class="btn-pagination" data-pager="next" data-i18n="btn_next">Siguiente →</button>
             </div>
-
-            <!-- Featured Paradox (Expandido) -->
-            <div class="featured-paradox" id="featured-paradox" hidden style="margin-top: 3rem;">
-                <div class="paradox-card-expanded">
-                    <h3 class="paradox-title" id="paradox-title-expanded">...</h3>
-                    <div class="paradox-section-content">
-                        <div class="paradox-item">
-                            <h4 data-i18n="paradox_dilemma">🤔 El Dilema</h4>
-                            <p id="paradox-explanation-expanded">...</p>
-                        </div>
-                        <div class="paradox-item">
-                            <h4 data-i18n="paradox_reflection">💭 Reflexión</h4>
-                            <p id="paradox-reflection-expanded">...</p>
-                        </div>
-                        <div class="paradox-item">
-                            <h4 data-i18n="paradox_application">🎯 Aplicación</h4>
-                            <p id="paradox-application-expanded">...</p>
-                        </div>
-                        <div class="paradox-item">
-                            <h4 data-i18n="paradox_origin">📚 Origen</h4>
-                            <p id="paradox-philosopher-expanded">...</p>
-                        </div>
-                    </div>
-                    <button class="btn-secondary" data-action="close-paradox" data-i18n="btn_close">Cerrar</button>
-                </div>
-            </div>
         </section>
 
-        <!-- JOURNAL SECTION -->
-        <section class="journal-section">
+        <!-- BITÁCORA -->
+        <section class="journal-section" id="bitacora">
             <h2 class="section-title" data-i18n="section_journal">📝 Mi Bitácora de Reflexión</h2>
             <div class="journal-container">
                 <div class="journal-card">
                     <p class="journal-prompt" id="journal-prompt" data-i18n="journal_prompt">Pregunta del día: ¿Cómo puedes aplicar la sabiduría a tu vida hoy?</p>
                     <textarea id="journal-entry" class="journal-textarea" data-i18n-placeholder="journal_placeholder" placeholder="Escribe tu reflexión aquí. Solo tú lo verás..."></textarea>
                     <div class="journal-buttons">
-                        <button class="btn-primary" data-action="save-journal" data-i18n="btn_save_reflection">Guardar Reflexión</button>
-                        <button class="btn-secondary" data-action="toggle-history" data-i18n="btn_view_history">Ver Historial</button>
+                        <button class="btn-primary" data-action="save-journal" data-i18n="btn_save_reflection">Guardar reflexión</button>
+                        <button class="btn-secondary" data-action="toggle-history" data-i18n="btn_view_history">Ver historial</button>
                     </div>
-                    <p class="privacy-note" data-i18n="privacy_note">🔒 Privacidad total: Tus datos nunca salen de este navegador.</p>
+                    <p class="privacy-note" data-i18n="privacy_note">🔒 Privacidad total: tus datos nunca salen de este navegador.</p>
                 </div>
 
-                <!-- Journal History -->
                 <div class="journal-history" id="journal-history" hidden>
-                    <h3 data-i18n="journal_title">Mis Reflexiones</h3>
-                    <div id="journal-entries-list">
-                        <!-- Generado dinámicamente -->
-                    </div>
+                    <h3 data-i18n="journal_title">Mis reflexiones</h3>
+                    <div id="journal-entries-list"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ABOUT SECTION -->
-        <section class="about-section">
-            <h2 class="section-title" data-i18n="section_about">📚 Sobre Este Proyecto</h2>
+        <!-- SOBRE EL PROYECTO -->
+        <section class="about-section" id="sobre">
+            <h2 class="section-title" data-i18n="section_about">📚 Sobre este proyecto</h2>
             <div class="about-content">
-                <p data-i18n="about_description">Filosofía Cotidiana es un proyecto dedicado a acercar el pensamiento profundo a la vida real. Cada concepto incluye:</p>
+                <p data-i18n="about_description">Filosofía Cotidiana acerca el pensamiento profundo a la vida real. Cada concepto incluye:</p>
                 <ul>
-                    <li data-i18n="about_verified">✓ Una cita verificada del filósofo original</li>
-                    <li data-i18n="about_context">✓ Contexto histórico y escuela de pensamiento</li>
-                    <li data-i18n="about_practical">✓ Aplicación práctica para tu vida hoy</li>
-                    <li data-i18n="about_questions">✓ Preguntas para tu reflexión personal</li>
-                    <li data-i18n="about_references">✓ Referencias académicas y fuentes</li>
+                    <li data-i18n="about_verified">✓ Una cita traducida de una obra concreta, o la idea resumida (marcada como tal)</li>
+                    <li data-i18n="about_context">✓ El autor, su corriente y su época, con su red de maestros</li>
+                    <li data-i18n="about_practical">✓ Una aplicación práctica para tu vida hoy</li>
+                    <li data-i18n="about_questions">✓ Una pregunta para tu reflexión personal</li>
+                    <li data-i18n="about_references">✓ Notas cuando la atribución popular no coincide con la histórica</li>
                 </ul>
-                <p style="margin-top: 1.5rem; opacity: 0.8; font-size: 0.95rem;">
+                <h3 class="about-subtitle" data-i18n="about_sources_title">Criterio de fuentes</h3>
+                <p data-i18n="about_sources_text">Distinguimos entre «cita» e «idea resumida».</p>
+                <p class="about-credits">
                     Creado con rigor por <strong>David Prieto</strong> |
-                    <a href="https://github.com/damdavidprieto/FilosofiaCotidiana" target="_blank" class="link">GitHub</a> |
+                    <a href="https://github.com/damdavidprieto/FilosofiaCotidiana" target="_blank" rel="noopener" class="link">GitHub</a> |
                     MIT License
                 </p>
             </div>
         </section>
 
-        <!-- FOOTER -->
+        <!-- PIE -->
         <footer class="footer">
             <p class="footer-quote" data-i18n="footer_quote">"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas."</p>
             <p class="footer-copyright">&copy; 2026 Filosofía Cotidiana</p>
         </footer>
     </div>
 
-    <!-- Scripts (orden: core → datos → traducciones → features → app) -->
+    <!-- DIÁLOGOS DE DETALLE -->
+    <dialog class="detail-dialog" id="concept-dialog" aria-labelledby="concept-dialog-title"></dialog>
+    <dialog class="detail-dialog" id="paradox-dialog" aria-labelledby="paradox-dialog-title"></dialog>
+
+    <button class="back-to-top" data-action="scroll-top" data-i18n-title="btn_top" aria-label="Volver arriba">↑</button>
+
+    <!-- Scripts (orden: core → datos → atlas → features → app) -->
     <script src="js/core/utils.js"></script>
     <script src="js/i18n/ui.js"></script>
     <script src="js/core/i18n.js"></script>
-    <script src="js/data/concepts.js"></script>
+    <script src="js/data/taxonomy.js"></script>
+    <script src="js/data/philosophers.js"></script>
+    <script src="js/data/concepts/_helper.js"></script>
+    <script src="js/data/concepts/antigua.js"></script>
+    <script src="js/data/concepts/oriental.js"></script>
+    <script src="js/data/concepts/medieval.js"></script>
+    <script src="js/data/concepts/moderna.js"></script>
+    <script src="js/data/concepts/contemporanea-1.js"></script>
+    <script src="js/data/concepts/contemporanea-2.js"></script>
     <script src="js/data/paradoxes.js"></script>
-    <script src="js/i18n/concepts.pt.js"></script>
-    <script src="js/i18n/paradoxes.pt.js"></script>
+    <script src="js/core/atlas.js"></script>
     <script src="js/core/collection-view.js"></script>
     <script src="js/features/theme.js"></script>
     <script src="js/features/favorites.js"></script>
     <script src="js/features/journal.js"></script>
+    <script src="js/features/lineage.js"></script>
+    <script src="js/features/explorer.js"></script>
+    <script src="js/features/dialogs.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
