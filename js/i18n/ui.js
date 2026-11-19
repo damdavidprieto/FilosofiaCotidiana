@@ -1,8 +1,9 @@
 /**
- * Translations - Español / Português
+ * Textos de interfaz · Español / Português
+ * Se consumen con t('clave') o con data-i18n en el HTML (ver core/i18n.js).
  */
 
-const TRANSLATIONS = {
+const I18N_UI = {
     es: {
         header_title: "📖 Filosofía Cotidiana",
         header_subtitle: "500+ Conceptos de Sabiduría Aplicados",
@@ -39,19 +40,27 @@ const TRANSLATIONS = {
         about_references: "✓ Referencias académicas y fuentes",
         about_footer: "Creado con rigor por David Prieto | MIT License",
         footer_quote: "\"La filosofía no es solo para académicos. Es para todos los que se hacen preguntas.\"",
-        footer_copyright: "&copy; 2026 Filosofía Cotidiana",
-        btn_previous: "← Anterior",
+                btn_previous: "← Anterior",
         btn_next: "Siguiente →",
         pagination_page: "Página {page} de {total}",
         no_concepts_found: "No se encontraron conceptos. Intenta otra búsqueda.",
-        no_paradoxes_found: "No se encontraron paradoxes.",
+        no_paradoxes_found: "No se encontraron paradojas.",
         paradox_dilemma: "🤔 El Dilema",
         paradox_reflection: "💭 Reflexión",
         paradox_application: "🎯 Aplicación",
         paradox_origin: "📚 Origen",
         btn_close: "Cerrar",
         alert_reflection_saved: "Reflexión guardada. ¡Excelente trabajo!",
-        alert_write_reflection: "Por favor escribe algo en tu reflexión."
+        alert_write_reflection: "Por favor escribe algo en tu reflexión.",
+        filter_all_concepts: "Todos",
+        filter_all_paradoxes: "Todas",
+        btn_read_more: "Leer más",
+        btn_favorite_title: "Favorito",
+        btn_theme: "Cambiar tema claro/oscuro",
+        stat_days: "días",
+        journal_free: "Reflexión Libre",
+        journal_empty: "Aún no has escrito reflexiones. ¡Comienza hoy!",
+        journal_prompt_label: "Pregunta del día: {prompt}"
     },
     pt: {
         header_title: "📖 Filosofia Cotidiana",
@@ -89,8 +98,7 @@ const TRANSLATIONS = {
         about_references: "✓ Referências acadêmicas e fontes",
         about_footer: "Criado com rigor por David Prieto | Licença MIT",
         footer_quote: "\"A filosofia não é apenas para acadêmicos. É para todos os que fazem perguntas.\"",
-        footer_copyright: "&copy; 2026 Filosofia Cotidiana",
-        btn_previous: "← Anterior",
+                btn_previous: "← Anterior",
         btn_next: "Próximo →",
         pagination_page: "Página {page} de {total}",
         no_concepts_found: "Nenhum conceito encontrado. Tente outra busca.",
@@ -101,25 +109,15 @@ const TRANSLATIONS = {
         paradox_origin: "📚 Origem",
         btn_close: "Fechar",
         alert_reflection_saved: "Reflexão salva. Excelente trabalho!",
-        alert_write_reflection: "Por favor, escreva algo em sua reflexão."
+        alert_write_reflection: "Por favor, escreva algo em sua reflexão.",
+        filter_all_concepts: "Todos",
+        filter_all_paradoxes: "Todos",
+        btn_read_more: "Ler mais",
+        btn_favorite_title: "Favorito",
+        btn_theme: "Alternar tema claro/escuro",
+        stat_days: "dias",
+        journal_free: "Reflexão Livre",
+        journal_empty: "Você ainda não escreveu reflexões. Comece hoje!",
+        journal_prompt_label: "Pergunta do dia: {prompt}"
     }
 };
-
-// Obtener idioma actual
-function getCurrentLanguage() {
-    return localStorage.getItem('philosophy-language') || 'es';
-}
-
-// Establecer idioma
-function setLanguage(lang) {
-    if (TRANSLATIONS[lang]) {
-        localStorage.setItem('philosophy-language', lang);
-        location.reload();
-    }
-}
-
-// Obtener traducción
-function t(key) {
-    const lang = getCurrentLanguage();
-    return TRANSLATIONS[lang][key] || TRANSLATIONS['es'][key] || key;
-}

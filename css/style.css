@@ -1068,3 +1068,13 @@ body {
     background: var(--accent-primary);
     color: var(--text-primary);
 }
+
+/* ===== Utilidades comunes ===== */
+[hidden] { display: none !important; }
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-tertiary);
+    padding: 3rem 1rem;
+}

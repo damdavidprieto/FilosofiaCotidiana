@@ -149,16 +149,37 @@ const PARADOX_TRANSLATIONS = {
     "¿Cómo evaluarías tu propia ventaja si fueras vulnerable?": "Como você avaliaria sua própria vantagem se fosse vulnerável?",
 };
 
-// Helper function to translate a paradox
-function translateParadox(paradox, targetLang) {
-    if (targetLang === 'es') return paradox;
+const PARADOX_CATEGORY_TRANSLATIONS = {
+    "Lógica": "Lógica",
+    "Movimiento & Espacio": "Movimento & Espaço",
+    "Percepción & Realidad": "Percepção & Realidade",
+    "Identidad & Cambio": "Identidade & Mudança",
+    "Ética & Moral": "Ética & Moral",
+    "Omnipotencia & Poder": "Onipotência & Poder",
+    "Conocimiento & Innovación": "Conhecimento & Inovação",
+    "Límites & Categorías": "Limites & Categorias",
+    "Tiempo & Causalidad": "Tempo & Causalidade",
+    "Engaño & Percepción": "Engano & Percepção",
+    "Lógica & Explicación": "Lógica & Explicação",
+    "Hipocresía & Coherencia": "Hipocrisia & Coerência",
+    "Cosmología": "Cosmologia",
+    "Realidad & Consciencia": "Realidade & Consciência",
+    "Lógica & Contratos": "Lógica & Contratos",
+    "Lenguaje & Categorías": "Linguagem & Categorias",
+    "Libertad & Destino": "Liberdade & Destino",
+    "Tiempo & Patrón": "Tempo & Padrão",
+    "Necesidad & Elección": "Necessidade & Escolha",
+    "Mente & Comprensión": "Mente & Compreensão",
+    "Decisión & Predicción": "Decisão & Previsão",
+    "Libertad & Causalidad": "Liberdade & Causalidade",
+    "Justicia & Igualdad": "Justiça & Igualdade"
+};
 
-    const translated = { ...paradox };
-    translated.title = PARADOX_TRANSLATIONS[paradox.title] || paradox.title;
-    translated.explanation = PARADOX_TRANSLATIONS[paradox.explanation] || paradox.explanation;
-    translated.reflection = PARADOX_TRANSLATIONS[paradox.reflection] || paradox.reflection;
-    translated.application = PARADOX_TRANSLATIONS[paradox.application] || paradox.application;
-    // philosopher and category names are mostly proper nouns, keep as-is
-
-    return translated;
-}
+// Un único mapa "texto en español → portugués" sirve para todos los campos de texto.
+I18n.registerContent('paradoxes', 'pt', {
+    title: PARADOX_TRANSLATIONS,
+    explanation: PARADOX_TRANSLATIONS,
+    reflection: PARADOX_TRANSLATIONS,
+    application: PARADOX_TRANSLATIONS,
+    category: PARADOX_CATEGORY_TRANSLATIONS
+});

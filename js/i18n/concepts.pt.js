@@ -81,6 +81,10 @@ const CONCEPT_TRANSLATIONS = {
 };
 
 const CATEGORY_TRANSLATIONS = {
+    "Nietzscheanismo": "Nietzscheanismo",
+    "Clásicos": "Clássicos",
+    "Filosofía Antigua": "Filosofia Antiga",
+    "Feminismo": "Feminismo",
     "Estoicismo": "Estoicismo",
     "Epicureísmo": "Epicurismo",
     "Existencialismo": "Existencialismo",
@@ -239,15 +243,9 @@ const APPLICATION_TRANSLATIONS = {
     "No preguntes 'qué debo hacer' sino 'qué tipo de persona quiero ser'. Las acciones correctas fluyen del carácter.": "Não pergunte 'o que devo fazer', mas 'que tipo de pessoa quero ser'. As ações corretas fluem do caráter.",
 };
 
-// Función auxiliar para traducir un concepto completo
-function translateConcept(concept, targetLang) {
-    if (targetLang === 'es') return concept;
-
-    const translated = { ...concept };
-    translated.title = CONCEPT_TRANSLATIONS[concept.title] || concept.title;
-    translated.category = CATEGORY_TRANSLATIONS[concept.category] || concept.category;
-    translated.quote = QUOTE_TRANSLATIONS[concept.quote] || concept.quote;
-    translated.application = APPLICATION_TRANSLATIONS[concept.application] || concept.application;
-
-    return translated;
-}
+I18n.registerContent('concepts', 'pt', {
+    title: CONCEPT_TRANSLATIONS,
+    category: CATEGORY_TRANSLATIONS,
+    quote: QUOTE_TRANSLATIONS,
+    application: APPLICATION_TRANSLATIONS
+});

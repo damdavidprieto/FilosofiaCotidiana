@@ -138,52 +138,49 @@ Cada concepto incluye:
 
 ```
 FilosofiaCotidiana/
-├── index-v2.html              # HTML principal (rediseñado)
-├── css/
-│   ├── style.css              # CSS original
-│   └── style-v2.css           # CSS nuevo (tokens, responsive)
+├── index.html                 # Marcado declarativo (data-i18n, data-view, data-action)
+├── css/style.css              # Tokens CSS, temas claro/oscuro, responsive
 ├── js/
-│   ├── main.js                # JS original
-│   ├── app-v2.js              # JS nuevo (funcional)
-│   ├── concepts-data.js       # Base de datos: 500+ conceptos
-│   ├── data.js                # Datos originales
-│   └── data_NEW.js            # Datos intermedios
-├── assets/
-│   └── preview.png            # Imagen de preview
-├── README.md                  # Documentación original
-├── README-V2.md               # Esta documentación
-└── favicon.png                # Icono del sitio
+│   ├── core/                  # Componentes reutilizables (sin lógica de dominio)
+│   │   ├── utils.js           #   Store (localStorage seguro), esc() (escapado HTML)
+│   │   ├── i18n.js            #   I18n: idioma, t(), traducción de contenido, data-i18n
+│   │   └── collection-view.js #   Búsqueda + filtro por categoría + rejilla paginada
+│   ├── features/              # Una responsabilidad por archivo
+│   │   ├── theme.js           #   Tema claro/oscuro
+│   │   ├── favorites.js       #   Favoritos (guarda solo el título original)
+│   │   └── journal.js         #   Bitácora de reflexión
+│   ├── data/                  # Contenido en español (idioma de origen)
+│   │   ├── concepts.js        #   PHILOSOPHY_DATABASE
+│   │   └── paradoxes.js       #   PARADOXES_DATABASE
+│   ├── i18n/                  # Traducciones
+│   │   ├── ui.js              #   Textos de interfaz ES/PT
+│   │   ├── concepts.pt.js     #   Contenido de conceptos ES→PT
+│   │   └── paradoxes.pt.js    #   Contenido de paradojas ES→PT
+│   └── app.js                 # Punto de entrada: configura los componentes
+├── tools/check-translations.js # Cobertura de traducciones y títulos duplicados
+└── assets/
 ```
 
-### Archivos Principales
+### Cómo encaja
 
-**`index-v2.html`** (HTML V2)
-- Estructura semántica mejorada
-- Secciones claras: header, featured, stats, search, grid, journal, footer
-- Meta tags actualizados
-- Modular y escalable
+- **Conceptos y paradojas son el mismo componente** (`createCollectionView`) con distinta
+  configuración: datos, campos de búsqueda, plantilla de tarjeta y qué hacer al pulsarla.
+  Solo se pinta la página actual (5 / 8 / 10 elementos según el ancho de pantalla).
+- **Las categorías se derivan de los datos**, no de una lista aparte, para que ningún
+  concepto quede sin filtro.
+- **Los eventos usan delegación** (`data-action`, `data-pager`, `data-category`); no hay
+  `onclick` inline ni funciones globales expuestas a `window`.
+- **Cambiar de idioma no recarga la página**: `I18n.set()` re-traduce el HTML y
+  cada componente se repinta vía `I18n.onChange`.
 
-**`css/style-v2.css`** (CSS V2)
-- Sistema de tokens CSS (200+ líneas de custom properties)
-- Temas light/dark con override en `data-theme`
-- Animaciones suaves (@keyframes)
-- Responsive con breakpoints 768px y 480px
-- Pseudoelementos para efectos visuales
+### Añadir contenido
 
-**`js/concepts-data.js`** (Base de Datos)
-- 500+ conceptos filosóficos
-- Estructura: `title`, `category`, `quote`, `philosopher`, `era`, `school`, `application`, `prompt`, `tags`, `difficulty`
-- Funciones de búsqueda y filtro
-- Estadísticas
-
-**`js/app-v2.js`** (Aplicación)
-- State management con `APP_STATE`
-- LocalStorage para persistencia (favoritos, journal, tema, racha)
-- Funciones modulares: `loadFeatured()`, `toggleFavorite()`, `filterConcepts()`, etc.
-- Cálculo automático de racha
-- Journal con historial
-
----
+- **Concepto/paradoja nuevo**: añádelo en `js/data/*.js`. El título debe ser único.
+- **Traducirlo**: añade el texto original en español → portugués en el diccionario del
+  campo correspondiente de `js/i18n/*.pt.js`. Si falta, se muestra el original.
+  `node tools/check-translations.js` informa de la cobertura.
+- **Otro idioma**: añade su bloque en `js/i18n/ui.js`, un `registerContent(tipo, 'xx', …)`
+  por tipo de contenido y un botón con `data-lang="xx"`.
 
 ## 💾 Almacenamiento Local
 
